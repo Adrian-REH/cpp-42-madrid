@@ -1,29 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/23 02:02:41 by adherrer          #+#    #+#             */
+/*   Updated: 2024/10/23 04:02:53 by adherrer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "Point.hpp"
 #include "Fixed.hpp"
+#include "bsp.cpp"
 #include <iostream>
-/**      A
- *     /   \
- *    /     \
- *   /       \
- *  B_ _ _ _ _C
- * A = (1, 5)
- * B = ()
+/**     C
+ *    /   \
+ *   /     \
+ *  /       \
+ * A_ _ _ _ _B
+ * A = ( 0 , 0 )
+ * B = ( 10 , 0 )
+ * C = ( 5 , 4 )
+ * • Returns: True if the point is inside the triangle. False otherwise.
+Thus, if the point is a vertex or on edge, it will return False.
  */
 int main()
 {
-	Fixed		a;
-	std::cout << "test "<< Fixed( 5.05f ) << std::endl;
-	Fixed const	b( Fixed( 5.05f ) * Fixed( 2 ) );
+	Point const	c( Fixed(5) , Fixed(4) );
+	Point const	a( Fixed(0) , Fixed(0) );
+	Point const	b( Fixed(10) , Fixed(0) );
+	Point const	point( Fixed(5) , Fixed(4) );
 
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-
-	std::cout << b << std::endl;
-
-	std::cout << Fixed::max( a, b) << std::endl;
-	
+	if (bsp(a, b, c, point))
+		std::cout << "The point is inside a triangle" << std::endl;
+	else
+		std::cout << "The point is not inside a triangle" << std::endl;
 	return 0;
 }

@@ -1,8 +1,8 @@
 # Variables
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
-TARGET = ex03
-SRCS = main.cpp Fixed.cpp
+TARGET = bsp
+SRCS = main.cpp Fixed.cpp Point.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Regla por defecto

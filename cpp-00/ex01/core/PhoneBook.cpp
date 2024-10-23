@@ -1,9 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/23 01:53:37 by adherrer          #+#    #+#             */
+/*   Updated: 2024/10/23 01:53:43 by adherrer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../core/PhoneBook.hpp"
 
-
-// Constructor que usa el repositorio de contactos
 PhoneBook::PhoneBook(PhoneBookRepository& repo) : contactRepo(repo) {}
-
 
 void PhoneBook::addContact(Contact nContact) {
     if (nContact.isEmpty())

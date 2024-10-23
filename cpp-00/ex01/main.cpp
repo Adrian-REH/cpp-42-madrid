@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/23 01:56:51 by adherrer          #+#    #+#             */
+/*   Updated: 2024/10/23 01:56:51 by adherrer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "core/PhoneBook.hpp"
 #include "infra/PhoneBookRepositoryInMemory.hpp"
 #include "contact/Contact.hpp"

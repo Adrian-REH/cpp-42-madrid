@@ -1,18 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/23 02:01:31 by adherrer          #+#    #+#             */
+/*   Updated: 2024/10/23 02:01:56 by adherrer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FIXED_HPP
 #define FIXED_HPP
 #include <iostream>
 
 #include <stdint.h>
-/*
-Multiplicacion
-resultado=(A×B)>>fraccionario_bits
-Division
-resultado=(A×2^fraccionario_bits)/B
 
-_fixed_point_t=parte_entera×2^16 + fractional_bits×2^16
-
-part_entera = _fixed_point_t >> fractional_bits;
-*/
 class Fixed {
 	private:
 		int				_fixed_point_t;

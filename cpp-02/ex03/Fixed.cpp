@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/23 03:58:03 by adherrer          #+#    #+#             */
+/*   Updated: 2024/10/23 03:59:36 by adherrer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
@@ -89,13 +100,11 @@ bool Fixed::operator<=(const Fixed& fixed){
 	return (this->_fixed_point_t <= fixed._fixed_point_t);	
 }
 bool Fixed::operator==(const Fixed& fixed){
-	return (this->_fixed_point_t == fixed._fixed_point_t &&\
-	this->_fractional_bits == this->_fractional_bits);	
+	return (this->toFloat() == fixed.toFloat());
 }
 
 bool Fixed::operator!=(const Fixed& fixed){
-	return (this->_fixed_point_t != fixed._fixed_point_t &&\
-		this->_fractional_bits != fixed._fractional_bits);
+	return (this->toFloat() != fixed.toFloat());
 }
 Fixed Fixed::operator+(const Fixed& fixed){
 	Fixed result(this->toFloat() + fixed.toFloat());

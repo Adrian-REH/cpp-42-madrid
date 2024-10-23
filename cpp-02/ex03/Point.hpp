@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 02:00:11 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/23 02:00:11 by adherrer         ###   ########.fr       */
+/*   Created: 2024/10/23 02:26:44 by adherrer          #+#    #+#             */
+/*   Updated: 2024/10/23 03:52:01 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEEAPON_HPP
-#define WEEAPON_HPP
-#include <string>
+#ifndef POINT_HPP
+#define POINT_HPP
 
-class Weapon{
+#include "Fixed.hpp"
+
+class Point {
 	private:
-		std::string _type;
-
+		Fixed _x;
+		Fixed _y;
 	public:
-		Weapon(std::string type);
-		~Weapon();
-		void setType(std::string type);
-		std::string getType(void);
+		Point(Fixed x, Fixed y);
+		Point(const int fpx, const int fpy);
+		~Point();
+		Point(const Point& fixed);
+		Fixed getX();
+		Fixed getY();
+		Point& operator=(const Point& point);
 };
 
 #endif

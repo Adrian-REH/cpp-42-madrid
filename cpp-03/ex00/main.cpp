@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 02:00:11 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/23 02:00:11 by adherrer         ###   ########.fr       */
+/*   Created: 2024/10/23 04:07:56 by adherrer          #+#    #+#             */
+/*   Updated: 2024/10/23 04:45:07 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEEAPON_HPP
-#define WEEAPON_HPP
-#include <string>
+#include "ClapTrap.hpp"
 
-class Weapon{
-	private:
-		std::string _type;
-
-	public:
-		Weapon(std::string type);
-		~Weapon();
-		void setType(std::string type);
-		std::string getType(void);
-};
-
-#endif
+int main()
+{
+	ClapTrap bob("Bob");
+	ClapTrap lily("Lily");
+	bob.attack("Lily");
+	lily.takeDamage(0);
+	lily.beRepaired(0);
+}
