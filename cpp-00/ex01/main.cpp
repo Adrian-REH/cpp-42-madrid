@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 01:56:51 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/23 01:56:51 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:42:19 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,14 @@ std::string stdinval(std::string msg)
 	return (val);
 }
 
-std::string displayopc()
+std::string displayopc(PhoneBook phoneBook)
 {
     std::string opc;
 	std::cout 
     << std::left <<CYAN << std::setw(10) << "1. ADD" <<std::endl
     << std::left << std::setw(10) << "2. SEARCH"<<std::endl
     << std::left << std::setw(10) << "3. EXIT" <<std::endl;
+	std::cout << "Total Contacts: " << phoneBook.nContacts() << std::endl;
 	std::cout << YELLOW <<std::string(44, '-')  <<std::endl;
 	std::cout  << "Enter the opc: ";
 	if (!(std::cin >> opc)) {
@@ -72,7 +73,7 @@ int main() {
 
 	while (1)
 	{
-		opc = displayopc();
+		opc = displayopc(phoneBook);
 		if (opc.empty())
 			return 0;
 		if (!opc.compare("ADD"))
@@ -99,11 +100,10 @@ int main() {
 			std::cin >> index;
 			std::cout << BLUE;
 			if (index >= 0 && index < phoneBook.nContacts()) {
-				Contact* cont =  phoneBook.findContact(index);
+				Contact* cont =  phoneBook.findContact(0);
 				std::cout << std::endl;
 				displayContacts(cont);
-				std::cout << std::string(44, '-') << std::endl;
-				cont[index].display();
+				phoneBook.findContact(index)->display();
 			} else {
 				std::cout<<RED << "Invalid index. Please try again." << RESET <<std::endl;
 			}

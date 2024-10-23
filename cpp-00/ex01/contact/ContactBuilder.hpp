@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 01:53:22 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/23 01:53:23 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:42:59 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,33 +23,31 @@ public:
         contact_ = Contact();
     }
 
-    // Cambiar el tipo de retorno a ContactBuilder&
     ContactBuilder& firstName(const std::string& firstName) {
         contact_.setFirstName(firstName);
-        return *this; // Devuelve la referencia al objeto actual
+        return *this;
     }
 
     ContactBuilder& lastName(const std::string& lastName) {
         contact_.setLastName(lastName);
-        return *this; // Devuelve la referencia al objeto actual
+        return *this;
     }
 
     ContactBuilder& nickName(const std::string& nickName) {
         contact_.setNickName(nickName);
-        return *this; // Devuelve la referencia al objeto actual
+        return *this;
     }
 
     ContactBuilder& phoneNumber(const std::string& phoneNumber) {
         contact_.setPhoneNumber(phoneNumber);
-        return *this; // Devuelve la referencia al objeto actual
+        return *this;
     }
 
     ContactBuilder& darkestSecret(const std::string& darkestSecret) {
         contact_.setDarkestSecret(darkestSecret);
-        return *this; // Devuelve la referencia al objeto actual
+        return *this;
     }
 
-    // El método build() no necesita cambios
     Contact build() {
         return contact_;
     }

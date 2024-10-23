@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 01:54:16 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/23 01:56:46 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:10:10 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 class PhoneBookRepositoryInMemory : public PhoneBookRepository {
 private:
     Contact* contacts;
-    int n_contacts;
+    static int n_contacts;
 
 public:
-    PhoneBookRepositoryInMemory(): contacts(new Contact[9]), n_contacts(0){}
+    PhoneBookRepositoryInMemory(): contacts(new Contact[8]){}
     ~PhoneBookRepositoryInMemory(){
         delete[] contacts;
     }

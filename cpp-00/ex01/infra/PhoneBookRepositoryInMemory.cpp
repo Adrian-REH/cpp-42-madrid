@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 01:54:02 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/23 01:54:03 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:40:17 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,29 @@
 #include <iomanip>
 
 
+int PhoneBookRepositoryInMemory::n_contacts = 0;
+
 Contact *PhoneBookRepositoryInMemory::getAllContacts() {
     return (contacts);
 }
 
 void PhoneBookRepositoryInMemory::addContact(Contact nContact) {
-    if (n_contacts < 8)
-    {
-        for (int i = 0; i < 9; ++i) {
-            if (contacts[i].isEmpty()) {
-                contacts[i] = nContact;
-                n_contacts++;
-                return;
-            }
-        }
-    }
-    else
-        contacts[8] = nContact;
+	if (n_contacts < 8)
+	{
+		for (int i = 0; i < 8; ++i) {
+			if (contacts[i].isEmpty()) {
+				nContact.setIndex(n_contacts);
+				contacts[i] = nContact;
+				n_contacts++;
+				return;
+			}
+		}
+	}
+	else
+	{
+		nContact.setIndex(7);
+		contacts[7] = nContact;
+	}
 }
 
 int PhoneBookRepositoryInMemory::nContacts() {
@@ -40,7 +46,7 @@ int PhoneBookRepositoryInMemory::nContacts() {
 
 Contact* PhoneBookRepositoryInMemory::findContact(int index) {
 
-    for (int i = 0; i < 9; ++i) {
+    for (int i = 0; i < 8; ++i) {
         if (contacts[i].getIndex() == index) {
             return &contacts[i];
         }

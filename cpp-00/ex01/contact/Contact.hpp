@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 01:53:16 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/23 01:53:28 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:33:38 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ public:
         return darkestSecret_;
     }
     bool isEmpty() const {
-        return (firstName_.empty() || lastName_.empty() || nickName_.empty() || phoneNumber_.empty() || darkestSecret_.empty()|| (index_ < 0 && index_ >= 9));
+        return (firstName_.empty() || lastName_.empty() || nickName_.empty() || phoneNumber_.empty() || darkestSecret_.empty() || index_ < 0 || index_ >= 8);
     }
    bool operator==(const Contact& other) const {
         return (getFirstName() == other.getFirstName() &&
