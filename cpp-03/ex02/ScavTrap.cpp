@@ -18,6 +18,7 @@ ScavTrap::ScavTrap(std::string name)
 {
 	std::cout << "[Init] ScavTrap [Created]" << std::endl;
 }
+
 ScavTrap::~ScavTrap() {
 	std::cout << "[Destroy] ScavTrap " << _name << std::endl;
 }
@@ -32,5 +33,5 @@ void	ScavTrap::attack(const std::string& target){
 
 void ScavTrap::guardGate() {
 	std::cout 
-	<< "Change to mode Gatekeeper: " << std::endl;
+	<< "[Mode] Change to mode Gatekeeper" << std::endl;
 }

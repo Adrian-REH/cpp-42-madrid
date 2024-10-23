@@ -12,21 +12,38 @@
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
-
+#include "DiamondTrap.hpp"
+#include "FragTrap.hpp"
+#include <iostream>
 int main()
 {
 	ClapTrap bob("Bob");
 	ClapTrap lily("Lily");
 	bob.attack("Lily");
-	lily.takeDamage(20);
-	lily.beRepaired(20);
+	lily.takeDamage(0);
+	lily.beRepaired(0);
 
+	std::cout << std::endl;
 	ScavTrap anny("Anny");
 
-	anny.guardGate();
 	anny.attack("Lily");
 	bob.takeDamage(20);
 	bob.attack("Anny");
 	anny.takeDamage(20);
 
+	std::cout << std::endl;
+	FragTrap enry("Enry");
+
+	enry.highFivesGuys();
+	enry.attack("Lily");
+	lily.takeDamage(30);
+	enry.attack("Bob");
+	bob.takeDamage(30);
+
+	std::cout << std::endl;
+	DiamondTrap mage("Mage");
+	mage.whoAmI();
+	mage.attack("Anny");
+	anny.takeDamage(30);
+	std::cout << std::endl;
 }

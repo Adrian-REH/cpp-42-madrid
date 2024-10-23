@@ -12,25 +12,30 @@
 
 #include "ScavTrap.hpp"
 #include "iostream"
+#define GREEN  "\033[32m"
+#define YELLOW  "\033[33m"
+#define BLUE   "\033[36m"
+#define RESET  "\033[0m"
+#define RED    "\033[31m"
 
 ScavTrap::ScavTrap(std::string name)
-: ClapTrap(name, 100, 50, 20)
+    : ClapTrap(name, 100, 50, 20)
 {
-	std::cout << "[Init] ScavTrap [Created]" << std::endl;
-}
-ScavTrap::~ScavTrap() {
-	std::cout << "[Destroy] ScavTrap " << _name << std::endl;
+    std::cout << YELLOW << "[Init]" << RESET << " ScavTrap "<< YELLOW << "[Created]" << RESET << std::endl;
 }
 
-void	ScavTrap::attack(const std::string& target){
-	std::cout 
-	<< "[Attack] ScavTrap: " << _name
-	<< ", attacks: " << target
-	 << ", causing: "<< _attack_damage << " point of damage!" << std::endl;
-	 _energy--;
+ScavTrap::~ScavTrap() {
+    std::cout << RED <<"[Destroy]"<< RESET << " ScavTrap: " << _name << RED << " [Destructed]"<< RESET << std::endl;
+}
+
+void ScavTrap::attack(const std::string& target) {
+    std::cout 
+        << BLUE << "[Attack] " << RESET << "ScavTrap: " << _name 
+        << ", attacks: " << target 
+        << ", causing: " << _attack_damage << " point of damage!" << RESET << std::endl;
+    _energy--;
 }
 
 void ScavTrap::guardGate() {
-	std::cout 
-	<< "Change to mode Gatekeeper: " << std::endl;
+    std::cout << GREEN << "[Mode] Change to mode Gatekeeper" << RESET << std::endl;
 }

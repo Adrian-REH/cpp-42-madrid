@@ -15,8 +15,8 @@
 
 ClapTrap::ClapTrap(std::string name) : _name(name) {
 	_hit_point = 100;
-	_energy = 50;
-	_attack_damage = 20;
+	_energy = 100;
+	_attack_damage = 30;
 	std::cout << "[Init] "
 	<< "ClapTrap: " << _name
 	<< " hit point: " << _hit_point
@@ -32,6 +32,7 @@ ClapTrap::ClapTrap(std::string name, int hit_pt, int ene, int dmg)
 	<< " energy: " << _energy
 	<< " attack damage: " << _attack_damage << " [Created]" << std::endl;
 }
+
 ClapTrap::~ClapTrap(){
 	std::cout << "[Destroy] " << "ClapTrap: " << _name << std::endl;
 }

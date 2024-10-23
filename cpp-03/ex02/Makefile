@@ -12,8 +12,8 @@
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
-TARGET = ex01
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
+TARGET = ex02
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Regla por defecto
