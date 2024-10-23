@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 01:53:06 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/23 17:30:19 by adherrer         ###   ########.fr       */
+/*   Created: 2024/10/23 04:07:56 by adherrer          #+#    #+#             */
+/*   Updated: 2024/10/23 13:29:14 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cctype>
-#include <string>
+#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
-void stoupper(int argc, char* argv[])
+int main()
 {
-	for (int i = 1; i < argc; ++i)
-	{
-		for (int j = 0; argv[i][j] != 0; ++j)
-			std::cout << static_cast<char>(toupper(argv[i][j]));
-		std::cout<<" ";
-	}
-	std::cout<<std::endl;
-}
-int main(int argc, char *argv[])
-{
-	stoupper(argc, argv);
-	return (0);
+	ClapTrap bob("Bob");
+	ClapTrap lily("Lily");
+	bob.attack("Lily");
+	lily.takeDamage(0);
+	lily.beRepaired(0);
+
+	ScavTrap Anny("");
 }
