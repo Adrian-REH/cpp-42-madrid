@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:29:31 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/25 13:33:16 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/25 18:48:40 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@
 class Cure : public AMateria
 {
 	public:
-		Cure(): AMateria("Cure") {};
-		~Cure(){}
+		Cure();
+		~Cure();
 		AMateria* clone() const;
-
 };
 #endif

@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 02:02:41 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/23 04:02:53 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/25 20:09:11 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int main()
 	Point const	c( Fixed(5) , Fixed(4) );
 	Point const	a( Fixed(0) , Fixed(0) );
 	Point const	b( Fixed(10) , Fixed(0) );
-	Point const	point( Fixed(5) , Fixed(4) );
+	Point const	point( Fixed(5) , Fixed(3) );
 
 	if (bsp(a, b, c, point))
 		std::cout << "The point is inside a triangle" << std::endl;

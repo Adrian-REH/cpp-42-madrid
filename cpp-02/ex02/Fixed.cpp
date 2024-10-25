@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 02:01:41 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/23 02:01:41 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/25 19:59:52 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 const int Fixed::_fractional_bits = 8;
 const float Fixed::_epsilon = 1.0f / (1 << _fractional_bits);
 
-Fixed::Fixed()
+Fixed::Fixed() : _fixed_point_t(0)
 {
 }
 

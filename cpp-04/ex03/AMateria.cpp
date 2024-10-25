@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:30:02 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/25 13:59:48 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/25 19:19:35 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,19 @@ std::string const & AMateria::getType() const{
 
 void AMateria::use(ICharacter& target)
 {
-	std::cout << "Non define type"<< std::endl;
+	if (_type.compare("ice"))
+		 std::cout << "shoots an ice bolt at " << target.getName() <<  std::endl;
+	else if (_type.compare("cure"))
+		 std::cout << " heals" << target.getName() << "’s wounds";
+}
+
+void AMateria::setIdx(int idx) {
+	_idx = idx;
+}
+int AMateria::getIdx() const {
+	return _idx;
+}
+
+bool AMateria::isEmpty(){
+	return (_type.empty());
 }

@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:29:57 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/25 13:34:14 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/25 18:47:04 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 class Ice : public AMateria
 {
 	public:
-		Ice() : AMateria("Ice"){}
-		~Ice(){}
+		Ice();
+		~Ice();
 		AMateria* clone() const;
 };
 

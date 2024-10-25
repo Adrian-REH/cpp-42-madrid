@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Point.hpp                                          :+:      :+:    :+:   */
+/*   FIre.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 02:26:44 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/25 20:02:11 by adherrer         ###   ########.fr       */
+/*   Created: 2024/10/25 13:29:57 by adherrer          #+#    #+#             */
+/*   Updated: 2024/10/25 19:26:59 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_HPP
-#define POINT_HPP
+#ifndef FIRE_HPP
+#define FIRE_HPP
+#include "AMateria.hpp"
 
-#include "Fixed.hpp"
-
-class Point {
-	private:
-		Fixed const _x;
-		Fixed const _y;
+class Fire : public AMateria
+{
 	public:
-		Point();
-		Point(Fixed x, Fixed y);
-		Point(const int fpx, const int fpy);
-		~Point();
-		Point(const Point& fixed);
-		Fixed getX();
-		Fixed getY();
-		void setX(Fixed);
-		void setY(Fixed);
-		Point& operator=(const Point& point);
+		Fire();
+		~Fire();
+		AMateria* clone() const;
 };
 
 #endif

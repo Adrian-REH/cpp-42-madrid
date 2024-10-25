@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 02:01:14 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/23 02:01:15 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/25 19:59:08 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 const int Fixed::_fractional_bits = 8;
 
-Fixed::Fixed()
+Fixed::Fixed() : _fixed_point_t(0)
 {
 	std::cout << "Default constructor called" << std::endl;
 }

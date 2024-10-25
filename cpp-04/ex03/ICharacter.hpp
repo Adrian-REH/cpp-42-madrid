@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:30:20 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/25 13:31:21 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/25 18:39:39 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define ICHARACTER_HPP
 #include <string>
 #include "AMateria.hpp"
+class AMateria;
 /**
  * Pure Virtual class that equal to interface
  */

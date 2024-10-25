@@ -5,34 +5,40 @@
 
 int MateriaSource::n_materias = 0;
 
-void stolower(std::string src)
+std::string stolower(std::string src)
 {
-	for (char &c : src)
-		c = std::tolower(c);
+	for (size_t i = 0 ; i < src.size() ; ++i)
+		src[i] = std::tolower(src[i]);
+	return src;
 }
 
-MateriaSource::MateriaSource(){}
+MateriaSource::MateriaSource() {
+	for (int i = 0; i < 4; ++i) {
+		_materias[i] = 0;
+	}
+}
 
 MateriaSource::~MateriaSource(){}
 
 void MateriaSource::learnMateria(AMateria * materia){
-	if (!_materias[n_materias - 1]->isEmpty())
-	{
+		if (n_materias >= 4)
+		{
+			std::cout << "Don't learning more material" << std::endl;
+			return ;
+		}
 		materia->setIdx(n_materias);
-		_materias[n_materias - 1] = materia;
+		_materias[n_materias] = materia;
 		n_materias++;
 		std::cout << "Saved" << std::endl;
-	}
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)
 {
 	stolower(type);
-	AMateria *result = 0;
 	for(int i = 0; i < 4; i++)
 	{
-		if (_materias[i]->getType() == type)
-			return (_materias[i]);
+		if (_materias[i] && !_materias[i]->isEmpty()  && stolower(_materias[i]->getType()).compare(type))
+			return (_materias[i]->clone());
 	}
 	return 0;
 }

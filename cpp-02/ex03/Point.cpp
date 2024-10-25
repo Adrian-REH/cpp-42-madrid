@@ -6,11 +6,15 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 02:26:50 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/23 04:01:38 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/25 20:08:20 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
+
+Point::Point() : _x(0), _y(0){
+
+}
 
 Point::Point(Fixed x, Fixed y): _x(x), _y(y){
 
@@ -27,8 +31,7 @@ Point::Point(const Point& fixed){
 
 Point& Point::operator=(const Point& point){
 	if (this != &point){
-		this->_x = point._x;
-		this->_y = point._y;
+		throw std::runtime_error("Value cannot be negative");
 	}
 	return *this;
 }
@@ -40,4 +43,3 @@ Fixed Point::getX(){
 Fixed Point::getY(){
 	return (_y);
 }
-

@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:30:05 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/25 13:30:06 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/25 18:39:30 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,18 @@
 #define AMATERIA_HPP
 #include <string>
 #include "ICharacter.hpp"
+
+class ICharacter;
+
 class AMateria
 {
 	protected:
-		int			_idx;
+		int _idx;
 		std::string _type;
 	public:
 		AMateria(std::string const &type);
 		std::string const &getType() const;
-		int const &getIdx() const;
+		int getIdx() const;
 		void setIdx(int);
 		bool isEmpty();
 

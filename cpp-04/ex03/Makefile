@@ -6,14 +6,14 @@
 #    By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 04:06:52 by adherrer          #+#    #+#              #
-#    Updated: 2024/10/23 13:31:46 by adherrer         ###   ########.fr        #
+#    Updated: 2024/10/25 18:45:34 by adherrer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
-TARGET = ex02
-SRCS = main.cpp AMateria.cpp Character.cpp MateriaSource.cpp
+TARGET = ex03
+SRCS = main.cpp AMateria.cpp  Character.cpp MateriaSource.cpp Ice.cpp Cure.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Regla por defecto

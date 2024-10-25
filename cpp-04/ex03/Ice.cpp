@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Point.hpp                                          :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 02:26:44 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/25 20:02:11 by adherrer         ###   ########.fr       */
+/*   Created: 2024/10/25 13:29:57 by adherrer          #+#    #+#             */
+/*   Updated: 2024/10/25 18:48:54 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_HPP
-#define POINT_HPP
+#include <iostream>
+#include "Ice.hpp"
+#include <string>
 
-#include "Fixed.hpp"
+Ice::Ice(): AMateria("Ice") {
+	std::cout << "create Materia Ice" << std::endl;
+}
 
-class Point {
-	private:
-		Fixed const _x;
-		Fixed const _y;
-	public:
-		Point();
-		Point(Fixed x, Fixed y);
-		Point(const int fpx, const int fpy);
-		~Point();
-		Point(const Point& fixed);
-		Fixed getX();
-		Fixed getY();
-		void setX(Fixed);
-		void setY(Fixed);
-		Point& operator=(const Point& point);
-};
+Ice::~Ice(){}
 
-#endif
+AMateria* Ice::clone() const {
+	AMateria *nIce = new Ice();
+	return nIce;
+}

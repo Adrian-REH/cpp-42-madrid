@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:30:09 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/25 13:58:56 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/25 19:22:30 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ int Character::n_materias = 0;
 
 Character::Character(std::string name) : _name(name) {}
 
-Character::~Character(){
-	delete[] _materias;
+Character::~Character() {
+	for(int i = 0; i < 4 ; i++)
+		_materias[i] = 0;
 }
 std::string const & Character::getName(){
 	return (_name);
@@ -26,13 +27,16 @@ std::string const & Character::getName(){
 
 void Character::equip(AMateria* m)
 {
-	if (!_materias[n_materias - 1]->isEmpty())
-	{
+		if (n_materias >= 4)
+		{
+			std::cout << "Don't equip more material" << std::endl;
+			return ;
+		}
 		m->setIdx(n_materias);
-		_materias[n_materias - 1] = m;
+		_materias[n_materias] = m;
 		n_materias++;
+		std::cout << "Equiped"<< std::endl;
 		return ;
-	}
 }
 
 void Character::unequip(int idx) {
@@ -47,5 +51,6 @@ void Character::unequip(int idx) {
 void Character::use(int idx, ICharacter &target){
 	if (idx > n_materias || idx < 0)
 		return ;
-	_materias[idx]->use(target);
+	if (_materias[idx])
+		_materias[idx]->use(target);
 }
