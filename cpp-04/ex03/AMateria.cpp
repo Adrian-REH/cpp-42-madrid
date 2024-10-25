@@ -1,8 +1,14 @@
 
 #include "AMateria.hpp"
 
-AMateria::AMateria(std::string const &type){}
-std::string const & AMateria::getType() const{}
+AMateria::AMateria(std::string const &type){
+	if (type == "ice")
+		_type = "Ice";
+	if (type == "cure")
+		_type = "Cure";
+}
+std::string const & AMateria::getType() const{
+	return _type;
+}
 
-AMateria* AMateria::clone()const {}
 void AMateria::use(ICharacter& target){}
