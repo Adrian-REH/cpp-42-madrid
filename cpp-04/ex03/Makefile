@@ -13,7 +13,7 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
 TARGET = ex02
-SRCS = main.cpp 
+SRCS = main.cpp AMateria.cpp Character.cpp MateriaSource.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Regla por defecto
