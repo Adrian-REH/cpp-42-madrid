@@ -7,7 +7,6 @@ class MateriaSource : public IMateriaSource
 {
 	private:
 		static int	n_materias;
-		std::string	_name;
 		AMateria	*_materias[4];
 	public:
 		MateriaSource();

@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Character.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/25 13:30:09 by adherrer          #+#    #+#             */
+/*   Updated: 2024/10/25 13:58:56 by adherrer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Character.hpp"
+#include <iostream>
 
 int Character::n_materias = 0;
 
@@ -35,4 +47,5 @@ void Character::unequip(int idx) {
 void Character::use(int idx, ICharacter &target){
 	if (idx > n_materias || idx < 0)
 		return ;
+	_materias[idx]->use(target);
 }
