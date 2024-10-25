@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 01:59:51 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/23 01:59:51 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/25 16:55:20 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ int main()
 		bob.attack();
 	}
 	{
-		Weapon club("Aileen Bow");
-		HumanB lily("Lily", club);
+		Weapon *club = new Weapon("Aileen Bow");
+		HumanB lily("Lily");
 
+		lily.setWeapon(club);
 		lily.attack();
-		club.setType("Sylph Wind Bow");
+		club->setType("Sylph Wind Bow");
 		lily.attack();
+		delete club;
 	}
 }

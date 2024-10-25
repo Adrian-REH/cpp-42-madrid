@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 01:59:43 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/23 01:59:43 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/25 16:53:11 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@
 #define YELLOW  "\033[33m"
 #define RED     "\033[31m"
 
-HumanB::HumanB(std::string name, Weapon& weapon) : _weapon(weapon), _name(name)
+HumanB::HumanB(std::string name) : _weapon(NULL) , _name(name)
 {
 
+}
+void HumanB::setWeapon(Weapon * weapon) {
+	_weapon = weapon;
 }
 
 HumanB::~HumanB()
@@ -29,5 +32,6 @@ HumanB::~HumanB()
 
 void HumanB::attack()
 {
-	std::cout << _name << " attacks with their " << YELLOW << _weapon.getType() << RESET << std::endl; 
+	if (_weapon != NULL)
+		std::cout << _name << " attacks with their " << YELLOW << _weapon->getType() << RESET << std::endl; 
 }

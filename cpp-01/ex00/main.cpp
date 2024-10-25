@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 01:57:43 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/23 01:57:44 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/25 16:54:39 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ int main()
 	zom.~Zombie();
 	Zombie *anna = newZombie("Anna");
 	anna->announce();
+	anna->~Zombie();
 	randomChump("Federico");
 }
