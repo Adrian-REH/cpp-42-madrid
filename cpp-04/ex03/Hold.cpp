@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*   Hold.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:29:57 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/25 18:48:54 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/25 19:31:42 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "AMateria.hpp"
+#include "Hold.hpp"
 #include <iostream>
-#include "Ice.hpp"
-#include <string>
 
-Ice::Ice(): AMateria("ice") {
-	std::cout << "create Materia Ice" << std::endl;
+Hold::Hold() : AMateria("hold") {
+	std::cout << "Create Material Hold" << std::endl;
 }
 
-Ice::~Ice(){}
+Hold::~Hold() {}
 
-AMateria* Ice::clone() const {
-	AMateria *nIce = new Ice();
-	return nIce;
+AMateria* Hold::clone() const {
+	AMateria *nHold = new Hold();
+	return nHold;
 }

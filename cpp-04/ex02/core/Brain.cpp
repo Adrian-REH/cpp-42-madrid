@@ -3,6 +3,8 @@
 #include <iostream>
 Brain::Brain(){
 	std::cout << "[Created] Brain"<< std::endl;
+	for (int i = 0; i < 100 ; i++)
+		_ideas[100] = "";
 	_ideas[0] = "La inyección de dependencias es un patrón de diseño que permite que los objetos reciban\n \
 		sus dependencias desde el exterior, en lugar de crearlas internamente. Esto promueve un\n \
 		código más flexible y modular, ya que permite cambiar las dependencias sin modificar el\n \

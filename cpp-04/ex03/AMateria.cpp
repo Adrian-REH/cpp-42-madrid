@@ -12,8 +12,11 @@
 
 #include "AMateria.hpp"
 #include <iostream>
+#include "stolower.hpp"
+
 
 AMateria::AMateria(std::string const &type){
+	stolower(type);
 	_type = type;
 }
 std::string const & AMateria::getType() const{
@@ -22,10 +25,16 @@ std::string const & AMateria::getType() const{
 
 void AMateria::use(ICharacter& target)
 {
-	if (_type.compare("ice"))
+	if (!_type.compare("ice"))
 		 std::cout << "shoots an ice bolt at " << target.getName() <<  std::endl;
-	else if (_type.compare("cure"))
-		 std::cout << " heals" << target.getName() << "’s wounds";
+	else if (!_type.compare("cure"))
+		 std::cout << " heals " << target.getName() << "’s wounds" <<  std::endl;
+	else if (!_type.compare("hold"))
+		 std::cout << " Defense increase " << target.getName() << "’s wounds" <<  std::endl;
+	else if (!_type.compare("fire"))
+		 std::cout << " Fired " << target.getName() << "’s wounds" <<  std::endl;
+	else if (!_type.compare("electric"))
+		 std::cout << " Electrocuted " << target.getName() << "’s wounds"<<  std::endl;
 }
 
 void AMateria::setIdx(int idx) {

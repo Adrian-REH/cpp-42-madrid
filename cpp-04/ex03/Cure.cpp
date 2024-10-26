@@ -2,7 +2,7 @@
 #include <iostream>
 
 Cure::Cure(): AMateria("cure") {
-	std::cout << "create Materia Cure" << std::endl;
+	std::cout << "Create Materia Cure" << std::endl;
 
 };
 

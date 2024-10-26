@@ -13,7 +13,7 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
 TARGET = ex03
-SRCS = main.cpp AMateria.cpp  Character.cpp MateriaSource.cpp Ice.cpp Cure.cpp
+SRCS = main.cpp AMateria.cpp  Character.cpp MateriaSource.cpp Ice.cpp Cure.cpp Hold.cpp Fire.cpp Electric.cpp stolower.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Regla por defecto

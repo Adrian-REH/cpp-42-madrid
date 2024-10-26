@@ -2,15 +2,9 @@
 #include "MateriaSource.hpp"
 #include <string>
 #include <iostream>
+#include "stolower.hpp"
 
 int MateriaSource::n_materias = 0;
-
-std::string stolower(std::string src)
-{
-	for (size_t i = 0 ; i < src.size() ; ++i)
-		src[i] = std::tolower(src[i]);
-	return src;
-}
 
 MateriaSource::MateriaSource() {
 	for (int i = 0; i < 4; ++i) {
@@ -37,8 +31,9 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 	stolower(type);
 	for(int i = 0; i < 4; i++)
 	{
-		if (_materias[i] && !_materias[i]->isEmpty()  && stolower(_materias[i]->getType()).compare(type))
-			return (_materias[i]->clone());
+		if (_materias[i] && !_materias[i]->isEmpty()  && !stolower(_materias[i]->getType()).compare(type))
+		{
+			return (_materias[i]->clone());}
 	}
 	return 0;
 }

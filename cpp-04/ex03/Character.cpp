@@ -27,10 +27,21 @@ std::string const & Character::getName(){
 
 void Character::equip(AMateria* m)
 {
-		if (n_materias >= 4)
+		if ( !m || n_materias >= 4)
 		{
 			std::cout << "Don't equip more material" << std::endl;
 			return ;
+		}
+		for (int i = 0; i < 4; i++)
+		{
+			if (!_materias[i])
+			{
+				_materias[i] = m;
+				n_materias++;
+				std::cout << "Equiped "<< std::endl;
+				std::cout << m->getType() << std::endl;
+				return ;
+			}
 		}
 		m->setIdx(n_materias);
 		_materias[n_materias] = m;
@@ -42,15 +53,22 @@ void Character::equip(AMateria* m)
 void Character::unequip(int idx) {
 	if (idx > n_materias || idx < 0)
 		return ;
-	for (int i = 0; i < 4; i++ )
+	for (int i = 0; i < 4; i++)
 	{
 		if (_materias[i]->getIdx() == idx)
+		{
+			n_materias--;
+			std::cout << "Unequiped "<<_materias[i]->getType() << std::endl;
 			_materias[i] = 0;
+			return ;
+		}
 	}
 }
 void Character::use(int idx, ICharacter &target){
 	if (idx > n_materias || idx < 0)
 		return ;
 	if (_materias[idx])
-		_materias[idx]->use(target);
+	{
+		std::cout << _name;
+		_materias[idx]->use(target);}
 }

@@ -22,6 +22,7 @@ class AMateria
 	protected:
 		int _idx;
 		std::string _type;
+		static std::string _materials[4];
 	public:
 		AMateria(std::string const &type);
 		std::string const &getType() const;

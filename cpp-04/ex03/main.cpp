@@ -14,6 +14,9 @@
 #include "MateriaSource.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
+#include "Fire.hpp"
+#include "Hold.hpp"
+#include "Electric.hpp"
 
 int main()
 {
@@ -21,18 +24,23 @@ int main()
 
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
-	src->learnMateria(new Cure());
-	src->learnMateria(new Cure());
-	src->learnMateria(new Cure());
+	src->learnMateria(new Hold());
+	src->learnMateria(new Fire());
+	src->learnMateria(new Electric());
 	ICharacter* me = new Character("me");
 	me->equip(src->createMateria("ice"));
  	me->equip(src->createMateria("cure"));
- 	me->equip(src->createMateria("cure"));
- 	me->equip(src->createMateria("cure"));
+ 	me->equip(src->createMateria("hold"));
+ 	me->equip(src->createMateria("fire"));
+ 	me->equip(src->createMateria("electric"));
+	me->unequip(0);
  	me->equip(src->createMateria("cure"));
  	ICharacter* bob = new Character("bob");
- 	me->use(0, *bob);
+ 	ICharacter* zomb = new Character("Zombie");
 	me->use(1, *bob);
+	me->use(2, *bob);
+ 	me->use(3, *zomb);
+	delete zomb;
 	delete bob;
 	delete me;
 	delete src;
