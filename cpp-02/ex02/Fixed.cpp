@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 02:01:41 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/25 19:59:52 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/30 16:04:59 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,13 +100,11 @@ bool Fixed::operator<=(const Fixed& fixed){
 	return (this->_fixed_point_t <= fixed._fixed_point_t);	
 }
 bool Fixed::operator==(const Fixed& fixed){
-	return (this->_fixed_point_t == fixed._fixed_point_t &&\
-	this->_fractional_bits == this->_fractional_bits);	
+	return (this->_fixed_point_t == fixed._fixed_point_t);
 }
 
 bool Fixed::operator!=(const Fixed& fixed){
-	return (this->_fixed_point_t != fixed._fixed_point_t &&\
-		this->_fractional_bits != fixed._fractional_bits);
+	return (this->_fixed_point_t != fixed._fixed_point_t);
 }
 Fixed Fixed::operator+(const Fixed& fixed){
 	Fixed result(this->toFloat() + fixed.toFloat());

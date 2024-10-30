@@ -6,14 +6,21 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 02:26:40 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/23 03:59:59 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/30 16:34:22 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 #include "Fixed.hpp"
 
-Fixed	cross_product( Point init, Point end, Point point)
+/**
+ * Implicit equation of the line
+ * A = Yf - Yi = ∆Y
+ * B = Xf - Xi = ∆X
+ * C = Xf * Yi - Xi * Yf
+ * R: Ax + Bx + C = n;
+ */
+Fixed	cross_product( const Point init, const Point end, const Point point)
 {
 	Fixed a(end.getY() - init.getY());
 	Fixed b(end.getX() - init.getX());
