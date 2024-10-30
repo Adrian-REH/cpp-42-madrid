@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 02:26:50 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/25 20:08:20 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/30 16:00:55 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,8 @@ Point::Point(const Point& fixed){
 }
 
 Point& Point::operator=(const Point& point){
-	if (this != &point){
-		throw std::runtime_error("Value cannot be negative");
-	}
+	if (this == &point)
+		return *this;
 	return *this;
 }
 
