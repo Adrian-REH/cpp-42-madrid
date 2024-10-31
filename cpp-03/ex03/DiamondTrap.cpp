@@ -6,14 +6,15 @@
 #define BLUE "\033[36m"
 #define RESET "\033[0m"
 #define RED "\033[31m"
+
 DiamondTrap::DiamondTrap(std::string name)
     : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name), _name(name)
 {
     _hit_point = FragTrap::_hit_point;
     _energy = ScavTrap::_energy;
     _attack_damage = FragTrap::_attack_damage;
-    std::cout << YELLOW << "[Init]" << RESET
-	<< "DiamondTrap " << _name << YELLOW <<" [Created]"<< RESET << std::endl;
+    std::cout  << "[Init]" 
+	<< " DiamondTrap " << BLUE << _name << RESET <<" [Created]" << std::endl;
 }
 
 void DiamondTrap::attack(const std::string& target)
@@ -23,10 +24,10 @@ void DiamondTrap::attack(const std::string& target)
 
 DiamondTrap::~DiamondTrap()
 {
-    std::cout << RED <<"[Destroy]"<< RESET << " DiamondTrap: " << _name << RED << " [Destructed]"<< RESET << std::endl;
+    std::cout <<"[Destroy]" << " DiamondTrap: " << BLUE << _name << RESET << " [Destructed]" << std::endl;
 }
 
 void DiamondTrap::whoAmI()
 {
-    std::cout << BLUE << "[Notify]"<< RESET <<" DiamondTrap: " << _name << " ClapTrap: " << ClapTrap::_name << std::endl;
+    std::cout  << "[Notify]" <<" DiamondTrap: " << BLUE << _name   << RESET << " ClapTrap: " << BLUE << ClapTrap::_name  << RESET << std::endl;
 }

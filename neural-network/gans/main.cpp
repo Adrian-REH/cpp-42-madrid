@@ -52,7 +52,11 @@ double gelu_derivative(double x) {
 double leaky_relu_derivative(double x) {
     return x > 0 ? 1.0 : 0.0001;
 }
-
+double generator_loss(double d_output) {
+    double epsilon = 1e-7;  // Para evitar log(0)
+    d_output = std::clamp(d_output, epsilon, 1.0 - epsilon);
+    return -std::log(d_output);
+}
 class Dense {
 private:
     std::vector<std::vector<double>> weights;
@@ -118,17 +122,20 @@ public:
         return output[0];
     }
 
-    void train(double x, double target, double d_output) {
+    double train(double x, double target, double d_output) {
         auto hidden1 = dense1.forward({x});
         auto hidden2 = dense2.forward(hidden1);
         auto output = dense3.forward(hidden2);
         double fake_y = output[0];
         //double fake_y = unscale(output[0], min_y, max_y);
-        
-        double loss = std::log(1 - d_output) + std::abs(fake_y - target);
+        double epsilon = 1e-7; // Para evitar log(0)
+    	d_output = std::clamp(d_output, epsilon, 1.0 - epsilon);
+   	 	double loss = std::log(d_output);
+        //double loss = std::log(d_output);
         dense3.backward(hidden2, {loss});
         dense2.backward(hidden1, {loss});
         dense1.backward({x}, {loss});
+		return (loss);
     }
 };
 
@@ -147,7 +154,7 @@ public:
         return sigmoid(output[0]);  // Sigmoid activation
     }
 
-    void train(double x, double y, double target) {
+    double train(double x, double y, double target) {
         auto hidden = dense1.forward({x, y});
         auto output = dense2.forward(hidden);
         double d_output = sigmoid(output[0]);  // Sigmoid activation
@@ -156,6 +163,7 @@ public:
         
         dense2.backward(hidden, {loss});
         dense1.backward({x, y}, {loss});
+		return (loss);
     }
 };
 
@@ -163,7 +171,9 @@ void train_gan(Generator& generator, Discriminator& discriminator, int epochs) {
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<double> dist(-10.0, 10.0);
-
+	std::vector<double> loss_discriminator;
+	std::vector<double> loss_generator;
+	std::vector<double> epochs_vector;
     for (int epoch = 0; epoch < epochs; ++epoch) {
         double x = dist(gen);
         double real_y = std::pow(x, 3);
@@ -172,15 +182,14 @@ void train_gan(Generator& generator, Discriminator& discriminator, int epochs) {
         
         // Train Discriminator
         double scaled_fake_y = generator.generate(scaled_x);
-        discriminator.train(scaled_x, scaled_real_y, 0.9);  // Real data
-        discriminator.train(scaled_x, scaled_fake_y, 0.1);  // Fake data
-
-        // Train Generator
+        double loss_real = discriminator.train(scaled_x, scaled_real_y, 0.9);  // Real data
+        double loss_fake = discriminator.train(scaled_x, scaled_fake_y, 0.1);  // Fake data
+		loss_discriminator.push_back((loss_fake + loss_real) / 2);
+        // Train Generator 
         scaled_fake_y = generator.generate(scaled_x);
         double d_output = discriminator.discriminate(scaled_x, scaled_fake_y);
-        generator.train(scaled_x, scaled_real_y, d_output);
-        scaled_fake_y = generator.generate(scaled_x);
-
+		loss_generator.push_back(generator.train(scaled_x, scaled_real_y, d_output));
+		epochs_vector.push_back(epoch);
         if (epoch % 1000 == 0) {
             double fake_y = unscale(scaled_fake_y, min_y, max_y);
             std::cout << "Epoch " << epoch << ": x = " << x 
@@ -189,6 +198,13 @@ void train_gan(Generator& generator, Discriminator& discriminator, int epochs) {
                         <<"%" << std::endl;
         }
     }
+	
+    plt::plot(epochs_vector, loss_discriminator, {{"label", "Discriminator"}});
+   plt::plot(epochs_vector, loss_generator, {{"label", "Generator"}});
+    plt::title("GAN-generated Training loss");
+    plt::legend();
+    plt::show();
+
 }
 
 double mean_absolute_error(const std::vector<double>& predictions, const std::vector<double>& targets) {
@@ -205,7 +221,7 @@ int main() {
     Discriminator discriminator;
 
     // Training
-    train_gan(generator, discriminator, 100000);
+    train_gan(generator, discriminator, 10000);
 
     // Visualization
     std::vector<double> x_values, y_values, fake_y_values;
@@ -217,7 +233,7 @@ int main() {
         fake_y_values.push_back(scaled_fake_y);
     }
     std::cout << "Aprox: " << mean_absolute_error(y_values, fake_y_values) << std::endl;
-    plt::plot(x_values, y_values, {{"label", "Real y = x^3"}});
+	plt::plot(x_values, y_values, {{"label", "Real y = x^3"}});
     plt::plot(x_values, fake_y_values, {{"label", "Generated"}});
     plt::title("GAN-generated points for y = x^2 + 2x");
     plt::legend();

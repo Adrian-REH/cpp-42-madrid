@@ -8,22 +8,22 @@
 FragTrap::FragTrap(std::string name)
 : ClapTrap(name, 100, 100, 30)
 {
-    std::cout << YELLOW << "[Init]" << RESET << " FragTrap "<< YELLOW << "[Created]" << RESET << std::endl;
+    std::cout  << "[Init]"  << " FragTrap " << "[Created]"  << std::endl;
 }
 
 FragTrap::~FragTrap() {
-    std::cout << RED <<"[Destroy]"<< RESET << " FragTrap: " << _name << RED << " [Destructed]"<< RESET << std::endl;
+    std::cout  <<"[Destroy]" << " FragTrap: " << GREEN << _name << RESET  << " [Destructed]" << std::endl;
 }
 
 void	FragTrap::attack(const std::string& target) {
     std::cout 
-        << BLUE << "[Attack] " << RESET 
-		<<"FragTrap: " << _name 
-        << ", attacks: " << target 
-        << ", causing: " << _attack_damage << " point of damage!" << std::endl;
+         << "[Attack] "  
+		<<"FragTrap: " << GREEN << _name  << RESET
+        << ", attacks: " << GREEN << target << RESET 
+        << ", causing: " << GREEN << _attack_damage << RESET << " point of damage!" << std::endl;
 	 _energy--;
 }
 
 void	FragTrap::highFivesGuys(void) {
-    std::cout << GREEN << "[Mode]"<< RESET <<" Change to mode Gatekeeper" << std::endl;
+    std::cout  << "[Mode]" <<" Change to mode Gatekeeper" << std::endl;
 }

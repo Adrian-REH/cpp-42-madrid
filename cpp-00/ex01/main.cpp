@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 01:56:51 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/23 12:42:19 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/30 20:31:04 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 #define RESET   "\033[0m"
 #define BLUE    "\033[34m"
 #define YELLOW  "\033[33m"
-#define RED     "\033[31m"
 #define GREEN   "\033[32m"
+#define RED     "\033[31m"
 #define MAGENTA "\033[35m"
 #define CYAN    "\033[36m"
 

@@ -4,5 +4,5 @@ Implemented GANs
 
 ## Execute
 ```c
-g++ main2.cpp -std=c++11 -I/usr/include/python3.10 -lpython3.10 && ./a.out 
+g++ main.cpp -std=c++17 -I/usr/include/python3.10 -lpython3.10 && ./a.out 
 ```
