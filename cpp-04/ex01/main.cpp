@@ -1,6 +1,18 @@
-#include "interface/Animal.hpp"
-#include "interface/Cat.hpp"
-#include "interface/Dog.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/31 19:53:54 by adherrer          #+#    #+#             */
+/*   Updated: 2024/10/31 19:59:42 by adherrer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "intf/Animal.hpp"
+#include "intf/Cat.hpp"
+#include "intf/Dog.hpp"
 
 int main()
 {

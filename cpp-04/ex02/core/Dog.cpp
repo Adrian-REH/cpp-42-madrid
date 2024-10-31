@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/31 19:54:59 by adherrer          #+#    #+#             */
+/*   Updated: 2024/10/31 20:01:22 by adherrer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "../interface/Dog.hpp"
-#include "../interface/Brain.hpp"
+#include "../intf/Dog.hpp"
+#include "../intf/Brain.hpp"
 
 Dog::Dog() : Animal("Dog"), _brain(new Brain()) {
 	std::cout << "[Created] Dog"<< std::endl;

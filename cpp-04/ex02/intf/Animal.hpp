@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/31 19:55:12 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/31 19:59:24 by adherrer         ###   ########.fr       */
+/*   Created: 2024/10/31 19:55:03 by adherrer          #+#    #+#             */
+/*   Updated: 2024/10/31 19:55:05 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "intf/Animal.hpp"
-#include "intf/Cat.hpp"
-#include "intf/Dog.hpp"
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
+#include <string>
+#include <iostream>
 
-int main()
-{
-	//Animal a = new Animal();
+class Animal {
+	protected:
+		std::string _type;
+	public:
+		Animal(std::string);
+		Animal();
+		virtual ~Animal() = 0;
+		virtual std::string getType() const = 0;
+		virtual void makeSound() const = 0;
+};
 
-	Animal* meta[10];
-	for (int i = 0; i < 5; i++)
-		meta[i] = new Dog();
-	for (int i = 5; i <= 10; i++)
-		meta[i] = new Cat();
-
-	for (int i = 0; i < 10; i++)
-		meta[i]->makeSound();
-
-	for (int i = 0; i < 11; i++)
-		delete meta[i];
-	return 0;
-}
+#endif
