@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/31 19:55:03 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/31 20:56:42 by adherrer         ###   ########.fr       */
+/*   Created: 2024/10/25 13:30:05 by adherrer          #+#    #+#             */
+/*   Updated: 2024/11/01 13:57:55 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef AMATERIA_HPP
+#define AMATERIA_HPP
 #include <string>
-#include <iostream>
+#include "../../character/repository/ICharacter.hpp"
 
-class Animal {
+class ICharacter;
+
+class AMateria
+{
 	protected:
+		int _idx;
 		std::string _type;
+		static std::string _materials[4];
 	public:
-		Animal(std::string);
-		Animal();
-		virtual ~Animal() = 0;
-		virtual std::string getType() const = 0;
-		virtual void makeSound() const = 0;
+		AMateria(std::string const &type);
+		virtual ~AMateria();
+		std::string const &getType() const;
+		int getIdx() const;
+		void setIdx(int);
+		bool isEmpty();
+
+		virtual AMateria* clone() const = 0;
+		virtual void use(ICharacter& target);
 };
+
 
 #endif

@@ -6,14 +6,14 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 19:55:34 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/31 19:55:37 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/11/01 13:12:18 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MateriaSource.hpp"
 #include <string>
 #include <iostream>
-#include "stolower.hpp"
+#include "../../utils/stolower.hpp"
 
 int MateriaSource::n_materias = 0;
 
@@ -23,7 +23,7 @@ MateriaSource::MateriaSource() {
 	}
 }
 
-MateriaSource::~MateriaSource(){}
+MateriaSource::~MateriaSource() {}
 
 void MateriaSource::learnMateria(AMateria * materia){
 		if (n_materias >= 4)

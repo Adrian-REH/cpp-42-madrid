@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 19:53:35 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/31 20:00:25 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/10/31 20:50:45 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Dog::Dog(Brain *brain) : Animal("Dog"), _brain(brain) {
 	std::cout << "[Created] Dog, Added Brain"<< std::endl;
 }
 
-Dog::~Dog(){
+Dog::~Dog() {
 	delete _brain;
 	std::cout << "[Destroyed] Dog"<< std::endl;
 }

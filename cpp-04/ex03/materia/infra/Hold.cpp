@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Hold.hpp                                           :+:      :+:    :+:   */
+/*   Hold.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:29:57 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/25 19:31:42 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/11/01 13:18:01 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Hold_HPP
-#define Hold_HPP
-#include "AMateria.hpp"
+#include "../domain/Hold.hpp"
+#include <iostream>
 
-class Hold : public AMateria
-{
-	public:
-		Hold();
-		~Hold();
-		AMateria* clone() const;
-};
+Hold::Hold() : AMateria("hold") {
+	std::cout << "[Created] Material Hold" << std::endl;
+}
 
-#endif
+Hold::~Hold() {
+	std::cout << " Cure " << std::endl;}
+
+AMateria* Hold::clone() const {
+	AMateria *nHold = new Hold();
+	return nHold;
+}

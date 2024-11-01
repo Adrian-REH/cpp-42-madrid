@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Electric.hpp                                       :+:      :+:    :+:   */
+/*   Fire.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:29:57 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/25 19:30:42 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/11/01 13:10:05 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Electric.hpp"
-#include <iostream>
+#ifndef FIRE_HPP
+#define FIRE_HPP
+#include "../repository/AMateria.hpp"
 
-Electric::Electric() : AMateria("electric") {
-	std::cout << "Create Material Electric" << std::endl;
-}
+class Fire : public AMateria
+{
+	public:
+		Fire();
+		~Fire();
+		AMateria* clone() const;
+		void use(ICharacter& target);
+};
 
-Electric::~Electric() {}
-
-AMateria* Electric::clone() const {
-	AMateria *nElec = new Electric();
-	return nElec;
-}
+#endif

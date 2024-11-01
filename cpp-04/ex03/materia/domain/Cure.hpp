@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.cpp                                           :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/31 19:55:23 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/31 19:55:24 by adherrer         ###   ########.fr       */
+/*   Created: 2024/10/25 13:29:31 by adherrer          #+#    #+#             */
+/*   Updated: 2024/11/01 13:10:11 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cure.hpp"
-#include <iostream>
+#ifndef CURE_HPP
+#define CURE_HPP
+#include "../repository/AMateria.hpp"
 
-Cure::Cure(): AMateria("cure") {
-	std::cout << "Create Materia Cure" << std::endl;
-
+class Cure : public AMateria
+{
+	public:
+		Cure();
+		~Cure();
+		AMateria* clone() const;
 };
-
-Cure::~Cure() {}
-
-AMateria* Cure::clone() const {
-	AMateria *nCure = new Cure();
-	return nCure;
-}
+#endif

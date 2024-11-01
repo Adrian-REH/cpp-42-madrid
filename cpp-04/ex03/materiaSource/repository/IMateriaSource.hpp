@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FIre.hpp                                           :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 13:29:57 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/25 19:26:59 by adherrer         ###   ########.fr       */
+/*   Created: 2024/10/25 13:30:25 by adherrer          #+#    #+#             */
+/*   Updated: 2024/11/01 13:08:10 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
-#include "Fire.hpp"
-#include <iostream>
+#ifndef IMATERIASOURCE_HPP
+#define IMATERIASOURCE_HPP
+#include "../../materia/repository/AMateria.hpp"
 
-Fire::Fire() : AMateria("fire") {
-	std::cout << "Create Material fire" << std::endl;
+class IMateriaSource
+{
+	public:
+		virtual ~IMateriaSource() {}
+		virtual void learnMateria(AMateria*) = 0;
+		virtual AMateria* createMateria(std::string const & type) = 0;
+};
 
-}
-Fire::~Fire() {}
-AMateria* Fire::clone() const {
-	AMateria *nFire = new Fire();
-	return nFire;
-}
+#endif

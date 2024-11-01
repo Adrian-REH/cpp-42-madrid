@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 13:30:05 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/25 18:39:30 by adherrer         ###   ########.fr       */
+/*   Created: 2024/10/25 13:29:57 by adherrer          #+#    #+#             */
+/*   Updated: 2024/11/01 13:17:50 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_HPP
-#define AMATERIA_HPP
+#include <iostream>
+#include "../domain/Ice.hpp"
 #include <string>
-#include "ICharacter.hpp"
 
-class ICharacter;
+Ice::Ice(): AMateria("ice") {
+	std::cout << "[Created] Materia Ice" << std::endl;
+}
 
-class AMateria
-{
-	protected:
-		int _idx;
-		std::string _type;
-		static std::string _materials[4];
-	public:
-		AMateria(std::string const &type);
-		std::string const &getType() const;
-		int getIdx() const;
-		void setIdx(int);
-		bool isEmpty();
+Ice::~Ice(){
+	std::cout << " Cure " << std::endl;}
 
-		virtual AMateria* clone() const = 0;
-		virtual void use(ICharacter& target);
-};
-#endif
+AMateria* Ice::clone() const {
+	AMateria *nIce = new Ice();
+	return nIce;
+}

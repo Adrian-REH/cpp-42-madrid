@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Electric.hpp                                       :+:      :+:    :+:   */
+/*   Hold.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:29:57 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/25 19:30:42 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/11/01 13:10:04 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ELECTRIC_HPP
-#define ELECTRIC_HPP
-#include "AMateria.hpp"
+#ifndef Hold_HPP
+#define Hold_HPP
+#include "../repository/AMateria.hpp"
 
-class Electric : public AMateria
+class Hold : public AMateria
 {
 	public:
-		Electric();
-		~Electric();
+		Hold();
+		~Hold();
 		AMateria* clone() const;
 };
 

@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 13:30:25 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/25 13:38:25 by adherrer         ###   ########.fr       */
+/*   Created: 2024/10/31 19:55:40 by adherrer          #+#    #+#             */
+/*   Updated: 2024/11/01 13:07:39 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IMATERIASOURCE_HPP
-#define IMATERIASOURCE_HPP
-#include "AMateria.hpp"
+#ifndef MATERIASOURCE_HPP
+#define MATERIASOURCE_HPP
+#include "../repository/IMateriaSource.hpp"
+#include "../../materia/repository/AMateria.hpp"
 
-class IMateriaSource
+class MateriaSource : public IMateriaSource
 {
+	private:
+		static int	n_materias;
+		AMateria	*_materias[4];
 	public:
-		virtual ~IMateriaSource() {}
-		virtual void learnMateria(AMateria*) = 0;
-		virtual AMateria* createMateria(std::string const & type) = 0;
+		MateriaSource();
+		~MateriaSource();
+		void learnMateria(AMateria*);
+		AMateria* createMateria(std::string const & type);
 };
 
 #endif

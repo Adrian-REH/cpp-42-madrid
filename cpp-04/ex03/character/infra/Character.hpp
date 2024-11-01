@@ -6,20 +6,22 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:30:14 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/25 18:52:15 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/11/01 16:40:09 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
-#include "ICharacter.hpp"
+#include "../repository/ICharacter.hpp"
 
 class Character : public ICharacter
 {
 	private:
-		static int			n_materias;
 		std::string			_name;
-		AMateria *_materias[4];
+		static int			n_materias;
+		static int			_n_drop_materias;
+		AMateria	*_materias[4];
+		AMateria	**_drop_materias;
 	public:
 		Character(std::string);
 		~Character();
