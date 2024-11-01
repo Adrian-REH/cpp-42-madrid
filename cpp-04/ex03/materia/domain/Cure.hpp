@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:29:31 by adherrer          #+#    #+#             */
-/*   Updated: 2024/11/01 13:10:11 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/11/01 20:08:59 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ class Cure : public AMateria
 		Cure();
 		~Cure();
 		AMateria* clone() const;
+		void use(ICharacter& target);
 };
 #endif

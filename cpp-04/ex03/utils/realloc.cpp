@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 16:53:13 by adherrer          #+#    #+#             */
-/*   Updated: 2024/11/01 17:19:05 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/11/01 19:19:36 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ T** realloc_materia(T**data, int size) {
 
 	for (int i = 0; i < size - 1 ; i++)
 		tmp[i] = data[i];
-	delete [] data;
+	//delete data;
 	return tmp;
 }

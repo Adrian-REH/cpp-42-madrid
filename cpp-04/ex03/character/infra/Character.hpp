@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:30:14 by adherrer          #+#    #+#             */
-/*   Updated: 2024/11/01 16:40:09 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/11/01 19:25:02 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ class Character : public ICharacter
 {
 	private:
 		std::string			_name;
-		static int			n_materias;
-		static int			_n_drop_materias;
+		int			n_materias;
+		int			_n_drop_materias;
 		AMateria	*_materias[4];
 		AMateria	**_drop_materias;
 	public:

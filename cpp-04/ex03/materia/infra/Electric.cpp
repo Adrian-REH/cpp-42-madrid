@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:29:57 by adherrer          #+#    #+#             */
-/*   Updated: 2024/11/01 13:17:56 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/11/01 20:09:53 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,14 @@ Electric::Electric() : AMateria("electric") {
 }
 
 Electric::~Electric() {
-	std::cout << " Cure " << std::endl;
+	std::cout << "[Destroyed] Electric - ";
 }
 
 AMateria* Electric::clone() const {
 	AMateria *nElec = new Electric();
 	return nElec;
+}
+
+void Electric::use(ICharacter& target) {
+	std::cout << " Electrocuted " << target.getName() << "’s wounds"<<  std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:29:57 by adherrer          #+#    #+#             */
-/*   Updated: 2024/11/01 13:18:01 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/11/01 20:09:09 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,14 @@ Hold::Hold() : AMateria("hold") {
 }
 
 Hold::~Hold() {
-	std::cout << " Cure " << std::endl;}
+	std::cout << "[Destroyed] Hold - ";
+}
 
 AMateria* Hold::clone() const {
 	AMateria *nHold = new Hold();
 	return nHold;
+}
+
+void Hold::use(ICharacter& target) {
+	std::cout << " Defense increase " << target.getName() << "’s wounds" <<  std::endl;
 }

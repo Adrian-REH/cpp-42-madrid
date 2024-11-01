@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:30:02 by adherrer          #+#    #+#             */
-/*   Updated: 2024/11/01 17:18:49 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/11/01 20:12:22 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ AMateria::AMateria(std::string const &type){
 	_type = type;
 }
 AMateria::~AMateria() {
-	std::cout << "[Destroy] Abstract";
+	std::cout << "[Destroyed] AMateria " << std::endl;
 }
 
 std::string const & AMateria::getType() const{
@@ -29,14 +29,7 @@ std::string const & AMateria::getType() const{
 
 void AMateria::use(ICharacter& target)
 {
-	if (!_type.compare("ice"))
-		 std::cout << "shoots an ice bolt at " << target.getName() <<  std::endl;
-	else if (!_type.compare("cure"))
-		 std::cout << " heals " << target.getName() << "’s wounds" <<  std::endl;
-	else if (!_type.compare("hold"))
-		 std::cout << " Defense increase " << target.getName() << "’s wounds" <<  std::endl;
-	else if (!_type.compare("electric"))
-		 std::cout << " Electrocuted " << target.getName() << "’s wounds"<<  std::endl;
+	(void)target;
 }
 
 void AMateria::setIdx(int idx) {

@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:29:57 by adherrer          #+#    #+#             */
-/*   Updated: 2024/11/01 13:17:59 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/11/01 19:56:19 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ Fire::Fire() : AMateria("fire") {
 
 }
 Fire::~Fire() {
-	std::cout << " Cure " << std::endl;}
+	std::cout << "[Destroyed] Fire - ";
+}
 
 AMateria* Fire::clone() const {
 	AMateria *nFire = new Fire();

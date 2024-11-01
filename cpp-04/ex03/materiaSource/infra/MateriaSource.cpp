@@ -6,35 +6,47 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 19:55:34 by adherrer          #+#    #+#             */
-/*   Updated: 2024/11/01 13:12:18 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/11/01 20:06:29 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MateriaSource.hpp"
 #include <string>
 #include <iostream>
+#include "../../utils/realloc.cpp"
 #include "../../utils/stolower.hpp"
 
-int MateriaSource::n_materias = 0;
 
-MateriaSource::MateriaSource() {
-	for (int i = 0; i < 4; ++i) {
-		_materias[i] = 0;
-	}
+MateriaSource::MateriaSource() : _n_materias(0), _n_drop_materias(0) {
+
 }
 
-MateriaSource::~MateriaSource() {}
+MateriaSource::~MateriaSource() {
+	std::cout << "[Destroyed] MaterialSource" << std::endl;
+	for(int i = 0; i < _n_materias; i++)
+		delete  _materias[i];
+	std::cout << std::endl;
+	if (_n_drop_materias != 0){
+		std::cout << "[Destroyed] Drop MaterialSource " << std::endl;
+		for(int i = 0; i < _n_drop_materias; i++)
+			delete _drop_materias[i];
+	}
+	std::cout << std::endl;
+}
 
 void MateriaSource::learnMateria(AMateria * materia){
-		if (n_materias >= 4)
-		{
-			std::cout << "Don't learning more material" << std::endl;
-			return ;
-		}
-		materia->setIdx(n_materias);
-		_materias[n_materias] = materia;
-		n_materias++;
-		std::cout << "Saved" << std::endl;
+	if (_n_materias >= 4)
+	{
+		std::cout << "[Droped] Don't equip more material: " << materia->getType() << std::endl;
+		_drop_materias = realloc_materia<AMateria>(_drop_materias, _n_drop_materias);
+		_drop_materias[_n_drop_materias] = materia;
+		_n_drop_materias++;
+		return ;
+	}
+	materia->setIdx(_n_materias);
+	_materias[_n_materias] = materia;
+	_n_materias++;
+	std::cout << "[Saved] Saved in MateriaSource: "<<  materia->getType()  << std::endl;
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)
@@ -46,5 +58,6 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 		{
 			return (_materias[i]->clone());}
 	}
+	std::cout << "[NotFound] Cannot create material: "<< type << std::endl;
 	return 0;
 }
