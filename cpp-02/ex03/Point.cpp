@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 02:26:50 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/30 16:27:01 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:33:01 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@ Point::Point() : _x(0), _y(0){
 Point::Point(Fixed x, Fixed y): _x(x), _y(y){
 
 }
-Point::Point(const int fpx, const int fpy): _x(Fixed(fpx)), _y(Fixed(fpy)){
-
+Point::Point(const int fpx, const int fpy): _x(Fixed(fpx)), _y(Fixed(fpy)) {
 }
 Point::~Point(){
 
 }
-Point::Point(const Point& fixed): _x(fixed.getX()) , _y(fixed.getY()){
+
+Point::Point(const Point& point): _x(point.getX()) , _y(point.getY()){
+
 }
 
 Point& Point::operator=(const Point& point){

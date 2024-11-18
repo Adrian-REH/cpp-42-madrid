@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 01:53:37 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/23 12:34:11 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:15:00 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void PhoneBook::addContact(Contact nContact) {
         return ;
     }
     contactRepo.addContact(nContact);
+	
 }
 
 int PhoneBook::nContacts() {

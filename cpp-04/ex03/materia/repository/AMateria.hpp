@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:30:05 by adherrer          #+#    #+#             */
-/*   Updated: 2024/11/01 13:57:55 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:54:08 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ class AMateria
 		int getIdx() const;
 		void setIdx(int);
 		bool isEmpty();
-
 		virtual AMateria* clone() const = 0;
 		virtual void use(ICharacter& target);
 };

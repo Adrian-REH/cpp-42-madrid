@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 19:53:00 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/31 19:58:16 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:51:28 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Cat::~Cat(){
 
 }
 
-std::string Cat::getType() const{
+std::string Cat::getType()  const {
 	return (_type);
 }
 
