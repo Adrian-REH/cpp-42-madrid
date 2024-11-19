@@ -15,10 +15,9 @@
 #include "Animal.hpp"
 
 class Cat : public Animal {
-	
 	public:
-		Cat();
 		Cat(const Cat& cat);
+		Cat();
 		~Cat();
 		Cat& operator=(const Cat& cat);
 		std::string getType() const;

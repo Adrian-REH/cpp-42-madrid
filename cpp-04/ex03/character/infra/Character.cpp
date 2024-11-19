@@ -14,8 +14,12 @@
 #include "../../utils/realloc.cpp"
 #include "../../materia/repository/AMateria.hpp"
 #include <iostream>
+Character::Character(): _name(""), n_materias(0), _n_drop_materias(0) {
+	std::cout << "[Created] Character:" << _name << std::endl;
 
+}
 Character::Character(std::string name) : _name(name), n_materias(0), _n_drop_materias(0)  {
+	std::cout << "[Created] Character: " << _name << std::endl;
 }
 
 Character::~Character() {
@@ -95,4 +99,23 @@ void Character::use(int idx, ICharacter &target){
 	}
 	std::cout << "[NotFound] The character " << _name <<" has no further substance.: " << idx << std::endl;
 
+}
+
+Character::Character(const Character& character) {
+	std::cout << "[Copy] Character" << std::endl;
+	*this = character;
+}
+
+Character& Character::operator=(const Character& character){
+	std::cout << "Character assignation operator called" << std::endl;
+	if (this != &character){
+		this->n_materias = character.n_materias;
+		this->_name = character._name;
+		for (int i = 0; i < character.n_materias ; i++){
+			this->_materias[i] = character._materias[i]->clone();
+		}
+		this->_n_drop_materias = 0;
+		this->_drop_materias = NULL;
+	}
+	return *this;
 }

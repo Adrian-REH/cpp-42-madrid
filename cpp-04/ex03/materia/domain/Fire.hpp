@@ -19,6 +19,8 @@ class Fire : public AMateria
 	public:
 		Fire();
 		~Fire();
+		Fire(const Fire&);
+		Fire& operator=(const Fire&);
 		AMateria* clone() const;
 		void use(ICharacter& target);
 };

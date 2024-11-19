@@ -30,3 +30,18 @@ std::string Cat::getType() const{
 void Cat::makeSound() const {
 	std::cout << "Miau" << std::endl;
 }
+
+
+Cat::Cat(const Cat& cat) : Animal() {
+	std::cout << "[Copy] Cat"<< std::endl;
+	*this = cat;
+}
+
+Cat& Cat::operator=(const Cat& cat) {
+	std::cout << "Cat Assignation operator called" << std::endl;
+	if (this != &cat){
+		this->_type = cat._type;
+		this->_brain = _brain->clone();
+	}
+	return *this;
+}

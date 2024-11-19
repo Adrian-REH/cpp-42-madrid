@@ -20,7 +20,9 @@ class Cat : public Animal {
 		Brain *_brain;
 	public:
 		Cat();
-		Cat(Brain *brain);
+		Cat(Brain *);
+		Cat(const Cat& cat);
+		Cat& operator=(const Cat& cat);
 		~Cat();
 		std::string getType() const;
 		void makeSound() const;

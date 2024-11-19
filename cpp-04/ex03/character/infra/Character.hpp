@@ -23,7 +23,10 @@ class Character : public ICharacter
 		AMateria	*_materias[4];
 		AMateria	**_drop_materias;
 	public:
+		Character();
 		Character(std::string);
+		Character(const Character&);
+		Character& operator=(const Character&);
 		~Character();
 		std::string const & getName();
 		void equip(AMateria* m);

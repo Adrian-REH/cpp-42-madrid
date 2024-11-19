@@ -12,15 +12,33 @@
 
 #include "../intf/Dog.hpp"
 
-Dog::Dog() : Animal("Dog") {}
+
+Dog::Dog() : Animal("Dog") {
+	std::cout << "[Created] Dog"<< std::endl;
+}
 
 Dog::~Dog(){
-
+	std::cout << "[Destroyed] Dog"<< std::endl;
 }
 
 std::string Dog::getType() const {
 	return (_type);
 }
+
+Dog::Dog(const Dog & dog) : Animal() {
+	std::cout << "[Copy] Dog"<< std::endl;
+	*this = dog;
+}
+
+Dog& Dog::operator=(const Dog& dog) {
+	std::cout << "Dog Assignation operator called" << std::endl;
+	if (this != &dog){
+		this->_type = dog.getType();
+	}
+	return *this;
+}
+
+
 void Dog::makeSound() const {
 	std::cout << "Woof" << std::endl;
 }

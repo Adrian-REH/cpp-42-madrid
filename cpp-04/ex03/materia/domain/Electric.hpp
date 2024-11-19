@@ -19,6 +19,8 @@ class Electric : public AMateria
 	public:
 		Electric();
 		~Electric();
+		Electric(const Electric&);
+		Electric& operator=(const Electric&);
 		AMateria* clone() const;
 		void use(ICharacter& target);
 };

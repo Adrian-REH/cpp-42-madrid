@@ -14,8 +14,11 @@
 #include <iostream>
 #include "../../utils/stolower.hpp"
 
-
+AMateria::AMateria() : _type(""){
+	std::cout << "[Created] AMateria " << std::endl;
+}
 AMateria::AMateria(std::string const &type){
+	std::cout << "[Created] AMateria with type: "<< type << std::endl;
 	stolower(type);
 	_type = type;
 }
@@ -33,6 +36,11 @@ void AMateria::use(ICharacter& target)
 }
 
 void AMateria::setIdx(int idx) {
+	if (idx > 4)
+	{
+		std::cout << "index no valido " << std::endl;
+		return ;
+	}
 	_idx = idx;
 }
 
@@ -42,4 +50,19 @@ int AMateria::getIdx() const {
 
 bool AMateria::isEmpty(){
 	return (_type.empty());
+}
+
+
+AMateria::AMateria(const AMateria& materia) {
+	std::cout << "[Copy] AMateria" << std::endl;
+	*this = materia;
+}
+
+AMateria& AMateria::operator=(const AMateria& materia){
+	std::cout << "AMateria assignation operator called" << std::endl;
+	if (this != &materia){
+		this->_idx = materia.getIdx();
+		this->_type = materia.getType();
+	}
+	return *this;
 }

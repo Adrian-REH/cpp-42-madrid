@@ -22,9 +22,11 @@ class AMateria
 	protected:
 		int _idx;
 		std::string _type;
-		static std::string _materials[4];
 	public:
+		AMateria();
 		AMateria(std::string const &type);
+		AMateria(const AMateria&);
+		AMateria& operator=(const AMateria&);
 		virtual ~AMateria();
 		std::string const &getType() const;
 		int getIdx() const;

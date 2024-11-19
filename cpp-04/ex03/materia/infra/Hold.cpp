@@ -22,10 +22,23 @@ Hold::~Hold() {
 }
 
 AMateria* Hold::clone() const {
+	std::cout << "[Clone] Hold"<< std::endl;
 	AMateria *nHold = new Hold();
 	return nHold;
 }
 
 void Hold::use(ICharacter& target) {
 	std::cout << " Defense increase " << target.getName() << "’s wounds" <<  std::endl;
+}
+Hold::Hold(const Hold& hold) : AMateria() {
+	std::cout << "[Copy] Hold"<< std::endl;
+	*this = hold;
+}
+Hold& Hold::operator=(const Hold& hold) {
+	std::cout << "Hold assignation operator called" << std::endl;
+	if (this != &hold){
+		this->_idx = hold.getIdx();
+		this->_type = hold.getType();
+	}
+	return *this;
 }

@@ -23,10 +23,24 @@ Cure::~Cure() {
 }
 
 AMateria* Cure::clone() const {
+	std::cout << "[Clone] Cure" << std::endl;
 	AMateria *nCure = new Cure();
 	return nCure;
 }
 
 void Cure::use(ICharacter& target) {
 	std::cout << " heals " << target.getName() << "’s wounds" <<  std::endl;
+}
+
+Cure::Cure(const Cure& cure) : AMateria() {
+	std::cout << "[Copy] Cure" << std::endl;
+	*this = cure;
+}
+Cure& Cure::operator=(const Cure& cure) {
+	std::cout << "Cure assignation operator called" << std::endl;
+	if (this != &cure){
+		this->_idx = cure.getIdx();
+		this->_type = cure.getType();
+	}
+	return *this;
 }

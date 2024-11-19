@@ -21,8 +21,10 @@ class Dog : public Animal {
 		Brain *_brain;
 	public:
 		Dog();
-		Dog(Brain *brain);
 		~Dog();
+		Dog(Brain *);
+		Dog(const Dog& Dog);
+		Dog& operator=(const Dog& Dog);
 		std::string getType() const;
 		void makeSound() const;
 };

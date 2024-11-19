@@ -22,9 +22,6 @@ Animal::~Animal(){
 	std::cout << "[Destroyed] Animal" << std::endl;
 }
 
-std::string Animal::getType() const {
-	return _type;
-}
 Animal::Animal(const Animal& animal){
 	std::cout << "[Copy] Animal"<< std::endl;
 	*this = animal;
@@ -37,6 +34,3 @@ Animal& Animal::operator=(const Animal& animal) {
 	return *this;
 }
 
-void Animal::makeSound() const {
-	std::cout << "" << std::endl;
-}

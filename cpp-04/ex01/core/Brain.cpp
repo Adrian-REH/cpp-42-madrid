@@ -15,19 +15,55 @@
 
 Brain::Brain() {
 	std::cout << "[Created] Brain"<< std::endl;
-	for (int i = 0; i < 100 ; i++)
-		_ideas[i] = "";
-	_ideas[0] = "La inyección de dependencias es un patrón de diseño que permite que los objetos reciban\n \
-		sus dependencias desde el exterior, en lugar de crearlas internamente. Esto promueve un\n \
-		código más flexible y modular, ya que permite cambiar las dependencias sin modificar el\n \
-		objeto en sí. Además, facilita la prueba de las clases mediante el uso de mocks o stubs. Este\n \
-		patrón también fomenta la separación de responsabilidades, lo que resulta en una\n \
-		arquitectura más clara y mantenible. En el caso de un Dog, inyectar un Brain permite\n \
-		reutilizar esa lógica sin acoplar el cerebro directamente al animal";
 }
+
+Brain::Brain(const Brain& brain) {
+	std::cout << "[Copy] Brain"<< std::endl;
+	*this = brain;
+}
+
+Brain& Brain::operator=(const Brain& brain) {
+	std::cout << "Brain Assignation operator called" << std::endl;
+	if (this == &brain)
+		return *this;
+	for (int i = 0; i < 100; i++)
+	{
+		if (brain._ideas[i].length() > 0)
+			this->_ideas[i].assign(brain._ideas[i]);
+	}
+	return *this;
+}
+
 Brain::~Brain(){
 	std::cout << "[Destroyed] Brain"<< std::endl;
 }
-void Brain::display(){
-	std::cout << _ideas[0] << std::endl;
+
+void Brain::display() {
+	for (int i = 0; i < 100; i++)
+		std::cout << _ideas[i] << std::endl;
+}
+
+void Brain::setIdea(int idx, std::string idea) {
+	if (idx > 100)
+	{
+		std::cout << "No se encontro la idea" << std::endl;
+		return ;
+	}
+	_ideas[idx].assign(idea);
+}
+
+std::string Brain::getIdea(int idx) {
+	if (idx > 100)
+	{
+		std::cout << "No se encontro la idea" << std::endl;
+		return NULL;
+	}
+	return _ideas[idx];
+}
+
+Brain *Brain::clone(){
+	Brain *brain = new Brain();
+	for (int i = 0; i < 100; i++)
+		brain->setIdea(i, getIdea(i));
+	return brain;
 }

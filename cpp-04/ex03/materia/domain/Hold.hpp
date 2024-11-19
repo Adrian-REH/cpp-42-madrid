@@ -20,6 +20,8 @@ class Hold : public AMateria
 		Hold();
 		~Hold();
 		AMateria* clone() const;
+		Hold(const Hold&);
+		Hold& operator=(const Hold&);
 		void use(ICharacter& target);
 };
 

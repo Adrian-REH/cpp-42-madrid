@@ -18,7 +18,7 @@
 
 
 MateriaSource::MateriaSource() : _n_materias(0), _n_drop_materias(0) {
-
+	std::cout << "[Created] MaterialSource" << std::endl;
 }
 
 MateriaSource::~MateriaSource() {
@@ -60,4 +60,22 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 	}
 	std::cout << "[NotFound] Cannot create material: "<< type << std::endl;
 	return 0;
+}
+
+MateriaSource::MateriaSource(const MateriaSource& materiaSource) {
+	std::cout << "[Copy] MaterialSource" << std::endl;
+	*this = materiaSource;
+}
+
+MateriaSource& MateriaSource::operator=(const MateriaSource& materiaSource){
+	std::cout << "MateriaSource assignation operator called" << std::endl;
+	if (this != &materiaSource){
+		this->_n_materias = materiaSource._n_materias;
+		for (int i = 0; i < materiaSource._n_materias ; i++){
+			this->_materias[i] = materiaSource._materias[i]->clone();
+		}
+		this->_n_drop_materias = 0;
+		this->_drop_materias = NULL;
+	}
+	return *this;
 }

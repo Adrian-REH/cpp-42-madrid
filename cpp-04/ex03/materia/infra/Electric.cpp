@@ -22,10 +22,24 @@ Electric::~Electric() {
 }
 
 AMateria* Electric::clone() const {
+	std::cout << "[Clone] Electric"<< std::endl;
 	AMateria *nElec = new Electric();
 	return nElec;
 }
 
 void Electric::use(ICharacter& target) {
 	std::cout << " Electrocuted " << target.getName() << "’s wounds"<<  std::endl;
+}
+
+Electric::Electric(const Electric& electric) : AMateria() {
+	std::cout << "[Copy] Electric" << std::endl;
+	*this = electric;
+}
+Electric& Electric::operator=(const Electric& electric) {
+	std::cout << "Electric assignation operator called" << std::endl;
+	if (this != &electric){
+		this->_idx = electric.getIdx();
+		this->_type = electric.getType();
+	}
+	return *this;
 }
