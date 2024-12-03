@@ -45,7 +45,7 @@ void Bureaucrat::incrementGrade(void) {
 	this->setGrade(this->_grade + 1);
 }
 
-void Bureaucrat::drecrementGrade(void) {
+void Bureaucrat::decrementGrade(void) {
 	std::cout << "Trying to drecement grade of " << this->getName() << std::endl;
 	this->setGrade(this->_grade - 1);
 }
