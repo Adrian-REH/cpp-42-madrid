@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 10:19:21 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/07 14:54:54 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/12/07 15:20:39 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ int writeTruncFile(ShrubberyCreationForm src)
 		std::cout << "Error to open file: "<< filename << std::endl;
 		return 1;
 	}
-
 	for (int i = 0; i <= 127; i++)
-		outFile <<  static_cast<char>(i) << "\n";
+	{
+		outFile << static_cast<char>(i) << "\n";
+	}
 	outFile.close();
 	return 0;
 }
