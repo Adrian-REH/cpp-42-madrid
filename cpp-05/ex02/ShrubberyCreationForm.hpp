@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 01:41:45 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/07 01:57:46 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/12/07 09:24:28 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,17 @@
  * inside it.
  */
 class ShrubberyCreationForm : public AForm {
-	public: 
+	private:
+		std::string target;
 		ShrubberyCreationForm();
+	public:
 		~ShrubberyCreationForm();
+		ShrubberyCreationForm(std::string);
 		ShrubberyCreationForm(const ShrubberyCreationForm &);
 		void execute(Bureaucrat const & executor) const;
+		ShrubberyCreationForm &operator=(ShrubberyCreationForm &a);
+		std::string getTarget(void)const;
 };
+std::ostream &operator<<(std::ostream &o, ShrubberyCreationForm *a);
 
 #endif
