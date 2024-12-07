@@ -79,7 +79,7 @@ void Form::beSigned(Bureaucrat & bure) {
 			dynamic_cast<Form::GradeTooHighException*>(&e) ? "High" : "Low",
 			"0 to 150");
 	}
-	if (this->getIsSigned() <= bure.getGrade())
+	if (this->getSignGrade() >= bure.getGrade())
 		this->_is_signed = true;
 	else 
 		handleSignError(
