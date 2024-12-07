@@ -19,11 +19,11 @@ AForm::AForm(const std::string name, int s_g, int e_g) :
 
 }
 
-AForm::AForm(const Form& form) :
+AForm::AForm(const AForm& form) :
  _name(form.getName()),
  _is_signed(form.getIsSigned()),
- _exec_grade(verifyGrade(form.getExecGrade())),
- _sign_grade(verifyGrade(form.getSignGrade())) {
+ _exec_grade(verifyGrade(form.getExecGrade(), 150, 1)),
+ _sign_grade(verifyGrade(form.getSignGrade(), 150, 1)) {
 	std::cout << "[Copy Constructor] Bureaucrat called to copy " << form.getName() <<
 	" into " << this->getName() << std::endl;
 }
@@ -52,7 +52,7 @@ int AForm::getExecGrade(void) const {
 void AForm::signForm(Bureaucrat & bure) {
 
 	try {
-		verifyGrade(bure.getGrade());
+		verifyGrade(bure.getGrade(), 150, 1);
 	}
 	catch (std::exception &e)
 	{
@@ -108,12 +108,4 @@ void handleSignError(const Bureaucrat &bure, const AForm &form, const std::strin
 				<< " because Error: Grade is " << errorType 
 				<< " " << form.getSignGrade() 
 				<< ", expected "<< expected << std::endl;
-}
-
-int verifyGrade(int grade) {
-	if (grade > 150)
-		throw AForm::GradeTooLowException();
-	else if (grade < 1)
-		throw AForm::GradeTooHighException();
-	return (grade);
 }

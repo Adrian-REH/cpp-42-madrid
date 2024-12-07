@@ -5,6 +5,7 @@
 #include <string>
 #include "Bureaucrat.hpp"
 #include <iostream>
+#include "VerifyGrade.cpp"
 
 /**
  * This class build a new Form for Bureaucrat

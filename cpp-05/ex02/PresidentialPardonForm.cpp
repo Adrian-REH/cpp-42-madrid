@@ -1,5 +1,23 @@
 #include "PresidentialPardonForm.hpp"
 
+int writeTruncFile(PresidentialPardonForm src)
+{
+	std::string ascii;
+	std::string filename = src.getTarget() + "_shrubbery";
+	std::ofstream outFile(filename.c_str(), std::ios::trunc);
+	if (!outFile){
+		std::cout << "Error to open file: "<< filename << std::endl;
+		return 1;
+	}
+
+	for (char i = 0; i <= 127; i++)
+	{
+		outFile << std::to_string(i) + "\n";
+	}
+	outFile.close();
+	return 0;
+}
+
 PresidentialPardonForm::PresidentialPardonForm(): AForm("Presidential Pardon Form", 25, 5) , _target(""){
 	std::cout << "[BUilder] Presidential Pardon Form with target "<< this->_target << std::endl;
 }
@@ -26,8 +44,10 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 	return (*this);
 }
 
-void PresidentialPardonForm::execute(Bureaucrat const & executor) const {
-	
+void PresidentialPardonForm::execute(Bureaucrat const & src) const {
+	verifyGrade(src.getGrade(), this->getExecGrade(), 1);
+	verifyGrade(src.getGrade(), this->getSignGrade(), 1);
+	writeTruncFile(*this);
 }
 
 std::string PresidentialPardonForm::getTarget(void)const{
@@ -43,3 +63,4 @@ std::ostream &operator<<(std::ostream &o, PresidentialPardonForm *a) {
 	<< ", form target "<< a->getTarget() << std::endl;
 	return (o);
 }
+
