@@ -1,14 +1,14 @@
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-Form::Form(void) : _is_signed(false) , _name("_form_") ,_sign_grade(150), _exec_grade(10) {
+AForm::AForm(void) : _is_signed(false) , _name("_form_") ,_sign_grade(150), _exec_grade(10) {
 	std::cout
 	<< "[Build] Form name: " << this->_name <<
 	" | sign grade: "<< this->_sign_grade <<
 	" | exec grade" << this->_exec_grade << std::endl;
 }
 
-Form::Form(const std::string name, int s_g, int e_g) :
+AForm::AForm(const std::string name, int s_g, int e_g) :
  _name(name), 
  _sign_grade(s_g),
  _exec_grade(e_g) {
@@ -19,7 +19,7 @@ Form::Form(const std::string name, int s_g, int e_g) :
 
 }
 
-Form::Form(const Form& form) :
+AForm::AForm(const Form& form) :
  _name(form.getName()),
  _is_signed(form.getIsSigned()),
  _exec_grade(verifyGrade(form.getExecGrade())),
@@ -28,28 +28,28 @@ Form::Form(const Form& form) :
 	" into " << this->getName() << std::endl;
 }
 
-Form::~Form(void) {
+AForm::~AForm(void) {
 	std::cout << "[Destroyed] Form " << this->_name << std::endl;
 }
 //Getters
-bool Form::getIsSigned(void) const {
+bool AForm::getIsSigned(void) const {
 	return (this->_is_signed);
 }
 
-std::string Form::getName(void) const {
+std::string AForm::getName(void) const {
 	return (this->_name);
 }
 
-int Form::getSignGrade(void) const {
+int AForm::getSignGrade(void) const {
 	return (this->_sign_grade);
 }
 
-int Form::getExecGrade(void) const {
+int AForm::getExecGrade(void) const {
 	return (this->_exec_grade);
 }
 
 //Setters
-void Form::signForm(Bureaucrat & bure) {
+void AForm::signForm(Bureaucrat & bure) {
 
 	try {
 		verifyGrade(bure.getGrade());
@@ -59,7 +59,7 @@ void Form::signForm(Bureaucrat & bure) {
 		handleSignError(
 			bure,
 			*this,
-			dynamic_cast<Form::GradeTooHighException*>(&e) ? "High" : "Low",
+			dynamic_cast<AForm::GradeTooHighException*>(&e) ? "High" : "Low",
 			"0 to 150");
 	}
 	if (this->getIsSigned() <= bure.getGrade())
@@ -72,28 +72,28 @@ void Form::signForm(Bureaucrat & bure) {
 		"'< or =' to ");
 }
 
-void Form::setName(std::string name) {
+void AForm::setName(std::string name) {
 	this->_name = name;
 }
 
 //Exceptions
-const char *Form::GradeTooLowException::what(void) const throw() {
+const char *AForm::GradeTooLowException::what(void) const throw() {
 	return ("Grade too low");
 };
 
-const char *Form::GradeTooHighException::what(void) const throw() {
+const char *AForm::GradeTooHighException::what(void) const throw() {
 	return ("Grade too hight");
 };
 
 //Operators
-Form& Form::operator=(const Form& src) {
+AForm& AForm::operator=(const AForm& src) {
 	std::cout << "[Assignment] Form called to assignment " << src.getName() << std::endl;
 	if (this == &src)
 		return (*this);
 	return (*this);
 }
 
-std::ostream &operator<<(std::ostream &o, Form *f) {
+std::ostream &operator<<(std::ostream &o, AForm *f) {
 	o << f->getName() 
 	<< ", form signed: " << f->getIsSigned() 
 	<< ", form sign grade " << f->getSignGrade() 
@@ -102,7 +102,7 @@ std::ostream &operator<<(std::ostream &o, Form *f) {
 }
 
 //Utils
-void handleSignError(const Bureaucrat &bure, const Form &form, const std::string &errorType, const std::string &expected) {
+void handleSignError(const Bureaucrat &bure, const AForm &form, const std::string &errorType, const std::string &expected) {
 	std::cout << bure.getName() 
 				<< " couldn’t sign " << form.getName() 
 				<< " because Error: Grade is " << errorType 
@@ -112,8 +112,8 @@ void handleSignError(const Bureaucrat &bure, const Form &form, const std::string
 
 int verifyGrade(int grade) {
 	if (grade > 150)
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	else if (grade < 1)
-		throw Form::GradeTooHighException();
+		throw AForm::GradeTooHighException();
 	return (grade);
 }
