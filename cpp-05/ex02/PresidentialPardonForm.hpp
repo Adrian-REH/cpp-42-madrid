@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 01:41:45 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/07 10:08:52 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/12/07 10:18:50 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PRESIDENTIALPARDONFORM_HPP
 
 #include "AForm.hpp"
-#include <fstream>
 #include <iostream>
 #include <string>
 

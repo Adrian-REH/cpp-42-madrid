@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 01:41:45 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/07 09:24:28 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/12/07 10:19:05 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define SCHRUBBERYCREATIONFORM_HPP
 
 #include "AForm.hpp"
+#include <fstream>
+#include <iostream>
+#include <string>
 
 /**
  * Required grades: sign 145, exec 137
@@ -22,14 +25,14 @@
  */
 class ShrubberyCreationForm : public AForm {
 	private:
-		std::string target;
+		std::string _target;
 		ShrubberyCreationForm();
 	public:
 		~ShrubberyCreationForm();
 		ShrubberyCreationForm(std::string);
 		ShrubberyCreationForm(const ShrubberyCreationForm &);
 		void execute(Bureaucrat const & executor) const;
-		ShrubberyCreationForm &operator=(ShrubberyCreationForm &a);
+		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &a);
 		std::string getTarget(void)const;
 };
 std::ostream &operator<<(std::ostream &o, ShrubberyCreationForm *a);
