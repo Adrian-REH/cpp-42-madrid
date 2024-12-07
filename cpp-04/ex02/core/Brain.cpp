@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 19:54:50 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/31 20:01:18 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/11/26 19:09:40 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Brain::Brain() {
 	std::cout << "[Created] Brain"<< std::endl;
 }
 
-Brain::~Brain(){
+Brain::~Brain() {
 	std::cout << "[Destroyed] Brain"<< std::endl;
 }
 
@@ -61,7 +61,15 @@ std::string Brain::getIdea(int idx) {
 	return _ideas[idx];
 }
 
-Brain *Brain::clone(){
+
+void Brain::getIdeas() {
+	for (int i = 0; i < 3 ; i++)
+		std::cout << _ideas[i] << std::endl;
+	return ;
+}
+
+
+Brain *Brain::clone() {
 	Brain *brain = new Brain();
 	for (int i = 0; i < 100; i++)
 		brain->setIdea(i, getIdea(i));

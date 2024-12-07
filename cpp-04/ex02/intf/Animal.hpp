@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 19:55:03 by adherrer          #+#    #+#             */
-/*   Updated: 2024/11/18 18:54:15 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/11/26 09:11:35 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define ANIMAL_HPP
 #include <string>
 #include <iostream>
+#include <cstdlib>
 
 class Animal {
 	protected:

@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 10:19:12 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/07 10:21:44 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/12/07 10:38:44 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,11 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 void PresidentialPardonForm::execute(Bureaucrat const & src) const {
 	verifyGrade(src.getGrade(), this->getExecGrade(), 1);
 	verifyGrade(src.getGrade(), this->getSignGrade(), 1);
+	std::cout << src.getName() << " executed " << "Presidential Pardon Form"<< std::endl;
+	std::cout << this->getTarget() << ", has been perdoned by Zaphod Beeblebrox" << std::endl;
 }
 
-std::string PresidentialPardonForm::getTarget(void)const{
+std::string PresidentialPardonForm::getTarget(void)const {
 	return (this->_target);
 }
 

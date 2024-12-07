@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 19:55:06 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/31 19:55:07 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/11/25 16:18:41 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class Brain {
 		void display();
 		Brain *clone();
 		std::string getIdea(int idx);
+		void getIdeas();
 		void setIdea(int idx, std::string idea);
 };
 #endif

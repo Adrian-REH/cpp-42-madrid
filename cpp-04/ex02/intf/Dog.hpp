@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 19:55:10 by adherrer          #+#    #+#             */
-/*   Updated: 2024/10/31 19:55:11 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/11/25 16:20:38 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class Dog : public Animal {
 		Dog& operator=(const Dog& dog);
 		~Dog();
 		std::string getType() const;
+		void createIdeas();
 		void makeSound() const;
 };
 

@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 10:19:21 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/07 10:21:52 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/12/07 10:40:42 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int writeTruncFile(ShrubberyCreationForm src)
 	std::string ascii;
 	std::string filename = src.getTarget() + "_shrubbery";
 	std::ofstream outFile(filename.c_str(), std::ios::trunc);
-	if (!outFile){
+	if (!outFile) {
 		std::cout << "Error to open file: "<< filename << std::endl;
 		return 1;
 	}
@@ -60,10 +60,12 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 void ShrubberyCreationForm::execute(Bureaucrat const & src) const {
 	verifyGrade(src.getGrade(), this->getExecGrade(), 1);
 	verifyGrade(src.getGrade(), this->getSignGrade(), 1);
+	std::cout << src.getName() << " executed " << "Shrubbery Creation Form"<< std::endl;
 	writeTruncFile(*this);
+	std::cout << " File " << this->getTarget() << "_shrubbery created"<< std::endl;
 }
 
-std::string ShrubberyCreationForm::getTarget(void)const{
+std::string ShrubberyCreationForm::getTarget(void) const {
 	return (this->_target);
 }
 
@@ -76,4 +78,3 @@ std::ostream &operator<<(std::ostream &o, ShrubberyCreationForm *a) {
 	<< ", form target "<< a->getTarget() << std::endl;
 	return (o);
 }
-

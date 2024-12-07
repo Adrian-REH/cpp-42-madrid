@@ -30,7 +30,12 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& s
 void RobotomyRequestForm::execute(Bureaucrat const & src) const {
 	verifyGrade(src.getGrade(), this->getExecGrade(), 1);
 	verifyGrade(src.getGrade(), this->getSignGrade(), 1);
-	//Execute
+	std::cout << src.getName() << " executed " << "Robotomy Request Form"<< std::endl;
+	std::cout << "Brrr Brrr Brrr\n" << std::endl;
+	if (std::rand() % 1)
+		std::cout <<"Successfully robotomized "<< this->getTarget() << std::endl;
+	else
+		std::cout <<"Fail robotomized "<< this->getTarget() << std::endl;
 }
 
 std::string RobotomyRequestForm::getTarget(void)const{
