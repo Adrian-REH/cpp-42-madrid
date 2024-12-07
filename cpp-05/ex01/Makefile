@@ -6,7 +6,7 @@
 #    By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 04:06:52 by adherrer          #+#    #+#              #
-#    Updated: 2024/12/07 12:06:28 by adherrer         ###   ########.fr        #
+#    Updated: 2024/12/07 13:19:17 by adherrer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,9 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
 TARGET = ex01
 SRCS =	main.cpp \
-		Bureaucrat.cpp \
-		Form.cpp
+		core/Bureaucrat.cpp \
+		core/Form.cpp
+
 OBJS = $(SRCS:.cpp=.o)
 
 # Regla por defecto

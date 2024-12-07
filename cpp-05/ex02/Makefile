@@ -6,7 +6,7 @@
 #    By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 04:06:52 by adherrer          #+#    #+#              #
-#    Updated: 2024/12/07 12:06:22 by adherrer         ###   ########.fr        #
+#    Updated: 2024/12/07 12:58:13 by adherrer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,12 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
 TARGET = ex02
 SRCS =	main.cpp \
-		Bureaucrat.cpp \
-		AForm.cpp \
-		PresidentialPardonForm.cpp \
-		RobotomyRequestForm.cpp \
-		ShrubberyCreationForm.cpp \
-		IntToStr.cpp
+		core/Bureaucrat.cpp \
+		core/Form.cpp \
+		core/PresidentialPardonForm.cpp \
+		core/RobotomyRequestForm.cpp \
+		core/ShrubberyCreationForm.cpp \
+		core/IntToStr.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
