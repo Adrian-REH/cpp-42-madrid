@@ -9,7 +9,7 @@ void handleSignError(const Bureaucrat &bure, const AForm &form, const std::strin
 				<< ", expected "<< expected << std::endl;
 }
 
-int AForm::verifyGrade(int grade, int max, int min) const{
+int AForm::verifyGrade(int grade, int max, int min) const {
 	if (grade > max)
 		throw AForm::GradeTooLowException();
 	else if (grade < min)

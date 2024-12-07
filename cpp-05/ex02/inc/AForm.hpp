@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 11:44:15 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/07 14:38:52 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/12/07 15:58:52 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,10 @@ class AForm {
 		virtual void execute(Bureaucrat const & src) const = 0;
 		void beSigned(Bureaucrat const &src);
 	//Exceptions
-	class GradeTooLowException : public std::exception {
-	public:
+	struct GradeTooLowException : public std::exception {
 		virtual const char *what() const throw();
 	};
-	class GradeTooHighException : public std::exception {
-	public:
+	struct GradeTooHighException : public std::exception {
 		virtual const char *what() const throw();
 	};
 };

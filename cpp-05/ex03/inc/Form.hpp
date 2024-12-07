@@ -56,12 +56,10 @@ class Form {
 		virtual void execute(Bureaucrat const &) const = 0;
 		void beSigned(Bureaucrat &src);
 	//Exceptions
-	class GradeTooLowException : public std::exception {
-	public:
+	struct GradeTooLowException : public std::exception {
 		virtual const char *what() const throw();
 	};
-	class GradeTooHighException : public std::exception {
-	public:
+	struct GradeTooHighException : public std::exception {
 		virtual const char *what() const throw();
 	};
 };

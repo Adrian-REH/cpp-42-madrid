@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:46:32 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/07 14:46:53 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:05:32 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,12 @@ class Bureaucrat {
 		void executeForm(const Form &form)const;
 		void signForm(Form &form);
 
-	class GradeTooHighException : public std::exception
+	struct GradeTooHighException : public std::exception
 	{
-	public:
 		virtual const char *what() const throw();
 	};
-	class GradeTooLowException : public std::exception
+	struct GradeTooLowException : public std::exception
 	{
-	public:
 		virtual const char *what() const throw();
 	};
 };
