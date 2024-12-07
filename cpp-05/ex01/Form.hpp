@@ -5,6 +5,7 @@
 #include <string>
 #include "Bureaucrat.hpp"
 #include <iostream>
+#include <sstream>
 
 /**
  * This class build a new Form for Bureaucrat

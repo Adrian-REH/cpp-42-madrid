@@ -6,7 +6,7 @@
 #    By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 04:06:52 by adherrer          #+#    #+#              #
-#    Updated: 2024/12/07 11:58:11 by adherrer         ###   ########.fr        #
+#    Updated: 2024/12/07 11:58:07 by adherrer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRCS =	main.cpp \
 		PresidentialPardonForm.cpp \
 		RobotomyRequestForm.cpp \
 		ShrubberyCreationForm.cpp \
-		IntToStr.cpp
+		IntToStr.cpp \
+		Intern.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

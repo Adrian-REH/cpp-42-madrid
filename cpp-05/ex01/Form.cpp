@@ -1,6 +1,30 @@
 
 #include "Form.hpp"
 
+//Utils
+void handleSignError(const Bureaucrat &bure, const Form &form, const std::string &errorType, const std::string &expected) {
+	std::cout << bure.getName() 
+				<< " couldn’t sign " << form.getName() 
+				<< " because Error: Grade is " << errorType 
+				<< " " << form.getSignGrade() 
+				<< ", expected "<< expected << std::endl;
+}
+
+int verifyGrade(int grade) {
+	if (grade > 150)
+		throw Form::GradeTooLowException();
+	else if (grade < 1)
+		throw Form::GradeTooHighException();
+	return (grade);
+}
+
+std::string intToStr(int val)
+{
+	std::stringstream ss;
+	ss << val;
+	return ss.str();
+}
+
 Form::Form(void) : _is_signed(false) , _name("_form_") ,_sign_grade(150), _exec_grade(10) {
 	std::cout
 	<< "[Build] Form name: " << this->_name <<
@@ -20,10 +44,10 @@ Form::Form(const std::string name, int s_g, int e_g) :
 }
 
 Form::Form(const Form& form) :
- _name(form.getName()),
  _is_signed(form.getIsSigned()),
- _exec_grade(verifyGrade(form.getExecGrade())),
- _sign_grade(verifyGrade(form.getSignGrade())) {
+ _name(form.getName()),
+ _sign_grade(verifyGrade(form.getSignGrade())),
+ _exec_grade(verifyGrade(form.getExecGrade())) {
 	std::cout << "[Copy Constructor] Bureaucrat called to copy " << form.getName() <<
 	" into " << this->getName() << std::endl;
 }
@@ -68,7 +92,7 @@ void Form::signForm(Bureaucrat & bure) {
 		handleSignError(
 		bure,
 		*this,
-		 std::to_string(bure.getGrade()),
+		 intToStr(bure.getGrade()),
 		"'< or =' to ");
 }
 
@@ -101,19 +125,3 @@ std::ostream &operator<<(std::ostream &o, Form *f) {
 	return (o);
 }
 
-//Utils
-void handleSignError(const Bureaucrat &bure, const Form &form, const std::string &errorType, const std::string &expected) {
-	std::cout << bure.getName() 
-				<< " couldn’t sign " << form.getName() 
-				<< " because Error: Grade is " << errorType 
-				<< " " << form.getSignGrade() 
-				<< ", expected "<< expected << std::endl;
-}
-
-int verifyGrade(int grade) {
-	if (grade > 150)
-		throw Form::GradeTooLowException();
-	else if (grade < 1)
-		throw Form::GradeTooHighException();
-	return (grade);
-}
