@@ -6,13 +6,13 @@
 #    By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 04:06:52 by adherrer          #+#    #+#              #
-#    Updated: 2024/12/07 11:37:30 by adherrer         ###   ########.fr        #
+#    Updated: 2024/12/07 12:06:28 by adherrer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
-TARGET = ex00
+TARGET = ex01
 SRCS =	main.cpp \
 		Bureaucrat.cpp \
 		Form.cpp

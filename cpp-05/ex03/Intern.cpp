@@ -1,5 +1,5 @@
 #include "Intern.hpp"
-#include "SToLower.cpp"
+#include "StrToLower.hpp"
 
 static const std::string _forms[3] = {"presidential pardon", "robotomy request" ,"shrubbery creation"};
 
@@ -40,11 +40,12 @@ Intern &Intern::operator=(const Intern &src) {
 AForm *Intern::makeForm(std::string name, std::string trg) {
 	int i = 0;
 
-	name = stolower(name);
+	name = strToLower(name);
 	while (_forms[i] != name)
 		i++;
 
 	std::cout << "Intern creates "<< name << "Form" << std::endl;
 	if (this->_k[i])
 		return (this->*_k[i])(trg);
+	return NULL;
 }
