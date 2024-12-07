@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 10:19:12 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/07 10:19:14 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/12/07 10:21:44 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ PresidentialPardonForm::~PresidentialPardonForm() {
 	std::cout << "[Destroyed] Presidential Pardon Form"<< std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target): AForm("Presidential Pardon Form", 25, 5) {
+PresidentialPardonForm::PresidentialPardonForm(std::string target): AForm("Presidential Pardon Form", 25, 5), _target(target) {
 	std::cout << "[BUilder] Presidential Pardon Form with target "<< this->_target << std::endl;
 }
 

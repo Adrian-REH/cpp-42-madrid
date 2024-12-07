@@ -9,7 +9,7 @@ RobotomyRequestForm::~RobotomyRequestForm() {
 	std::cout << "[Destroyed] Robotomy Request Form"<< std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("Robotomy Request Form", 25, 5) {
+RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("Robotomy Request Form", 25, 5), _target(target) {
 	std::cout << "[BUilder] Robotomy Request Form with target "<< this->_target << std::endl;
 }
 

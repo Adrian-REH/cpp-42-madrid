@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 10:19:21 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/07 10:19:37 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/12/07 10:21:52 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int writeTruncFile(ShrubberyCreationForm src)
 	return 0;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(): AForm("Shrubbery Creation Form", 72, 45) , _target(""){
+ShrubberyCreationForm::ShrubberyCreationForm(): AForm("Shrubbery Creation Form", 145, 137) , _target(""){
 	std::cout << "[BUilder] Shrubbery Creation Form with target "<< this->_target << std::endl;
 }
 
@@ -39,7 +39,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {
 	std::cout << "[Destroyed] Shrubbery Creation Form"<< std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target): AForm("Shrubbery Creation Form", 25, 5) {
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target): AForm("Shrubbery Creation Form", 25, 5), _target(target){
 	std::cout << "[BUilder] Shrubbery Creation Form with target "<< this->_target << std::endl;
 }
 
