@@ -40,8 +40,14 @@ Intern &Intern::operator=(const Intern &src) {
 Form *Intern::makeForm(std::string name, std::string trg) {
 	int i = 0;
 
-	while (i <= 3 &&  _forms[i] != name)
+	while (i <= 3)
+	{
+		if (_forms[i] == name)
+		{
+			break ;
+		}
 		i++;
+	}
 	if (i <= 3 && this->_k[i]) {
 		std::cout << "Intern creates "<< name << "Form" << std::endl;
 		return (this->*_k[i])(trg);

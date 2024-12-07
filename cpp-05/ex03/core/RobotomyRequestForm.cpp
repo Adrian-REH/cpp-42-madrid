@@ -32,7 +32,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & src) const {
 	this->verifyGrade(src.getGrade(), this->getSignGrade(), 1);
 	std::cout << src.getName() << " executed " << "Robotomy Request Form"<< std::endl;
 	std::cout << "Brrr Brrr Brrr\n" << std::endl;
-	if (std::rand() % 1)
+	if (std::rand() % 2)
 		std::cout <<"Successfully robotomized "<< this->getTarget() << std::endl;
 	else
 		std::cout <<"Fail robotomized "<< this->getTarget() << std::endl;
