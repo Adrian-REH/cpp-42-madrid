@@ -6,31 +6,27 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:22:54 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/07 21:31:42 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/12/10 19:27:56 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
 template <typename T>
-void swap(T a, T b) {
+void swap(T &a, T &b) {
 	T tmp = a;
 	a = b;
 	b = tmp;
 }
 
 template <typename T>
-int min(T a, T b) {
-(void)a;
-(void)b;
-return 0;
+T min(T a, T b) {
+	return (a < b)? a : b;
 }
 
 template <typename T>
-int max(T a, T b) {
-(void)a;
-(void)b;
-return 0;
+T max(T a, T b) {
+	return (a > b)? a : b;
 }
 
 int main() {

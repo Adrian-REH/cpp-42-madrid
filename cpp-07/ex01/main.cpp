@@ -6,17 +6,24 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:22:54 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/10 22:19:38 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/12/10 22:12:26 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Serializer.hpp"
-#include <cstdint>
+#include "iter.hpp"
+#include <iostream>
+#include <string>
+
+template <typename T>
+T& ft_apply(T& val) {
+	std::cout << val << std::endl;
+	return val;
+}
 
 int main() {
-	Data *dat = new Data();
-	
-	uintptr_t rs = Serializer<Data>::serialize(dat);
-	Serializer<Data>::deserialize(rs);
-	delete dat;
+
+	std::string strs[4] = { "¿Hola " ,"Como ", "Estas?", ", Adios!"};
+	iter<std::string> (strs, 4, ft_apply<std::string>);
+	return 0;
+
 }
