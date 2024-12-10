@@ -12,15 +12,9 @@
 
 #include "../inc/DoubleConvert.hpp"
 
-
 void DoubleConvert::convertDouble(std::string str) {
 	char* endptr = NULL;
 	const char* val = str.c_str();
-	double dbl = strtod(val, &endptr);
-
-	std::cout << "type\t│ lowest()\t│ min()\t\t│ max()\n"
-			<< "double\t│ "
-			<< std::numeric_limits<double>::lowest() << "\t│ "
-			<< std::numeric_limits<double>::min() << "\t│ "
-			<< std::numeric_limits<double>::max() << '\n'<< std::endl;
+	double it = strtod(val, &endptr);
+	std::cout << "double:\t"<< it << std::endl;
 }

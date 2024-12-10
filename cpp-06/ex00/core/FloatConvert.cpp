@@ -12,16 +12,18 @@
 
 #include "../inc/FloatConvert.hpp"
 #include <cstdlib>
+#include <cmath>
 
 void FloatConvert::convertFloat(std::string str) {
 
 	char* endptr = NULL;
 	const char* val = str.c_str();
+	double dbl = strtod(val, &endptr);
 	float flt = strtof(val, &endptr);
 
-	std::cout << "type\t│ lowest()\t│ min()\t\t│ max()\n"
-				<< "float\t│ "
-				<< std::numeric_limits<float>::lowest() << "\t│ "
-				<< std::numeric_limits<float>::min() << "\t│ "
-				<< std::numeric_limits<float>::max() << '\n'<< std::endl;
+	if (std::isnan(dbl))
+		std::cout << "float:\t"<< "nanf" << std::endl;
+	else
+		std::cout << "float:\t"<< flt << std::endl;
+
 }

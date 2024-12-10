@@ -12,13 +12,19 @@
 
 #include "../inc/CharConvert.hpp"
 
+int isdisplayable(double it) {
+	return (it >= 32 && it <= 126);
+}
+
 void CharConvert::convertChar(std::string str) {
 	char* endptr = NULL;
 	const char* val = str.c_str();
-	
-	std::cout << "type\t│ lowest()\t│ min()\t\t│ max()\n"
-				<< "uchar\t│ "
-				<< +std::numeric_limits<char>::lowest() << "\t\t│ "
-				<< +std::numeric_limits<char>::min() << "\t\t│ "
-				<< +std::numeric_limits<char>::max() << std::endl;
+	double it = strtod(val, &endptr);
+
+	if (isdisplayable(it))
+		std::cout << "char:\t"<< static_cast<char>(it) << std::endl;
+	else if (str.length() > 1)
+		std::cout << "char:\t"<< "impossible" << std::endl;
+	else
+		std::cout << "char:\t"<< "Non displayable" << std::endl;
 }

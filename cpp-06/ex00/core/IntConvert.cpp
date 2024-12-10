@@ -11,16 +11,17 @@
 /* ************************************************************************** */
 
 #include "../inc/IntConvert.hpp"
+#include <stdlib.h>
+#include <climits>
 
 void IntConvert::convertInt(std::string str) {
 	char* endptr = NULL;
 	const char* val = str.c_str();
-	int it = atol(val);
+	double dbl = strtod(val, &endptr);
 
-	std::cout << "type\t│ lowest()\t│ min()\t\t│ max()\n"
-				<< "int\t│ "
-				<< std::numeric_limits<int>::lowest() << "\t│ "
-				<< std::numeric_limits<int>::min() << "\t│ "
-				<< std::numeric_limits<int>::max() << '\n' << std::endl;
-
+	int it = atoi(val);
+	if (dbl <= INT_MAX && dbl >= INT_MIN)
+		std::cout << "int:\t" << it <<std::endl;
+	else
+		std::cout << "int:\t" << "impossible" <<std::endl;
 }

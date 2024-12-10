@@ -15,6 +15,7 @@
 #include <string>
 #include <iostream>
 #include <limits>
+#include <stdlib.h>
 
 class DoubleConvert {
 	public:
