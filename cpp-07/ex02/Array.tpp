@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 23:29:16 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/11 01:42:22 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/12/11 02:15:31 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 #include "Array.hpp"
 
 template <typename T>
-Array<T>::Array(): _array(NULL), _length(0){
-	std::cout << "[Build] Array class build" << std::endl;
+Array<T>::Array(): _array(NULL), _length(0) {
+	std::cout << "[Build] Array class build "<< this->_array << " "<< this->_length << std::endl;
 }
 
 template <typename T>
@@ -35,27 +35,33 @@ Array<T>::Array(unsigned int n) : _length(n) {
 }
 
 template <typename T>
-Array<T>::Array(const Array& src) {
+Array<T>::Array(const Array& src) : _array(NULL), _length(0){
 	std::cout << "[Copy Build] Array class build" << std::endl;
 	*this = src;
+	return;
 }
 
 template <typename T>
-Array<T> &Array<T>::operator=(const Array<T>& src) {
-	std::cout << "" << std::endl;
+Array<T> &Array<T>::operator=(Array<T> const& src) {
+	std::cout << "Asignament called array class" << std::endl;
 	if (this == &src)
 		return *this;
 
+	std::cout << this->_array << " "<< this->_length << std::endl;
 	if (this->_array)
-		delete[] _array;
-	if (_length > 0)
+		delete _array;
+
+	this->_length = src.size();
+	if (this->_length > 0)
 	{
-		this->_array = new T[this.size()];
+		this->_array = new T[this->_length];
 		for (unsigned int i = 0; i < _length; i++) {
-			this->_array[i] = _array[i];
+			this->_array[i] = src._array[i];
 		}
 		this->_length = _length;
 	}
+	else 
+		this->_array = NULL;
 	return *this;
 }
 

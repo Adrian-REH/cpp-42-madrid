@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 19:30:49 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/11 01:26:33 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/12/11 02:04:29 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 template <typename T>
 class Array {
 	private:
-		T *				_array;
+		T				*_array;
 		unsigned int	_length;
 	public:
 		Array();

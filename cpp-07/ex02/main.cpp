@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 23:44:44 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/11 01:38:47 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/12/11 02:13:55 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ int main()
 	}
 	//SCOPE
 	{
-		Array<int> tmp = numbers;
-		std::cout << "B" <<std::endl;
+		Array<int> tmp;
+		tmp = numbers;
 		Array<int> test(tmp);
 	}
+	
 	for (int i = 0; i < MAX_VAL; i++)
 	{
 		if (mirror[i] != numbers[i])
