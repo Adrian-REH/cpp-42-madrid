@@ -6,14 +6,14 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 23:44:44 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/11 01:04:53 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/12/11 01:38:47 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Array.hpp"
 #include <stdlib.h>
-#define MAX_VAL 750
+#define MAX_VAL 10
 
 int main()
 {
@@ -22,6 +22,7 @@ int main()
 	srand(time(NULL));
 	for (int i = 0; i < MAX_VAL; i++)
 	{
+		std::cout << i << std::endl;
 		const int value = rand();
 		numbers[i] = value;
 		mirror[i] = value;
@@ -29,6 +30,7 @@ int main()
 	//SCOPE
 	{
 		Array<int> tmp = numbers;
+		std::cout << "B" <<std::endl;
 		Array<int> test(tmp);
 	}
 	for (int i = 0; i < MAX_VAL; i++)
