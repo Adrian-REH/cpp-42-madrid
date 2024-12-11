@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 19:30:49 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/10 19:51:05 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/12/11 01:04:38 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-#define ITER_HPP
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
 #include <iostream>
 
-template < typename T>
-void iter(T *address, size_t length, T&(*f)(T&)) {
-	size_t i = -1;
+template <class T>
+class Array {
+	private:
+		T *				_array;
+		unsigned int	_length;
+	public:
+		Array();
+		~Array();
+		Array(unsigned int n);
+		Array(const Array&);
+		Array &operator=(const Array&);
+		T &operator[](unsigned int idx);
+		const T &operator[](unsigned int idx) const;
+		unsigned int size(void) const;
 
-	if (!address)
-		return ;
-	while ( ++i < length)
-		f(address[i]);
-}
-
+};
+# include "Array.tpp"
 #endif
