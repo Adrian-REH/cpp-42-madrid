@@ -6,7 +6,7 @@
 #    By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 04:06:52 by adherrer          #+#    #+#              #
-#    Updated: 2024/12/11 01:29:38 by adherrer         ###   ########.fr        #
+#    Updated: 2024/12/11 15:55:17 by adherrer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = array
 CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 SRCS = main.cpp
-INCLUDE = Array.hpp Array.hpp
+INCLUDE = Array.tpp Array.hpp
 
 OBJS = ${SRCS:.cpp=.o}
 
