@@ -12,10 +12,11 @@
 
 #include "Span.hpp"
 #include <climits>
+#include <limits>
 #include <algorithm>
-//Constructors
+
 Span::Span():
-_store(NULL),
+_store(0),
 _n_max(0),
 _len_stored(0),
 _val_min(INT_MAX),
@@ -28,18 +29,26 @@ Span::~Span() {
 }
 
 Span::Span(unsigned int src): 
-_store(NULL),
+_store(0),
 _n_max(src),
 _len_stored(0),
-_val_min(0),
-_val_max(0) {
+_val_min(INT_MAX),
+_val_max(INT_MIN) {
 	std::cout << "[Build] Span class" << std::endl;
 	
 }
+int Span::getValMin() const{
+	return _val_min;
+}
+
+int Span::getValMax() const{
+	return _val_max;
+}
+
 
 void Span::addNumber(int num) {
-	if (num >= _n_max)
-		throw std::invalid_argument("");
+	if (_len_stored >= _n_max)
+		throw std::invalid_argument("Max args");
 	_store.push_back(num);
 	_len_stored = _store.size();
 	if (num < _val_min)
@@ -48,20 +57,21 @@ void Span::addNumber(int num) {
 		_val_max = num;
 }
 
-template <typename T>
-int distBetween(T store, int v1, int v2) {
-	typename T::iterator it1 = std::find(store.begin(), store.end(), v1);
-	if (it1 == store.end())
-		throw std::invalid_argument("Val not found"+ v1);
-	typename T::iterator it2 = std::find(store.begin(), store.end(), v2);
-	if (it2 == store.end())
-		throw std::invalid_argument("Val not found" + v2);
-	return std::abs(std::distance(it1, it2));
-}
 
 int Span::shortestSpan() {
+
+	std::vector<int> sorted_store = _store;
+	std::sort(sorted_store.begin(), sorted_store.end());
+
+	int shortest = std::numeric_limits<int>::max();
+	for (size_t i = 0; i < sorted_store.size() - 1; ++i) {
+		int diff = sorted_store[i + 1] - sorted_store[i];
+		if (diff < shortest)
+			shortest = diff;
+	}
+	return shortest;
 }
 
-int Span::longestSPan() {
+int Span::longestSpan() {
 	return _val_max - _val_min;
 }

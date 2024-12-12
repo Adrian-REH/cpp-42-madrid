@@ -21,20 +21,20 @@ class Span {
 	private:
 		std::vector<int>	_store;
 		unsigned int	_n_max;
-		size_t			_len_stored;
+		unsigned int	_len_stored;
 		int				_val_min;
 		int				_val_max;
-		int	findMin();
-		int	findMax();
 	public:
 		Span();
 		~Span();
 		Span(unsigned int);
-		Span(Span const &);
-		Span &operator=(Span const &);
+		//Span(Span const &);
+		//Span &operator=(Span const &);
 		void addNumber(int);
 		int shortestSpan();
-		int longestSPan();
+		int longestSpan();
+		int	getValMin() const;
+		int	getValMax() const;
 };
 
 #endif
