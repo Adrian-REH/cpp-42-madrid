@@ -70,6 +70,11 @@
 		"variant": "cpp",
 		"semaphore": "cpp",
 		"cfloat": "cpp",
-		"*.tpp": "cpp"
+		"*.tpp": "cpp",
+		"climits": "cpp",
+		"cassert": "cpp",
+		"filesystem": "cpp",
+		"codecvt": "cpp",
+		"unordered_set": "cpp"
 	}
 }
