@@ -11,12 +11,11 @@
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
-#include <cstdint>
 
 int main() {
 	Data *dat = new Data();
 	
-	uintptr_t rs = Serializer<Data>::serialize(dat);
-	Serializer<Data>::deserialize(rs);
+	uintptr_t rs = Serializer::serialize(dat);
+	Serializer::deserialize(rs);
 	delete dat;
 }

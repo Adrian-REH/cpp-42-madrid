@@ -12,9 +12,11 @@
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-TARGET = ex00
+TARGET = ex01
 SRCS =	main.cpp \
 		Serializer.cpp \
+		Data.cpp
+
 OBJS = $(SRCS:.cpp=.o)
 
 # Regla por defecto

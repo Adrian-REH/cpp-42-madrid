@@ -1,16 +1,16 @@
 #ifndef SERIALIZER_HPP
 #define SERIALIZER_HPP
-#include <cstdint>
 #include "Data.hpp"
+# include <stdint.h>
 
-template <typename T>
 class Serializer {
 	private:
 		Serializer();
+		Serializer(const Serializer &);
+		~Serializer();
 	public:
-	
-		static uintptr_t serialize(T* ptr);
-		static T* deserialize(uintptr_t raw);
+		static uintptr_t serialize(Data *ptr);
+		static Data *deserialize(uintptr_t raw);
 };
 
 #endif

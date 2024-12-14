@@ -1,15 +1,14 @@
 #include "Serializer.hpp"
 
-
-template <typename T>
-Serializer<T>::Serializer() {}
-
-template <typename T>
-uintptr_t Serializer<T>::serialize(T* ptr) {
+Serializer::Serializer() {}
+Serializer::Serializer(const Serializer &src) {
+	*this = src;
+}
+Serializer::~Serializer() {}
+uintptr_t Serializer::serialize(Data* ptr) {
 	return reinterpret_cast<uintptr_t>(ptr);
 }
 
-template <typename T>
-T *Serializer<T>::deserialize(uintptr_t raw) {
+Data *Serializer::deserialize(uintptr_t raw) {
 	return reinterpret_cast<Data *>(raw);
 }
