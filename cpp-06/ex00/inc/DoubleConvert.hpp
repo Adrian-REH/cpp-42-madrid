@@ -18,8 +18,10 @@
 #include <stdlib.h>
 
 class DoubleConvert {
+	private:
+		DoubleConvert();
 	public:
-		void convertDouble(std::string);
+		static void convertDouble(std::string);
 };
 
 #endif

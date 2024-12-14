@@ -18,8 +18,10 @@
 #include <stdlib.h>
 
 class CharConvert {
+	private:
+		CharConvert();
 	public:
-		void convertChar(std::string);
+		static void convertChar(std::string);
 };
 
 #endif

@@ -17,8 +17,10 @@
 #include <limits>
 
 class FloatConvert {
+	private:
+		FloatConvert();
 	public:
-		void convertFloat(std::string);
+		static void convertFloat(std::string);
 };
 
 #endif

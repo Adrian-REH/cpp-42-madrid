@@ -20,12 +20,8 @@ ScalarConverter::ScalarConverter() {}
 
 void ScalarConverter::convert(std::string src) {
 	(void)src;
-	CharConvert chrConv;
-	IntConvert intConv;
-	FloatConvert floatConv;
-	DoubleConvert doubleConv;
-	chrConv.convertChar(src);
-	intConv.convertInt(src);
-	floatConv.convertFloat(src);
-	doubleConv.convertDouble(src);
+	CharConvert::convertChar(src);
+	IntConvert::convertInt(src);
+	FloatConvert::convertFloat(src);
+	DoubleConvert::convertDouble(src);
 }

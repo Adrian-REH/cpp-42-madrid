@@ -17,8 +17,10 @@
 #include <limits>
 
 class IntConvert {
+	private:
+		IntConvert();
 	public:
-		void convertInt(std::string);
+		static void convertInt(std::string);
 };
 
 #endif
