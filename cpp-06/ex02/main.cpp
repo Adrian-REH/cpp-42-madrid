@@ -56,15 +56,15 @@ void identify(Base &p) {
 	try {
 		(void)dynamic_cast<A&>(p);
 		std::cout << "A\n";
-	} catch (...) {
+	} catch (std::exception &e) {
 		try {
 			(void)dynamic_cast<B&>(p);
 			std::cout << "B\n";
-		} catch (...) {
+		} catch (std::exception &ex) {
 			try {
 				(void)dynamic_cast<C&>(p);
 				std::cout << "C\n";
-			} catch (...) {
+			} catch (std::exception &exc) {
 				std::cout << "Unknown type\n";
 			}
 		}
