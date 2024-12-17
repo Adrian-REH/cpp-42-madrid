@@ -29,7 +29,7 @@ Array<T>::~Array() {
 template <typename T>
 Array<T>::Array(unsigned int n) : _length(n) {
 	std::cout << "[Build] Array class build: "<< n << std::endl;
-	if (n >= 0)
+	if (n != 0)
 		this->_array = new T[n]();
 	return;
 }
@@ -47,7 +47,6 @@ Array<T> &Array<T>::operator=(Array<T> const& src) {
 	if (this == &src)
 		return *this;
 
-	std::cout << this->_array << " "<< this->_length << std::endl;
 	if (this->_array)
 		delete _array;
 
@@ -70,7 +69,7 @@ const T &Array<T>::operator[](unsigned int idx) const{
 	if (idx < _length)
 		return this->_array[idx];
 	else
-		throw std::out_of_range("Index is out of bounds");
+		throw std::out_of_range("Error: Index is out of bounds");
 }
 
 template <typename T>
@@ -78,7 +77,7 @@ template <typename T>
 	if (idx < _length)
 		return this->_array[idx];
 	else
-		throw std::out_of_range("Index is out of bounds");
+		throw std::out_of_range("Error: Index is out of bounds");
 }
 
 template <typename T>
