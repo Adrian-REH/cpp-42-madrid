@@ -10,6 +10,10 @@ Data::~Data() {
 	std::cout << "[Destroyed] Data class" << std::endl;
 }
 
+Data::Data(std::string name) : _name(name){
+	std::cout << "[Build] Data class" << std::endl;
+}
+
 
 Data::Data(const Data & data) {
 	std::cout << "[Copy] Copy Data class called" << std::endl;

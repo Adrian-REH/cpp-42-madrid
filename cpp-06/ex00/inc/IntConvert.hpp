@@ -19,6 +19,9 @@
 class IntConvert {
 	private:
 		IntConvert();
+		IntConvert(const IntConvert &);
+		~IntConvert();
+		IntConvert & operator=(const IntConvert &);
 	public:
 		static void convertInt(std::string);
 };

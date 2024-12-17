@@ -20,6 +20,9 @@
 class CharConvert {
 	private:
 		CharConvert();
+		CharConvert(const CharConvert &);
+		~CharConvert();
+		CharConvert & operator=(const CharConvert &);
 	public:
 		static void convertChar(std::string);
 };

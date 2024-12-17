@@ -19,6 +19,9 @@
 class FloatConvert {
 	private:
 		FloatConvert();
+		FloatConvert(const FloatConvert &);
+		~FloatConvert();
+		FloatConvert & operator=(const FloatConvert &);
 	public:
 		static void convertFloat(std::string);
 };

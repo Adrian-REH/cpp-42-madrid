@@ -21,7 +21,7 @@
 
 static	size_t	randNumber()
 {
-	srand(time(0));
+	srand(time(NULL));
 	return ((rand() % 3) );
 }
 

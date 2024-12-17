@@ -20,6 +20,9 @@
 class DoubleConvert {
 	private:
 		DoubleConvert();
+		DoubleConvert(const DoubleConvert &);
+		~DoubleConvert();
+		DoubleConvert & operator=(const DoubleConvert &);
 	public:
 		static void convertDouble(std::string);
 };
