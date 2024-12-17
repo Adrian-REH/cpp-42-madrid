@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:22:54 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/10 22:12:26 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/12/17 20:01:17 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <string>
 
 template <typename T>
-T& ft_apply(T& val) {
+void ft_apply(T& val) {
 	std::cout << val << std::endl;
 	return val;
 }
