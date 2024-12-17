@@ -62,13 +62,15 @@ void test_copy_array() {
 	std::cout << GREEN << "test_copy_array: PASSED" << RESET<< std::endl;
 }
 
-void test_exception_out_of_range() {
+void test_opindex_exception_out_of_range() {
 	Array<int> number;
 
 	try {
 		number[-1];
 	} catch (std::exception &e) {
-		assert(e.what() == "Error: Index is out of bounds" && "test_exception_out_of_range: FAILED: Error should be out of range");
+		std::string result = "Error: Index is out of bounds";
+
+		assert(e.what() == result && "test_exception_out_of_range: FAILED: Error should be out of range");
 	}
 	try
 	{
@@ -76,30 +78,38 @@ void test_exception_out_of_range() {
 	}
 	catch(const std::exception& e)
 	{
-		assert(e.what() == "Error: Index is out of bounds" && "test_exception_out_of_range: FAILED: Error should be out of range");
+		std::string result = "Error: Index is out of bounds";
+		assert(e.what() == result  && "test_exception_out_of_range: FAILED: Error should be out of range");
 	}
 	std::cout << GREEN << "test_exception_out_of_range: PASSED" << RESET<< std::endl;
 }
 
-void test_assignament() {
+void test_op_index_assignment() {
+	
+	Array<int> numbers(MAX_VAL);
+	int *mirror = new int[MAX_VAL]();
+	srand(time(NULL));
+	for (int i = 0; i < MAX_VAL; i++)
+	{
+		const int value = rand();
+		numbers[i] = value;
+		mirror[i] = value;
+		std::cout<< "["<< i << "] " << numbers[i] << std::endl;
+	}
 	for (int i = 0; i < MAX_VAL; i++)
 	{
 		numbers[i] = rand();
 		std::cout<< "["<< i << "] " << numbers[i] << std::endl;
 	}
-	delete [] mirror;//
-
+	delete [] mirror;
 }
+
 int main()
 {
 	test_build_array();
 	test_add_element();
-	//SCOPE
-	std::cout << "----------------------------------------------" << std::endl;
-	{
-		test_copy_array();
-	}
-	
+	test_copy_array();
+	test_op_index_assignment();
 
 	return 0;
 }
