@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   apply.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 19:22:54 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/17 21:38:54 by adherrer         ###   ########.fr       */
+/*   Created: 2024/12/17 21:38:34 by adherrer          #+#    #+#             */
+/*   Updated: 2024/12/17 21:38:47 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
-#include "apply.hpp"
-#include <iostream>
-#include <string>
+#ifndef APPLY_HPP
+#define APPLY_HPP
 
-int main() {
-
-	std::string strs[4] = { "¿Hola " ,"Como ", "Estas?", ", Adios!"};
-	iter<std::string> (strs, 4, ft_apply<std::string>);
-	return 0;
-
+template <typename T>
+void ft_apply(T& val) {
+	std::cout << val << std::endl;
 }
+
+#endif

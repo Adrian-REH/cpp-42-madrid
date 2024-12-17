@@ -6,38 +6,42 @@
 #    By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 04:06:52 by adherrer          #+#    #+#              #
-#    Updated: 2024/12/10 19:28:39 by adherrer         ###   ########.fr        #
+#    Updated: 2024/12/17 21:39:14 by adherrer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-TARGET = ex01
-SRCS =	main.cpp
+NAME = ex00
+CC = c++
+CFLAGS = -std=c++98 -Wall -Wextra -Werror
+SRCS = main.cpp
+INCLUDE =  iter.hpp apply.hpp
 
-OBJS = $(SRCS:.cpp=.o)
+OBJS = ${SRCS:.cpp=.o}
 
 # Regla por defecto
-all: $(TARGET)
 
 # Compilar el ejecutable
-$(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $^
+$(NAME): $(OBJS) $(INCLUDE)
+			$(CC) -o $(NAME) $(CFLAGS) $(OBJS)
+			
+all: $(NAME)
+
 
 # Regla para compilar los archivos .o
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+%.o:%.cpp $(INCLUDE)
+		$(CC) $(CFLAGS) -c $< -o $@
 
 # Limpiar los archivos generados
 clean:
 	rm -f $(OBJS)
+	@echo "Archivos .o eliminados."
 
 # Limpiar todo, incluyendo el ejecutable
 fclean: clean
-	rm -f $(TARGET)
+	rm -f $(NAME)
+	@echo "Ejecutable $(NAME) eliminado."
 
 # Recompilar
 re: fclean all
 
 .PHONY: all clean fclean re
-
