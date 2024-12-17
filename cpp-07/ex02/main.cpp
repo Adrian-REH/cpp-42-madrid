@@ -109,6 +109,7 @@ int main()
 	test_build_array();
 	test_add_element();
 	test_copy_array();
+	test_opindex_exception_out_of_range();
 	test_op_index_assignment();
 
 	return 0;
