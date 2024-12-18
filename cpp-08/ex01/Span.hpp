@@ -12,7 +12,6 @@
 
 #ifndef SPAN_HPP
 #define SPAN_HPP
-#include "realloc.hpp"
 #include <stdexcept>
 #include <iostream>
 #include <vector>
@@ -35,6 +34,8 @@ class Span {
 		int longestSpan();
 		int	getValMin() const;
 		int	getValMax() const;
+		std::vector<int>::iterator begin();
+		std::vector<int>::iterator end();
 		template <typename InputIterator>
 		void addRange(InputIterator begin, InputIterator end) {
 			for (InputIterator it = begin; it != end; ++it) {

@@ -21,7 +21,6 @@
 
 static	size_t	randNumber()
 {
-	srand(time(NULL));
 	return ((rand() % 3) );
 }
 
@@ -72,6 +71,8 @@ void identify(Base &p) {
 }
 
 int main() {
+	srand(time(NULL));
+
 	size_t valor = randNumber();
 	std::cout << "pos:\t"  <<  valor << std::endl;
 	Base *rand1 = randomClass(valor);

@@ -21,11 +21,11 @@ _n_max(0),
 _len_stored(0),
 _val_min(INT_MAX),
 _val_max(INT_MIN) {
-	std::cout << "[Build] Span class" << std::endl;
+	//std::cout << "[Build] Span class" << std::endl;
 }
  
 Span::~Span() {
-	std::cout << "[Destroyed] Span class" << std::endl;
+	//std::cout << "[Destroyed] Span class" << std::endl;
 }
 
 Span::Span(unsigned int n): 
@@ -34,7 +34,7 @@ _n_max(n),
 _len_stored(0),
 _val_min(INT_MAX),
 _val_max(INT_MIN) {
-	std::cout << "[Build] Span class" << std::endl;
+	//std::cout << "[Build] Span class" << std::endl;
 	
 }
 
@@ -44,7 +44,7 @@ _n_max(src._n_max),
 _len_stored(src._len_stored),
 _val_min(src.getValMin()),
 _val_max(src.getValMax()) {
-std::cout << "[Copy] Constructor called " << std::endl;
+	//std::cout << "[Copy] Constructor called " << std::endl;
 }
 
 Span &Span::operator=(Span const & src) {
@@ -69,7 +69,7 @@ int Span::getValMax() const{
 
 void Span::addNumber(int num) {
 	if (_len_stored >= _n_max)
-		throw std::invalid_argument("Max args");
+		throw std::invalid_argument("Error: Invalid Arg");
 	_store.push_back(num);
 	_len_stored = _store.size();
 	if (num < _val_min)
@@ -99,4 +99,12 @@ int Span::longestSpan() {
 		throw std::invalid_argument("Error: There are not enough numbers");
 
 	return _val_max - _val_min;
+}
+
+std::vector<int>::iterator Span::begin() {
+	return _store.begin()
+}
+
+std::vector<int>::iterator Span::end() {
+
 }
