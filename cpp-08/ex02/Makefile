@@ -14,7 +14,7 @@ NAME = mutantStack
 CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror 
 SRCS = main.cpp 
-COVFLAGS = -g -fPIC  -fprofile-arcs -ftest-coverage
+COVFLAGS = #-g -fPIC  -fprofile-arcs -ftest-coverage
 INCLUDE = 
 
 OBJS = ${SRCS:.cpp=.o}
