@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 16:32:20 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/11 17:25:32 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/12/18 16:42:19 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,14 @@ void Span::addNumber(int num) {
 }
 
 
+int &Span::operator[](unsigned int i) {
+	if (i < _len_stored)
+		return this->_store[i];
+	else
+		throw std::out_of_range("Error: Index is out of bounds");
+}
 int Span::shortestSpan() {
-	if (_n_max == 0 || _n_max == 1)
+	if (_len_stored == 0 || _len_stored == 1)
 		throw std::invalid_argument("Error: There are not enough numbers");
 	std::vector<int> sorted_store = _store;
 	std::sort(sorted_store.begin(), sorted_store.end());
@@ -95,16 +101,17 @@ int Span::shortestSpan() {
 }
 
 int Span::longestSpan() {
-	if (_n_max == 0 || _n_max == 1)
+	if (_len_stored == 0 || _len_stored == 1)
 		throw std::invalid_argument("Error: There are not enough numbers");
 
 	return _val_max - _val_min;
 }
 
 std::vector<int>::iterator Span::begin() {
-	return _store.begin()
+	return _store.begin();
 }
 
 std::vector<int>::iterator Span::end() {
+	return _store.end();
 
 }

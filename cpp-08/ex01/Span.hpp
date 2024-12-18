@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 16:27:45 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/11 17:12:55 by adherrer         ###   ########.fr       */
+/*   Updated: 2024/12/18 15:18:20 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class Span {
 		void addNumber(int);
 		int shortestSpan();
 		int longestSpan();
+		int &operator[](unsigned int i);
 		int	getValMin() const;
 		int	getValMax() const;
 		std::vector<int>::iterator begin();
@@ -40,7 +41,7 @@ class Span {
 		void addRange(InputIterator begin, InputIterator end) {
 			for (InputIterator it = begin; it != end; ++it) {
 				if (_len_stored >= _n_max)
-					throw std::overflow_error("Span is full");
+					throw std::overflow_error("Error: Span is full");
 				_store.push_back(*it);
 				_len_stored++;
 				if (_len_stored == 1) {

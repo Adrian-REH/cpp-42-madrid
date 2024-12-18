@@ -7,6 +7,7 @@
 #include <cassert>
 #include <fstream>
 #include <sstream>
+#include <climits>
 
 #define RESET   "\033[0m"
 #define GREEN   "\033[32m"
@@ -43,12 +44,6 @@ int writeTruncFile(std::string _content)
 	return 0;
 }
 
-void handle_test( std::string msg, bool pass) {
-	if (!pass) {
-		std::cerr << RED << "Error:" << msg << RESET << std::endl;
-		assert(pass);
-	}
-}
 
 void build_span_max_val() {
 	std::string content;
@@ -80,49 +75,189 @@ void test_mandatory(){
 
 void test_addNumber(){
 
+	Span sp = Span(5);
+
+	std::cerr << RED;
+	sp.addNumber(6);
+	assert(sp[0] == 6);
+	sp.addNumber(3);
+	assert(sp[1] == 3);
+	sp.addNumber(17);
+	assert(sp[2] == 17);
+	sp.addNumber(9);
+	assert(sp[3] == 9);
+	sp.addNumber(11);
+	assert(sp[4] == 11);
+	std::cerr << RESET;
+	std::cout << GREEN << "test_addNumber: PASSED!" << RESET <<  std::endl;
 }
 
-
-void test_addNumber_exception(){
+void test_addNumber_exception() {
 	Span spn;
 	try {
 		spn.addNumber(10);
 	} catch(std::exception & e) {
 		std::string str = "Error: Invalid Arg";
-		handle_test("", e.what() == str);
+		std::cerr << RED;
+		assert( e.what() == str);
+		std::cerr << RESET;
 	}
 	std::cout << GREEN << "test_addNumber_exception: PASSED!" << RESET <<  std::endl;
 }
 
-void test_addRange(){
+void test_addRange_exception(){
 	Span spn;
+	Span spn10m(MAX_VAL);
+	try {
+		spn.addRange(val10m.begin(), val10m.end());
+	} catch (std::overflow_error &e ) {
+		std::string str = "Error: Span is full";
+		std::cerr << RED ;
+		assert( e.what() == str);
+		std::cerr << RESET ;
+	}
+	spn10m.addRange(val10m.begin(), val10m.end());
+	try {
+		spn10m.addRange(val10m.begin(), val10m.end());
+	} catch (std::overflow_error &e ) {
+		std::string str = "Error: Span is full";
+		std::cerr << RED ;
+		assert( e.what() == str);
+		std::cerr << RESET ;
+	}
+	std::cout << GREEN << "test_addRange_exception: PASSED!" << RESET <<  std::endl;
+}
 
-	spn.addRange(spn.begin(), spn.end());
+void test_addRange(){
+
+	Span spn10m(MAX_VAL);
+	spn10m.addRange(val10m.begin(), val10m.end() - MAX_VAL / 2);
+	spn10m.addRange(val10m.end() - MAX_VAL / 2, val10m.end());
+	std::cerr << RED;
+	assert(spn10m.getValMax() == val10m.getValMax());
+	assert(spn10m.getValMin() == val10m.getValMin());
+	assert(*spn10m.begin() == *val10m.begin());
+	std::cerr << RESET;
+	std::cout << GREEN << "test_addRange: PASSED!" << RESET <<  std::endl;
+}
+
+void test_shortestSpan() {
+	Span spn(3);
+	spn.addNumber(452);
+	spn.addNumber(1552);
+	spn.addNumber(124552);
+
+	assert(spn.shortestSpan() == 1552 - 452);
+	std::cout << GREEN << "test_shortestSpan: PASSED!" << RESET <<  std::endl;
 }
 
 void test_shortestSpan_exception() {
-	
+	Span spn(1);
+	spn.addNumber(10);
+	try {
+		spn.shortestSpan();
+	} catch (std::exception & e) {
+		std::string str = "Error: There are not enough numbers";
+		std::cerr << RED ;
+		assert(e.what() == str);
+		std::cerr << RESET ;
+	}
+	Span spn2;
+	try {
+		spn2.shortestSpan();
+	} catch (std::invalid_argument & e) {
+		std::string str = "Error: There are not enough numbers";
+		std::cerr << RED ;
+		assert(e.what() == str);
+		std::cerr << RESET ;
+	}
+	std::cout << GREEN << "test_shortestSpan_exception: PASSED!" << RESET <<  std::endl;
+}
+
+void test_longestSpan() {
+	Span spn(3);
+	spn.addNumber(452);
+	spn.addNumber(1552);
+	spn.addNumber(124552);
+
+	assert(spn.longestSpan() == 124552 - 452);
+	std::cout << GREEN << "test_longestSpan: PASSED!" << RESET <<  std::endl;
 }
 
 void test_longestSpan_exception() {
+	Span spn(1);
+	spn.addNumber(10);
+	try {
+		spn.longestSpan();
+	} catch (std::exception & e) {
+		std::string str = "Error: There are not enough numbers";
+		std::cerr << RED ;
+		assert(e.what() == str);
+		std::cerr << RESET ;
+	}
+	Span spn2;
+	try {
+		spn2.longestSpan();
+	} catch (std::invalid_argument & e) {
+		std::string str = "Error: There are not enough numbers";
+		std::cerr << RED ;
+		assert(e.what() == str);
+		std::cerr << RESET ;
+	}
+	std::cout << GREEN << "test_longestSpan_exception: PASSED!" << RESET <<  std::endl;
 
 }
 
-void test_max_10000vals(){
+void test_max_max_val() {
+	Span spn(3);
+	int randval[3];
+	int valmax = INT_MIN;
+	for (int i = 0; i < 3; i++) {
+		randval[i] = rand();
+		if (valmax < randval[i])
+			valmax = randval[i];
+	}
+	spn.addNumber(randval[0]);
+	assert(spn.getValMax() == randval[0]);
+	spn.addNumber(randval[1]);
+	assert(spn.getValMax() == ((randval[0] > randval[1]) ? randval[0]: randval[1]));
+	spn.addNumber(randval[2]);
+	assert(spn.getValMax() == valmax);
+	std::cout << GREEN << "test_max_max_val: PASSED!" << RESET <<  std::endl;
 
 }
 
-void test_min_10000val(){
-
-}
-
-void test_15000nums(){
+void test_min_max_val() {
+	Span spn(3);
+	int randval[3];
+	int valmin = INT_MAX;
+	for (int i = 0; i < 3; i++) {
+		randval[i] = rand();
+		if (valmin > randval[i])
+			valmin = randval[i];
+	}
+	spn.addNumber(randval[0]);
+	assert(spn.getValMin() == randval[0]);
+	spn.addNumber(randval[1]);
+	assert(spn.getValMin() == ((randval[0] < randval[1]) ? randval[0]: randval[1]));
+	spn.addNumber(randval[2]);
+	assert(spn.getValMin() == valmin);
+	std::cout << GREEN << "test_min_max_val: PASSED!" << RESET <<  std::endl;
 
 }
 
 int main() {
 	build_span_max_val();
 	test_mandatory();
+	test_addNumber();
 	test_addNumber_exception();
+	test_addRange_exception();
+	test_addRange();
+	test_shortestSpan();
+	test_shortestSpan_exception();
+	test_longestSpan();
+	test_longestSpan_exception();
+	test_max_max_val();
+	test_min_max_val();
 	return 0;
 }
