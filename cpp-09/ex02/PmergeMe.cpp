@@ -6,7 +6,7 @@ PmergeMe::PmergeMe() {}
 PmergeMe::PmergeMe(int length, char **arg)
 {
 	parser(length, arg);
-	if (_src.size() <= 0)
+	if (_src.size() <= 1)
 		throw std::invalid_argument("Error: Invalid number of arguments");
 }
 PmergeMe::~PmergeMe() {}
@@ -125,19 +125,18 @@ void PmergeMe::parser(int argc, char **arg) {
 	for (int i = 1; i < argc; i++)
 	{
 		std::string str(arg[i]);
-		std::list<std::string> s_numbers = ft_split(str, ' ');
+		std::list<std::string> s_numbers = split(str, ' ');
 		std::list<std::string>::iterator it;
 		for (it = s_numbers.begin(); it != s_numbers.end(); ++it) {
 			std::string &current = *it;
 			std::string::iterator nonDigit = std::find_if(current.begin(), current.end(), isNotDigit);
 			if (nonDigit != current.end()) {
-				std::cout << "Contain non digit in arg" << current << std::endl;
-				return ;
+				throw std::invalid_argument("Error: Contain non digit in arg");
 			}
 			int val = atoi(current.c_str());
 			if (val < 0) {
 				std::cout << "Error" << std::endl;
-				return ;
+				throw std::invalid_argument("Error: Contain negative digit");
 			}
 			_src.push_back(val);
 		}
@@ -147,4 +146,5 @@ void PmergeMe::parser(int argc, char **arg) {
 std::vector<int> PmergeMe::sort() {
 	merge();
 	insertion();
+	return _src;
 }

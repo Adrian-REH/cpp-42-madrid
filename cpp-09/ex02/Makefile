@@ -13,7 +13,7 @@
 NAME = PmergeMe
 CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
-SRCS = main.cpp PmergeMe.cpp
+SRCS = main.cpp PmergeMe.cpp split.cpp
 INCLUDE =  PmergeMe.hpp
 
 OBJS = ${SRCS:.cpp=.o}

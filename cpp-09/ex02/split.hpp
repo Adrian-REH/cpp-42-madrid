@@ -4,6 +4,6 @@
 #include <string>
 #include <sstream>
 
-std::list<std::string> ft_split(std::string &str, char delimiter);
+std::list<std::string> split(std::string &str, char delimiter);
 
 #endif
