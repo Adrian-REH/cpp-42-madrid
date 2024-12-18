@@ -12,7 +12,7 @@
 #define RESET   "\033[0m"
 #define GREEN   "\033[32m"
 #define RED     "\033[31m"
-#define MAX_VAL 10000
+#define MAX_VAL 15000
 Span val10m(MAX_VAL);
 
 std::string arrToStr(const char *val)
@@ -44,8 +44,8 @@ int writeTruncFile(std::string _content)
 	return 0;
 }
 
-
-void build_span_max_val() {
+void build_span_max_val()
+{
 	std::string content;
 	srand(time(NULL));
 
@@ -58,7 +58,8 @@ void build_span_max_val() {
 	writeTruncFile(content);
 }
 
-void test_mandatory(){
+void test_mandatory()
+{
 	Span sp = Span(5);
 
 	sp.addNumber(6);
@@ -73,7 +74,8 @@ void test_mandatory(){
 	std::cout << GREEN << "test_mandatory: PASSED!" << RESET <<  std::endl;
 }
 
-void test_addNumber(){
+void test_addNumber()
+{
 
 	Span sp = Span(5);
 
@@ -92,7 +94,8 @@ void test_addNumber(){
 	std::cout << GREEN << "test_addNumber: PASSED!" << RESET <<  std::endl;
 }
 
-void test_addNumber_exception() {
+void test_addNumber_exception()
+{
 	Span spn;
 	try {
 		spn.addNumber(10);
@@ -105,7 +108,8 @@ void test_addNumber_exception() {
 	std::cout << GREEN << "test_addNumber_exception: PASSED!" << RESET <<  std::endl;
 }
 
-void test_addRange_exception(){
+void test_addRange_exception()
+{
 	Span spn;
 	Span spn10m(MAX_VAL);
 	try {
@@ -128,7 +132,8 @@ void test_addRange_exception(){
 	std::cout << GREEN << "test_addRange_exception: PASSED!" << RESET <<  std::endl;
 }
 
-void test_addRange(){
+void test_addRange()
+{
 
 	Span spn10m(MAX_VAL);
 	spn10m.addRange(val10m.begin(), val10m.end() - MAX_VAL / 2);
@@ -141,7 +146,8 @@ void test_addRange(){
 	std::cout << GREEN << "test_addRange: PASSED!" << RESET <<  std::endl;
 }
 
-void test_shortestSpan() {
+void test_shortestSpan()
+{
 	Span spn(3);
 	spn.addNumber(452);
 	spn.addNumber(1552);
@@ -151,7 +157,8 @@ void test_shortestSpan() {
 	std::cout << GREEN << "test_shortestSpan: PASSED!" << RESET <<  std::endl;
 }
 
-void test_shortestSpan_exception() {
+void test_shortestSpan_exception()
+{
 	Span spn(1);
 	spn.addNumber(10);
 	try {
@@ -174,7 +181,8 @@ void test_shortestSpan_exception() {
 	std::cout << GREEN << "test_shortestSpan_exception: PASSED!" << RESET <<  std::endl;
 }
 
-void test_longestSpan() {
+void test_longestSpan()
+{
 	Span spn(3);
 	spn.addNumber(452);
 	spn.addNumber(1552);
@@ -184,7 +192,8 @@ void test_longestSpan() {
 	std::cout << GREEN << "test_longestSpan: PASSED!" << RESET <<  std::endl;
 }
 
-void test_longestSpan_exception() {
+void test_longestSpan_exception()
+{
 	Span spn(1);
 	spn.addNumber(10);
 	try {
@@ -208,7 +217,8 @@ void test_longestSpan_exception() {
 
 }
 
-void test_max_max_val() {
+void test_max_max_val()
+{
 	Span spn(3);
 	int randval[3];
 	int valmax = INT_MIN;
@@ -227,7 +237,8 @@ void test_max_max_val() {
 
 }
 
-void test_min_max_val() {
+void test_min_max_val()
+{
 	Span spn(3);
 	int randval[3];
 	int valmin = INT_MAX;
@@ -246,7 +257,55 @@ void test_min_max_val() {
 
 }
 
-int main() {
+void test_assignment_op_exception(){
+	Span sp;
+	sp = val10m;
+
+	assert(sp.getValMax() == val10m.getValMax());
+	assert(sp.getValMin() == val10m.getValMin());
+	assert(sp.longestSpan() == val10m.longestSpan());
+	assert(sp.shortestSpan() == val10m.shortestSpan());
+	assert(sp[0] == val10m[0]);
+	sp[0] += 3;
+	assert(sp[0] != val10m[0]);
+
+	sp = sp;
+	assert(&sp == &sp, && "Error: Should be Equal direction of Span in assignment");
+	std::cout << GREEN << "test_copy_build: PASSED!" << RESET <<  std::endl;
+
+}
+
+void test_index_op() {
+	Span sp;
+	try {
+		sp[0] += 3;
+	} catch (std::exception &e) {
+		std::string str = "Error: Index is out of bounds";
+		std::cerr << RED ;
+		assert(e.what() == str);
+		std::cerr << RESET ;
+
+	}
+	std::cout << GREEN << "test_index_op: PASSED!" << RESET <<  std::endl;
+
+}
+
+void test_copy_build(){
+	Span sp(val10m);
+
+	assert(sp.getValMax() == val10m.getValMax());
+	assert(sp.getValMin() == val10m.getValMin());
+	assert(sp.longestSpan() == val10m.longestSpan());
+	assert(sp.shortestSpan() == val10m.shortestSpan());
+	assert(sp[0] == val10m[0]);
+	sp[0] += 3;
+	assert(sp[0] != val10m[0]);
+
+	std::cout << GREEN << "test_copy_build: PASSED!" << RESET <<  std::endl;
+
+}
+int main()
+{
 	build_span_max_val();
 	test_mandatory();
 	test_addNumber();
@@ -259,5 +318,9 @@ int main() {
 	test_longestSpan_exception();
 	test_max_max_val();
 	test_min_max_val();
+
+	test_copy_build();
+	test_assignment_op_exception();
+	test_index_op();
 	return 0;
 }

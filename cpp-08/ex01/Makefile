@@ -6,7 +6,7 @@
 #    By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 04:06:52 by adherrer          #+#    #+#              #
-#    Updated: 2024/12/18 16:47:53 by adherrer         ###   ########.fr        #
+#    Updated: 2024/12/18 16:54:43 by adherrer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,13 +33,12 @@ all: $(NAME)
 
 # Limpiar los archivos generados
 clean:
-	rm -f $(OBJS) *.gcda logs *.html *.css
+	rm -f $(OBJS) *.gcov *.gcda logs *.gcno *.html *.css 
 	rm -f $(OBJS)
 	@echo "Archivos .o eliminados."
 
 # Limpiar todo, incluyendo el ejecutable
 fclean: clean
-	rm -rf *.gcov *.
 	rm -f $(NAME)
 	@echo "Ejecutable $(NAME) eliminado."
 
@@ -54,6 +53,8 @@ cov: fclean all
 		gcov --object-directory=$$dir "$$src"; \
 	done
 	gcovr -r . --html --html-details -o coverage.html
+	open ./coverage.html
+
 
 .PHONY: all clean fclean re cov
  
