@@ -1,6 +1,34 @@
 
 #include "Span.hpp"
 
+
+void test_addRange(){
+
+}
+
+void test_addNumber(){
+
+}
+void test_shortestSpan_exception() {
+	
+}
+
+void test_longestSpan_exception() {
+
+}
+
+void test_max_10000vals(){
+
+}
+
+void test_min_10000val(){
+
+}
+
+void test_15000nums(){
+
+}
+
 int main() {
 	Span sp = Span(5);
 

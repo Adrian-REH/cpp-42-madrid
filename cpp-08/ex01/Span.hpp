@@ -28,13 +28,29 @@ class Span {
 		Span();
 		~Span();
 		Span(unsigned int);
-		//Span(Span const &);
-		//Span &operator=(Span const &);
+		Span(Span const &);
+		Span &operator=(Span const &);
 		void addNumber(int);
 		int shortestSpan();
 		int longestSpan();
 		int	getValMin() const;
 		int	getValMax() const;
+		template <typename InputIterator>
+		void addRange(InputIterator begin, InputIterator end) {
+			for (InputIterator it = begin; it != end; ++it) {
+				if (_len_stored >= _n_max)
+					throw std::overflow_error("Span is full");
+				_store.push_back(*it);
+				_len_stored++;
+				if (_len_stored == 1) {
+					_val_min = *it;
+					_val_max = *it;
+				} else {
+					_val_min = std::min(_val_min, *it);
+					_val_max = std::max(_val_max, *it);
+				}
+			}
+		}
 };
 
 #endif

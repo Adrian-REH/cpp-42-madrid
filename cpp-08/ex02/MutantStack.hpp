@@ -5,25 +5,20 @@
 #include <deque>
 #include <stack>
 
-template <typename T, typename Sequence = std::deque<T> >
+template <typename T, typename Container = std::deque<T> >
 class MutantStack : public std::stack<T>{
 	public:
-		MutantStack() : std::stack<T>() {}
-		~MutantStack() {}
-		MutantStack(MutantStack const &other) : std::stack<T>(other) {}
-		MutantStack &operator=(MutantStack const &other) {
-			if (this != &other) {
-				std::stack<T>::operator=(other);
-			}
-			return *this;
-		}
-		typedef typename Sequence::iterator iterator;
-		typedef typename Sequence::const_iterator const_iterator;
-		iterator begin() { return this->c.begin(); }
-		iterator end() { return this->c.end(); }
-		const_iterator begin() const { return this->c.begin(); }
-		const_iterator end() const { return this->c.end(); }
-
+		MutantStack();
+		MutantStack(T);
+		~MutantStack();
+		MutantStack(MutantStack const &other);
+		MutantStack &operator=(MutantStack const &other);
+		typedef typename Container::iterator iterator;
+		typedef typename Container::const_iterator const_iterator;
+		iterator begin();
+		iterator end();
+		const_iterator begin() const;
+		const_iterator end() const;
 };
 
 #endif
