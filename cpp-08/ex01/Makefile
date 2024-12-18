@@ -6,13 +6,13 @@
 #    By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 04:06:52 by adherrer          #+#    #+#              #
-#    Updated: 2024/12/18 16:54:43 by adherrer         ###   ########.fr        #
+#    Updated: 2024/12/18 19:16:54 by adherrer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = span
-CC = g++
-CFLAGS = -std=c++98 -Wall -Wextra -Werror -g -fprofile-arcs -ftest-coverage
+CC = c++
+CFLAGS = -std=c++98 -Wall -Wextra -Werror #-g -fprofile-arcs -ftest-coverage
 SRCS = main.cpp Span.cpp
 INCLUDE = 
 
@@ -56,5 +56,5 @@ cov: fclean all
 	open ./coverage.html
 
 
-.PHONY: all clean fclean re cov
+.PHONY: all clean fclean re #cov
  

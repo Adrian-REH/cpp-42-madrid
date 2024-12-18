@@ -269,8 +269,6 @@ void test_assignment_op_exception(){
 	sp[0] += 3;
 	assert(sp[0] != val10m[0]);
 
-	sp = sp;
-	assert(&sp == &sp, && "Error: Should be Equal direction of Span in assignment");
 	std::cout << GREEN << "test_copy_build: PASSED!" << RESET <<  std::endl;
 
 }
@@ -306,8 +304,11 @@ void test_copy_build(){
 }
 int main()
 {
-	build_span_max_val();
+	std::cout << "------------------MANDATORY-------------------------" <<std::endl;
 	test_mandatory();
+	std::cout << "-----------------------------------------------------" <<std::endl;
+	build_span_max_val();
+
 	test_addNumber();
 	test_addNumber_exception();
 	test_addRange_exception();
@@ -318,7 +319,6 @@ int main()
 	test_longestSpan_exception();
 	test_max_max_val();
 	test_min_max_val();
-
 	test_copy_build();
 	test_assignment_op_exception();
 	test_index_op();
