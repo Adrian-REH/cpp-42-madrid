@@ -1,4 +1,5 @@
 #include "BitcoinExchange.hpp"
+#include <iomanip>
 
 BitcoinExchange::BitcoinExchange(): _isMigrate(false), _file_db("data.csv"), _file_src(NULL) {
 	std::cout << "[Build] BitcoinExchange class" << std::endl;
@@ -83,13 +84,14 @@ void BitcoinExchange::evaluateSrc() {
 			std::cout << "Error: bad input => " << temp.front() << std::endl;
 			continue;
 		}
-		int val = atoi(temp.back().c_str());
+		float val = atof(temp.back().c_str());
 		if (val > 1000 || val < 0)
 		{
 			std::cout << "Error: too large a number "<< temp.back() << std::endl;
 			continue;
 		}
-		std::cout	<< str
+		
+		std::cout << std::fixed	<< std::setprecision(2) << str
 					<< " => "
 					<< val
 					<< " = "
