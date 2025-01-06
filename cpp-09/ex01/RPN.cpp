@@ -1,11 +1,11 @@
 #include "RPN.hpp"
 
 RPN::RPN() : _first(0), _second(0), _result(0), _operator(INVALID_OPERATOR){
-	std::cout << "[Build] RPN" << std::endl;
+	//std::cout << "[Build] RPN" << std::endl;
 }
 
 RPN::~RPN() {
-	std::cout << "[Destroy] RPN" << std::endl;
+	//std::cout << "[Destroy] RPN" << std::endl;
 }
 RPN::RPN(const RPN& src) {
 	*this = src;
@@ -56,14 +56,10 @@ EOperator RPN::getOperator() const {
 }
 
 void RPN::setFirst(int first) {
-	if (first >= 10)
-		throw std::invalid_argument("The argument should be less than 10");
 	this->_first = first;
 }
 
 void RPN::setSecond(int second) {
-	if (second >= 10)
-		throw std::invalid_argument("The argument should be less than 10");
 	this->_second = second;
 }
 

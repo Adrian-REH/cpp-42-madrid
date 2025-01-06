@@ -1,7 +1,7 @@
 #include <stdexcept>
 #include "RPN.hpp"
 #include <iostream>
-#include <stack>
+#include <queue>
 
 
 bool isoperator(char c)
@@ -23,13 +23,13 @@ ETokenType identifyRPN(char c)
 		return INVALID;
 }
 
-void resolve(std::stack<int> &sint, char c) {
+void resolve(std::queue<int> &sint, char c) {
 	RPN rpn;
 	if (sint.size() < 2)
 		throw std::invalid_argument("There are no arguments to operate");
-	rpn.setFirst(sint.top());
+	rpn.setFirst(sint.front());
 	sint.pop();
-	rpn.setSecond(sint.top());
+	rpn.setSecond(sint.front());
 	sint.pop();
 	sint.push(rpn.resolve(c));
 }
@@ -46,13 +46,15 @@ The calculation itself but also the result do not take into account this rule.
  */
 int main(int argc, char **arg)
 {
-	std::stack<int>	sint;
+	std::queue<int>	sint;
 	int				i = 0;
+	int				n_num = 0;
+	int				n_op = 0;
 	int				state[2] = {3, 3};
 
 	if ( argc != 2)
 		return std::cout << "Error: not valid argument" << std::endl, 1;
-	do 
+	do
 	{
 		state[1] = identifyRPN(arg[1][i]);
 		if (state[1] == INVALID || \
@@ -63,9 +65,10 @@ int main(int argc, char **arg)
 		}
 		if (state[0] == NUMBER && state[1] == SPACE){
 			sint.push(arg[1][i - 1] - 48);
-			std::cout << sint.top() << std::endl;
-			}
-		else if (state[0] == (int)OPERATOR && (state[1] == (int)SPACE || state[1] == (int)END)){
+			n_num++;
+		}
+	 	else if (state[0] == (int)OPERATOR && (state[1] == (int)SPACE || state[1] == (int)END)) {
+			n_op++;
 			try {
 				resolve(sint, arg[1][i - 1]);
 			} catch (std::exception &e){
@@ -76,6 +79,8 @@ int main(int argc, char **arg)
 		state[0] = state[1];
 	}
 	while ((arg[1][i++]));
+	if (n_num - 1 != n_op)
+		return (std::cout << "Error: There are more numbers that operators" << std::endl, 1);
+	std::cout << sint.front() << std::endl;
 
-	std::cout << sint.top() << std::endl;
 }
