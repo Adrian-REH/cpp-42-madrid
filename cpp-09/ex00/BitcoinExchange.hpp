@@ -13,7 +13,7 @@ class BitcoinExchange {
 	private:
 		std::map<std::string, float>	_db;
 		bool							_isMigrate;
-		const char							*_file_db;
+		const char						*_file_db;
 		char							*_file_src;
 	public:
 		BitcoinExchange();
@@ -22,8 +22,11 @@ class BitcoinExchange {
 		~BitcoinExchange();
 		BitcoinExchange(BitcoinExchange const&);
 		BitcoinExchange & operator=(const BitcoinExchange &);
+		
 		void evaluateSrc();
 		void migrateDB();
+		std::map<std::string, float> getColections() const;
+		bool getIsMigrate() const;
 };
 
 //Utils
@@ -31,5 +34,6 @@ std::deque<std::string>	readFile(const char *_filename);
 std::deque<std::string>	split(std::string &str, char delimiter);
 std::string				strtrim(const std::string& str);
 bool					isValidDate(const std::string& date);
+std::ostream & operator<<(std::ostream &io, const BitcoinExchange &);
 
 #endif

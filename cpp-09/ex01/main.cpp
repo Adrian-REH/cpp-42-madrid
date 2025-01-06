@@ -34,7 +34,6 @@ void resolve(std::stack<int> &sint, char c) {
 	sint.push(rpn.resolve(c));
 }
 
-
 /**
  * The program name is RPN. 
 • Your program must take an inverted Polish mathematical expression as an argument. 
@@ -62,8 +61,10 @@ int main(int argc, char **arg)
 			std::cout << "Error" << std::endl;
 			return 1;
 		}
-		if (state[0] == NUMBER && state[1] == SPACE)
+		if (state[0] == NUMBER && state[1] == SPACE){
 			sint.push(arg[1][i - 1] - 48);
+			std::cout << sint.top() << std::endl;
+			}
 		else if (state[0] == (int)OPERATOR && (state[1] == (int)SPACE || state[1] == (int)END)){
 			try {
 				resolve(sint, arg[1][i - 1]);
@@ -75,5 +76,6 @@ int main(int argc, char **arg)
 		state[0] = state[1];
 	}
 	while ((arg[1][i++]));
+
 	std::cout << sint.top() << std::endl;
 }

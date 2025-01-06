@@ -98,6 +98,15 @@ void BitcoinExchange::evaluateSrc() {
 	}
 }
 
+std::map<std::string, float> BitcoinExchange::getColections() const {
+	return _db;
+}
+
+bool BitcoinExchange::getIsMigrate() const {
+	return _isMigrate;
+}
+
+
 
 //--------------------------------------------------UTILS-----------------------------------------------
 std::string strtrim(const std::string& str) {
@@ -140,4 +149,17 @@ std::deque<std::string> readFile(const char *_filename)
 		content.push_back(line);
 	inFile.close();
 	return content;
+}
+
+
+std::ostream & operator<<(std::ostream &io, const BitcoinExchange &val) {
+	std::map<std::string, float> db = val.getColections();
+	std::map<std::string, float>::iterator it;
+	io << "Key\tValue" << std::endl;
+	for (it = db.begin(); it != db.end(); it++) {
+		io << "first: " << (*it).first;
+		io << "\tsecond: " << (*it).second << std::endl;
+	}
+	io << "IsMigrate: " << val.getIsMigrate();
+	return io;
 }

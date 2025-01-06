@@ -81,7 +81,7 @@ void PmergeMe::insertion() {
 	std::vector<std::vector<int> > result;
 	std::vector<int> sorted;
 	size_t n = _src.size();
-	size_t j = 1;  // Comenzamos con pares de 2
+	size_t j = 1;
 	while (j <= n)
 		j *= 2;
 	j /= 4;
@@ -147,4 +147,33 @@ std::vector<int> PmergeMe::sort() {
 	merge();
 	insertion();
 	return _src;
+}
+
+std::vector<int> PmergeMe::getSrc() const {
+	return _src;
+}
+
+void PmergeMe::isSorted(){
+	std::vector<int>::iterator it;
+
+	for (it = _src.begin(); it !=  _src.end(); it++) {
+		if (*it > *(it + 1)) {
+			std::cout << "El vector no está ordenado." << std::endl;
+			return;
+		}
+	}
+	std::cout << "Success!: The vector is sorted." << std::endl;
+}
+
+std::ostream & operator<<(std::ostream &io, PmergeMe &val) {
+	std::vector<int> src = val.getSrc();
+	std::vector<int>::iterator it;
+
+	io << "VALUES" << std::endl;
+	for (it = src.begin(); it !=  src.end(); it++) {
+		io << *it << " ";
+	}
+	io << std::endl;
+	val.isSorted();
+	return io;
 }

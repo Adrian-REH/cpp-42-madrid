@@ -77,3 +77,11 @@ int	RPN::resolve(char c) {
 	}
 }
 
+std::ostream & operator<<(std::ostream &io, const RPN &val) {
+	io << "DATA" << std::endl;
+	io << "First: " << val.getFirst() << std::endl;
+	io << "Operator: " << val.getOperator() << std::endl;
+	io << "Second: " << val.getSecond() << std::endl;
+	io << "Result: " << val.getResult() << std::endl;
+	return (io);
+}

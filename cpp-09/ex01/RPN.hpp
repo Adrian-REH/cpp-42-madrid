@@ -42,6 +42,8 @@ class RPN {
 		void	setSecond(int second);
 
 		int	resolve(char c);
-
 };
+
+std::ostream & operator<<(std::ostream &io, const RPN &);
+
 #endif
