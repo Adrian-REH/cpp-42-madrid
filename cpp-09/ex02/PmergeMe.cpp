@@ -149,7 +149,7 @@ std::vector<int> PmergeMe::sort() {
 	return _src;
 }
 
-std::vector<int> PmergeMe::getSrc() const {
+std::vector<int> PmergeMe::getSrc() {
 	return _src;
 }
 

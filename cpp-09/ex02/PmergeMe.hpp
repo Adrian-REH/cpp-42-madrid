@@ -22,8 +22,8 @@ class PmergeMe {
 		PmergeMe(const PmergeMe &);
 		PmergeMe & operator=(PmergeMe const &);
 		std::vector<int> sort();
-		std::vector<int> PmergeMe::getSrc()const;
-		void PmergeMe::isSorted();
+		std::vector<int> getSrc();
+		void isSorted();
 };
 
 std::ostream & operator<<(std::ostream &io, PmergeMe &val);
