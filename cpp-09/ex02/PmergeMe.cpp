@@ -80,6 +80,7 @@ void PmergeMe::merge() {
 void PmergeMe::insertion() {
 	std::vector<std::vector<int> > result;
 	std::vector<int> sorted;
+	std::vector<int>::iterator it;
 	size_t n = _src.size();
 	size_t j = 1;
 	while (j <= n)
@@ -88,7 +89,7 @@ void PmergeMe::insertion() {
 	while (j >= 1) {
 		std::vector<int> block;
 		result.clear();
-		for (size_t i = 0; i + 1 < n; i += j) {
+		for (size_t i = 0; i  < n; i += j) {
 			block.clear();
 			for (size_t k = i; block.size() < j; k++) {
 				if (!(k < i + 2 * j && k < n))
@@ -118,6 +119,8 @@ void PmergeMe::insertion() {
 		}
 		j /= 2;
 	}
+
+
 	_src.swap(sorted);
 }
 
@@ -144,7 +147,9 @@ void PmergeMe::parser(int argc, char **arg) {
 }
 
 std::vector<int> PmergeMe::sort() {
+	std::vector<int>::iterator it;
 	merge();
+
 	insertion();
 	return _src;
 }
