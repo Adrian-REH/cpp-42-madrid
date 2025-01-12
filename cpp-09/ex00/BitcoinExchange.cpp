@@ -68,13 +68,13 @@ void BitcoinExchange::evaluateSrc() {
 	std::deque<std::string>::iterator	it;
 	std::map<std::string, unsigned int>	argument;
 	std::deque<std::string>				temp;
-
+	std::string str;
 	if (!_isMigrate)
 		throw std::invalid_argument("Error with data csv");
 	content = readFile(_file_src);
 	std::cout << content.size() <<  std::endl;
-	for (it = content.begin(); it != content.end(); it++) {
-		std::string str = strtrim(*it);
+	for (it = content.begin(); it != content.end(); ++it) {
+		str = strtrim(*it);
 		temp = split(str, '|');
 		if (temp.size() > 2 || temp.size() == 0)
 			std::cout << "Invalid Arguments in file: "<< _file_src << std::endl;
@@ -82,7 +82,7 @@ void BitcoinExchange::evaluateSrc() {
 		if (!isValidDate(str))
 		{
 			std::cout << "Error: bad input => " << temp.front() << std::endl;
-			continue;
+			continue ;
 		}
 		float val = atof(temp.back().c_str());
 		if (val > 1000 || val < 0)
@@ -90,7 +90,6 @@ void BitcoinExchange::evaluateSrc() {
 			std::cout << "Error: too large a number "<< temp.back() << std::endl;
 			continue;
 		}
-		
 		std::cout << std::fixed	<< std::setprecision(2) << str
 					<< " => "
 					<< val
