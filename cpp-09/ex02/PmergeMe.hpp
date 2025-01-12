@@ -9,9 +9,10 @@
 #include <iostream>
 #include <algorithm>
 
+template <typename T>
 class PmergeMe {
 	private:
-		std::vector<int> _src;
+		T _src;
 		void parser(int argc, char **arg);
 		void merge();
 		void insertion();
@@ -21,12 +22,13 @@ class PmergeMe {
 		~PmergeMe();
 		PmergeMe(const PmergeMe &);
 		PmergeMe & operator=(PmergeMe const &);
-		std::vector<int> sort();
-		std::vector<int> getSrc();
+		T sort();
+		T getSrc();
 		void isSorted();
 };
 
-std::ostream & operator<<(std::ostream &io, PmergeMe &val);
+template <typename T>
+std::ostream & operator<<(std::ostream &io, PmergeMe<T> &val);
 
-
+#include "PmergeMe.tpp"
 #endif

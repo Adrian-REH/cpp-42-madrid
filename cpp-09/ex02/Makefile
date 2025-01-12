@@ -6,15 +6,15 @@
 #    By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 04:06:52 by adherrer          #+#    #+#              #
-#    Updated: 2024/12/18 19:16:54 by adherrer         ###   ########.fr        #
+#    Updated: 2025/01/12 16:51:19 by adherrer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = PmergeMe
 CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror -g -fprofile-arcs -ftest-coverage
-SRCS = main.cpp PmergeMe.cpp split.cpp
-INCLUDE = PmergeMe.hpp split.hpp
+SRCS = main.cpp split.cpp
+INCLUDE = PmergeMe.hpp split.hpp 
 TARGET ?= "2 2 5 223 3 1"
 
 OBJS = ${SRCS:.cpp=.o}

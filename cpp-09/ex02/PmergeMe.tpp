@@ -2,18 +2,23 @@
 #include "split.hpp"
 
 
-PmergeMe::PmergeMe() {}
-PmergeMe::PmergeMe(int length, char **arg)
+template <typename T>
+PmergeMe<T>::PmergeMe() {}
+template <typename T>
+PmergeMe<T>::PmergeMe(int length, char **arg)
 {
 	parser(length, arg);
 	if (_src.size() <= 1)
 		throw std::invalid_argument("Error: Invalid number of arguments");
 }
-PmergeMe::~PmergeMe() {}
+template <typename T>
+PmergeMe<T>::~PmergeMe() {}
 
-PmergeMe::PmergeMe(const PmergeMe & src) : _src(src._src) {}
+template <typename T>
+PmergeMe<T>::PmergeMe(const PmergeMe<T> & src) : _src(src._src) {}
 
-PmergeMe & PmergeMe::operator=(PmergeMe const &src) {
+template <typename T>
+PmergeMe<T> & PmergeMe<T>::operator=(PmergeMe<T> const &src) {
 	if (this == &src)
 		return *this;
 	this->_src = src._src;
@@ -24,35 +29,39 @@ bool isNotDigit(char c) {
 	return !std::isdigit(c);
 }
 
-void PmergeMe::merge() {
-	std::vector<int> tmp(_src);
-	std::vector<std::pair<std::vector<int>, std::vector<int> > > vpairv;
+template <typename T>
+void PmergeMe<T>::merge() {
+	T tmp(_src);
+	typename T::iterator it;
+	std::vector<std::pair<T, T > > vpairv;
 	size_t n = _src.size();
 	size_t j = 1;
-	std::pair<std::vector<int>, std::vector<int> > pair;
+	std::pair<T, T> pair;
 
 	while (n >= j) {
-		std::vector<int> left, right;
+		T left, right;
 		vpairv.clear();
 		for (size_t i = 0; i + 1 < n; i += 2*j)
 		{
 			left.clear();
 			right.clear();
-			for (size_t k = i; left.size() < j; k++) {
+			for (unsigned long k = i; left.size() < j; k++) {
 				if (!(k < i + j && k < n))
 				{
 					left.push_back(-1);
 					continue ;
 				}
-				left.push_back(tmp[k]);
+				std::advance(it, k);
+				left.push_back(*it);
 			}
-			for (size_t k = i + j; right.size() < j; ++k) {
+			for (unsigned long k = i + j; right.size() < j; ++k) {
 				if (!(k < i + 2 * j && k < n))
 				{
 					right.push_back(-1);
 					continue ;
 				}
-				right.push_back(tmp[k]);
+				std::advance(it, k);
+				left.push_back(*it);
 			}
 			pair = std::make_pair(left, right);
 			if (pair.first.back() > pair.second.back() && pair.first.back() != -1 && pair.second.back() != -1)
@@ -60,12 +69,12 @@ void PmergeMe::merge() {
 			vpairv.push_back(pair);
 		}
 		tmp.clear();
-		for (size_t i = 0 ; i < vpairv.size(); i++) {
-			for (size_t k = 0; k < vpairv[i].first.size(); ++k) {
+		for (unsigned long i = 0 ; i < vpairv.size(); i++) {
+			for (unsigned long k = 0; k < vpairv[i].first.size(); ++k) {
 				if (vpairv[i].first[k] != -1)
 					tmp.push_back(vpairv[i].first[k]);
 			}
-			for (size_t k = 0; k < vpairv[i].second.size(); ++k) {
+			for (unsigned long k = 0; k < vpairv[i].second.size(); ++k) {
 				if (vpairv[i].second[k] != -1)
 					tmp.push_back(vpairv[i].second[k]);
 			}
@@ -77,17 +86,17 @@ void PmergeMe::merge() {
 	_src.swap(tmp);
 }
 
-void PmergeMe::insertion() {
-	std::vector<std::vector<int> > result;
-	std::vector<int> sorted;
-	std::vector<int>::iterator it;
+template <typename T>
+void PmergeMe<T>::insertion() {
+	T result;
+	T sorted;
 	size_t n = _src.size();
 	size_t j = 1;
 	while (j <= n)
 		j *= 2;
 	j /= 4;
 	while (j >= 1) {
-		std::vector<int> block;
+		T block;
 		result.clear();
 		for (size_t i = 0; i  < n; i += j) {
 			block.clear();
@@ -104,7 +113,7 @@ void PmergeMe::insertion() {
 		for (size_t i = 0; i < result.size() ; i++) {
 			for (size_t k = 0; k < result.size(); k++) {
 				if (result[i].back() < result[k].back() && result[i].back() != -1) {
-					std::vector<int> temp(result[i]);
+					T temp(result[i]);
 					result.erase(result.begin() + i);
 					result.insert(result.begin() + k, temp);
 					if (i < k)
@@ -124,7 +133,8 @@ void PmergeMe::insertion() {
 	_src.swap(sorted);
 }
 
-void PmergeMe::parser(int argc, char **arg) {
+template <typename T>
+void PmergeMe<T>::parser(int argc, char **arg) {
 	for (int i = 1; i < argc; i++)
 	{
 		std::string str(arg[i]);
@@ -146,23 +156,24 @@ void PmergeMe::parser(int argc, char **arg) {
 	}
 }
 
-std::vector<int> PmergeMe::sort() {
-	std::vector<int>::iterator it;
+template <typename T>
+T PmergeMe<T>::sort() {
 	merge();
-
 	insertion();
 	return _src;
 }
 
-std::vector<int> PmergeMe::getSrc() {
+template <typename T>
+T PmergeMe<T>::getSrc() {
 	return _src;
 }
 
-void PmergeMe::isSorted(){
-	std::vector<int>::iterator it;
+template <typename T>
+void PmergeMe<T>::isSorted(){
+	size_t size = _src.size();
 
-	for (it = _src.begin(); it !=  _src.end(); it++) {
-		if (*it > *(it + 1)) {
+	for (int i = 0; i < size; i++) {
+		if (_src[i] > _src[i + 1]) {
 			std::cout << "El vector no está ordenado." << std::endl;
 			return;
 		}
@@ -170,13 +181,14 @@ void PmergeMe::isSorted(){
 	std::cout << "Success!: The vector is sorted." << std::endl;
 }
 
-std::ostream & operator<<(std::ostream &io, PmergeMe &val) {
-	std::vector<int> src = val.getSrc();
-	std::vector<int>::iterator it;
+template <typename T>
+std::ostream & operator<<(std::ostream &io, PmergeMe<T> &val) {
+	T src = val.getSrc();
+	size_t size = src.size();
 
 	io << "VALUES" << std::endl;
-	for (it = src.begin(); it !=  src.end(); it++) {
-		io << *it << " ";
+	for (size_t i = 0; i < size; i++) {
+		io << src[i] << " ";
 	}
 	io << std::endl;
 	val.isSorted();
