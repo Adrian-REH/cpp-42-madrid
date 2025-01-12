@@ -33,8 +33,8 @@ template <typename T>
 void PmergeMe<T>::merge() {
 	T tmp(_src);
 	typename T::iterator it;
-	std::vector<std::pair<T, T > > vpairv;
-	typename std::list<int>::iterator itpair;
+	std::vector<std::pair<T, T> > vpairv;
+	typename T::iterator itpair;
 	size_t n = _src.size();
 	size_t j = 1;
 	std::pair<T, T> pair;
@@ -75,15 +75,15 @@ void PmergeMe<T>::merge() {
 		for (unsigned long i = 0 ; i < vpairv.size(); i++) {
 			for (unsigned long k = 0; k < vpairv[i].first.size(); ++k) {
 				itpair = vpairv[i].first.begin();
-				std::advance(it, k);
-				if (*it != -1)
-					tmp.push_back(vpairv[i].first[k]);
+				std::advance(itpair, k);
+				if (*itpair != -1)
+					tmp.push_back(*itpair);
 			}
 			for (unsigned long k = 0; k < vpairv[i].second.size(); ++k) {
 				itpair = vpairv[i].first.begin();
-				std::advance(it, k);
-				if (*it != -1)
-					tmp.push_back(vpairv[i].second[k]);
+				std::advance(itpair, k);
+				if (*itpair != -1)
+					tmp.push_back(*itpair);
 			}
 		}
 		if (j==0)
@@ -95,11 +95,12 @@ void PmergeMe<T>::merge() {
 
 template <typename T>
 void PmergeMe<T>::insertion() {
-	T result;
+	std::vector<T> result;
 	T sorted;
 	typename T::iterator it;
 	size_t n = _src.size();
 	size_t j = 1;
+
 	while (j <= n)
 		j *= 2;
 	j /= 4;
