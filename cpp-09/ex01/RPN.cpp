@@ -101,23 +101,23 @@ ETokenType identifyRPN(char c)
 		return INVALID;
 }
 
-int resolve(std::queue<int> &sint, char c) {
+int resolve(std::stack<int> &sint, char c) {
 	RPN rpn;
 	if (sint.size() < 2)
 		throw std::invalid_argument("There are no arguments to operate");
-	rpn.setFirst(sint.front());
+	rpn.setSecond(sint.top());
 	sint.pop();
-	rpn.setSecond(sint.front());
+	rpn.setFirst(sint.top());
 	sint.pop();
 	sint.push(rpn.resolve(c));
 	return 0;
 }
 
-int ft_pushnbr(std::queue<int> & sint, char c) {
+int ft_pushnbr(std::stack<int> & sint, char c) {
 	sint.push(c - 48);
 	return 0;
 }
-int ft_error(std::queue<int> &sint, char c) {
+int ft_error(std::stack<int> &sint, char c) {
 	(void)sint;
 	std::cout << "Error: " << c << std::endl;
 	return 1;

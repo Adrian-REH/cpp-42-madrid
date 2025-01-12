@@ -6,11 +6,11 @@
 #    By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 04:06:52 by adherrer          #+#    #+#              #
-#    Updated: 2024/12/18 19:16:54 by adherrer         ###   ########.fr        #
+#    Updated: 2025/01/12 12:06:14 by adherrer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = rpn
+NAME = RPN
 CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror #-g -fprofile-arcs -ftest-coverage
 SRCS = main.cpp RPN.cpp

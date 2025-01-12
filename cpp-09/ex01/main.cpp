@@ -16,9 +16,9 @@ The calculation itself but also the result do not take into account this rule.
  */
 int main(int argc, char **arg)
 {
-	std::queue<int>	sint;
+	std::stack<int>	sint;
 	// NUMBER	OPERATOR	SPACE	END	INVALID
-	int (*f[5][5])(std::queue<int>&, char) = {
+	int (*f[5][5])(std::stack<int>&, char) = {
 		{ft_error, ft_error, ft_pushnbr, ft_pushnbr, NULL},	// NUMBER
 		{ft_error, ft_error, resolve, resolve, NULL},		// OPERATOR
 		{NULL, NULL, NULL, NULL, NULL},					// SPACE
@@ -48,6 +48,6 @@ int main(int argc, char **arg)
 	while ((arg[1][i++]));
 	if (sint.size() > 1)
 		return (std::cout << "Error: There are more numbers that operators" << std::endl, 1);
-	std::cout << sint.front() << std::endl;
+	std::cout << sint.top() << std::endl;
 
 }
