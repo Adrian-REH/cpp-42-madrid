@@ -34,6 +34,7 @@ void PmergeMe<T>::merge() {
 	T tmp(_src);
 	typename T::iterator it;
 	std::vector<std::pair<T, T > > vpairv;
+	typename std::list<int>::iterator itpair;
 	size_t n = _src.size();
 	size_t j = 1;
 	std::pair<T, T> pair;
@@ -51,6 +52,7 @@ void PmergeMe<T>::merge() {
 					left.push_back(-1);
 					continue ;
 				}
+				it = left.begin();
 				std::advance(it, k);
 				left.push_back(*it);
 			}
@@ -60,6 +62,7 @@ void PmergeMe<T>::merge() {
 					right.push_back(-1);
 					continue ;
 				}
+				it = left.begin();
 				std::advance(it, k);
 				left.push_back(*it);
 			}
@@ -71,11 +74,15 @@ void PmergeMe<T>::merge() {
 		tmp.clear();
 		for (unsigned long i = 0 ; i < vpairv.size(); i++) {
 			for (unsigned long k = 0; k < vpairv[i].first.size(); ++k) {
-				if (vpairv[i].first[k] != -1)
+				itpair = vpairv[i].first.begin();
+				std::advance(it, k);
+				if (*it != -1)
 					tmp.push_back(vpairv[i].first[k]);
 			}
 			for (unsigned long k = 0; k < vpairv[i].second.size(); ++k) {
-				if (vpairv[i].second[k] != -1)
+				itpair = vpairv[i].first.begin();
+				std::advance(it, k);
+				if (*it != -1)
 					tmp.push_back(vpairv[i].second[k]);
 			}
 		}
@@ -90,6 +97,7 @@ template <typename T>
 void PmergeMe<T>::insertion() {
 	T result;
 	T sorted;
+	typename T::iterator it;
 	size_t n = _src.size();
 	size_t j = 1;
 	while (j <= n)
@@ -106,7 +114,9 @@ void PmergeMe<T>::insertion() {
 					block.push_back(-1);
 					continue ;
 				}
-				block.push_back(_src[k]);
+				it = block.begin();
+				std::advance(it, k);
+				block.push_back(*it);
 			}
 			result.push_back(block);
 		}
@@ -128,8 +138,6 @@ void PmergeMe<T>::insertion() {
 		}
 		j /= 2;
 	}
-
-
 	_src.swap(sorted);
 }
 
