@@ -1,6 +1,7 @@
 #ifndef RPN_HPP
 #define RPN_HPP
 #include <iostream>
+#include <queue>
 
 enum EOperator {
 	PLUS,
@@ -45,5 +46,8 @@ class RPN {
 };
 
 std::ostream & operator<<(std::ostream &io, const RPN &);
-
+int resolve(std::queue<int> &sint, char c);
+ETokenType identifyRPN(char c);
+int ft_pushnbr(std::queue<int> & sint, char c);
+int ft_error(std::queue<int> &sint, char c);
 #endif

@@ -1,38 +1,8 @@
 #include <stdexcept>
 #include "RPN.hpp"
 #include <iostream>
-#include <queue>
 
 
-bool isoperator(char c)
-{
-	return (42 == c || 43 == c || c == 45 || 47 == c);
-}
-
-ETokenType identifyRPN(char c)
-{
-	if (isdigit(c))
-		return NUMBER;
-	else if (isoperator(c))
-		return OPERATOR;
-	else if (isspace(c))
-		return SPACE;
-	else if (c == 0)
-		return END;
-	else
-		return INVALID;
-}
-
-void resolve(std::queue<int> &sint, char c) {
-	RPN rpn;
-	if (sint.size() < 2)
-		throw std::invalid_argument("There are no arguments to operate");
-	rpn.setFirst(sint.front());
-	sint.pop();
-	rpn.setSecond(sint.front());
-	sint.pop();
-	sint.push(rpn.resolve(c));
-}
 
 /**
  * The program name is RPN. 
@@ -47,9 +17,15 @@ The calculation itself but also the result do not take into account this rule.
 int main(int argc, char **arg)
 {
 	std::queue<int>	sint;
+	// NUMBER	OPERATOR	SPACE	END	INVALID
+	int (*f[5][5])(std::queue<int>&, char) = {
+		{ft_error, ft_error, ft_pushnbr, ft_pushnbr, NULL},	// NUMBER
+		{ft_error, ft_error, resolve, resolve, NULL},		// OPERATOR
+		{NULL, NULL, NULL, NULL, NULL},					// SPACE
+		{NULL, NULL, NULL, NULL, NULL},					// END
+		{NULL, NULL, NULL, NULL, NULL}					// INVALID
+	};
 	int				i = 0;
-	int				n_num = 0;
-	int				n_op = 0;
 	int				state[2] = {3, 3};
 
 	if ( argc != 2)
@@ -57,20 +33,11 @@ int main(int argc, char **arg)
 	do
 	{
 		state[1] = identifyRPN(arg[1][i]);
-		if (state[1] == INVALID || \
-		(state[0] == NUMBER && state[1] == NUMBER) || \
-		(state[0] == OPERATOR && state[1] == OPERATOR)) {
-			std::cout << "Error" << std::endl;
-			return 1;
-		}
-		if (state[0] == NUMBER && state[1] == SPACE){
-			sint.push(arg[1][i - 1] - 48);
-			n_num++;
-		}
-	 	else if (state[0] == (int)OPERATOR && (state[1] == (int)SPACE || state[1] == (int)END)) {
-			n_op++;
+		if (f[state[0]][state[1]])
+		{
 			try {
-				resolve(sint, arg[1][i - 1]);
+				if (f[state[0]][state[1]](sint, arg[1][i - 1]))
+					return 1;
 			} catch (std::exception &e){
 				std::cout << e.what() << std::endl;
 				return 1;
@@ -79,7 +46,7 @@ int main(int argc, char **arg)
 		state[0] = state[1];
 	}
 	while ((arg[1][i++]));
-	if (n_num - 1 != n_op)
+	if (sint.size() > 1)
 		return (std::cout << "Error: There are more numbers that operators" << std::endl, 1);
 	std::cout << sint.front() << std::endl;
 

@@ -81,3 +81,44 @@ std::ostream & operator<<(std::ostream &io, const RPN &val) {
 	io << "Result: " << val.getResult() << std::endl;
 	return (io);
 }
+
+bool isoperator(char c)
+{
+	return (42 == c || 43 == c || c == 45 || 47 == c);
+}
+
+ETokenType identifyRPN(char c)
+{
+	if (isdigit(c))
+		return NUMBER;
+	else if (isoperator(c))
+		return OPERATOR;
+	else if (isspace(c))
+		return SPACE;
+	else if (c == 0)
+		return END;
+	else
+		return INVALID;
+}
+
+int resolve(std::queue<int> &sint, char c) {
+	RPN rpn;
+	if (sint.size() < 2)
+		throw std::invalid_argument("There are no arguments to operate");
+	rpn.setFirst(sint.front());
+	sint.pop();
+	rpn.setSecond(sint.front());
+	sint.pop();
+	sint.push(rpn.resolve(c));
+	return 0;
+}
+
+int ft_pushnbr(std::queue<int> & sint, char c) {
+	sint.push(c - 48);
+	return 0;
+}
+int ft_error(std::queue<int> &sint, char c) {
+	(void)sint;
+	std::cout << "Error: " << c << std::endl;
+	return 1;
+}
