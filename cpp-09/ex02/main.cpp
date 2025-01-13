@@ -1,22 +1,25 @@
 #include "PmergeMe.hpp"
+#include <ctime>
+#include <iomanip>
+
 
 int main(int argc, char **arg) {
 
 	PmergeMe<std::list<int> > pmergelst(argc, arg);
+    clock_t start = clock();
 	std::list<int> before = pmergelst.getSrc();
-	time_t initlst = time(NULL);
 	std::list<int> result = pmergelst.sort();
-	time_t endlst = time(NULL);
+    clock_t end = clock();
 	std::list<int>::iterator it;
-
-
+    double duration_one = double(end - start) / CLOCKS_PER_SEC ;
 
 
 	PmergeMe<std::vector<int> > pmergevect(argc, arg);
+    start = clock();
 	std::vector<int> bfvect = pmergevect.getSrc();
-	time_t initvect = time(NULL);
 	std::vector<int> aftvect = pmergevect.sort();
-	time_t endvect = time(NULL);
+    end = clock();
+    double duration_two = double(end - start) / CLOCKS_PER_SEC ;
 
 
 	std::cout << "Before: " << std::endl;
@@ -29,8 +32,11 @@ int main(int argc, char **arg) {
 		std::cout << *it << " ";
 	}
 
-	std::cout << "Time to process a range of 5 elements with std::list<int> : " << endlst - initlst << std::endl;
-	std::cout << "Time to process a range of 5 elements with std::list<int> : " << endlst - initlst << std::endl;
-	std::cout << "Time to process a range of 5 elements with std::vector<int> : " << endlst - initlst << std::endl;
-	std::cout << "Time to process a range of 5 elements with std::vector<int> : " << endvect - initvect << std::endl;
+
+
+    std::cout << "Tiempo para procesar el rango de 5 elementos con std::list<int>: "
+            <<std::fixed << std::setprecision(6) << duration_one << " us" << std::endl;
+    std::cout << "Tiempo para procesar el rango de 5 elementos con std::vector<int>: "
+               <<std::fixed << std::setprecision(6) << duration_two << " us" << std::endl;
+
 }
