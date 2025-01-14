@@ -3,7 +3,7 @@
 
 
 template <typename T>
-PmergeMe<T>::PmergeMe() {}
+PmergeMe<T>::PmergeMe(): _src(0) {}
 template <typename T>
 PmergeMe<T>::PmergeMe(int length, char **arg) : _src(0)
 {
@@ -42,7 +42,7 @@ void PmergeMe<T>::merge() {
 	while (n >= j) {
 		T left, right;
 		vpairv.clear();
-		for (size_t i = 0; i + 1 < n; i += 2*j)
+		for (size_t i = 0; i < n; i += 2*j)
 		{
 			left.clear();
 			right.clear();
@@ -52,7 +52,9 @@ void PmergeMe<T>::merge() {
 					left.push_back(-1);
 					continue ;
 				}
-				left.push_back(tmp[k]);
+				it = tmp.begin();
+				std::advance(it, k);
+				left.push_back(*it);
 			}
 			for (unsigned long k = i + j; right.size() < j; ++k) {
 				if (!(k < i + 2 * j && k < n))
@@ -60,7 +62,9 @@ void PmergeMe<T>::merge() {
 					right.push_back(-1);
 					continue ;
 				}
-				left.push_back(tmp[k]);
+				it = tmp.begin();
+				std::advance(it, k);
+				right.push_back(*it);
 			}
 			pair = std::make_pair(left, right);
 			if (pair.first.back() > pair.second.back() && pair.first.back() != -1 && pair.second.back() != -1)
@@ -76,7 +80,7 @@ void PmergeMe<T>::merge() {
 					tmp.push_back(*itpair);
 			}
 			for (unsigned long k = 0; k < vpairv[i].second.size(); ++k) {
-				itpair = vpairv[i].first.begin();
+				itpair = vpairv[i].second.begin();
 				std::advance(itpair, k);
 				if (*itpair != -1)
 					tmp.push_back(*itpair);
@@ -86,6 +90,7 @@ void PmergeMe<T>::merge() {
 			j = 1;
 		j *= 2;
 	}
+
 	_src.swap(tmp);
 }
 
@@ -103,7 +108,7 @@ void PmergeMe<T>::insertion() {
 	while (j >= 1) {
 		T block;
 		result.clear();
-		for (size_t i = 0; i  < n; i += j) {
+		for (size_t i = 0; i < n; i += j) {
 			block.clear();
 			for (size_t k = i; block.size() < j; k++) {
 				if (!(k < i + 2 * j && k < n))
@@ -118,14 +123,9 @@ void PmergeMe<T>::insertion() {
 			result.push_back(block);
 		}
 		for (size_t i = 0; i < result.size() ; i++) {
-			for (size_t k = 0; k < result.size(); k++) {
-				if (result[i].back() < result[k].back() && result[i].back() != -1) {
-					T temp(result[i]);
-					result.erase(result.begin() + i);
-					result.insert(result.begin() + k, temp);
-					if (i < k)
-						i--;
-					break ;
+			for (size_t k = i + 1; k < result.size(); k++) {
+				if (result[i].back() > result[k].back() && result[i].back() != -1) {
+					std::swap(result[i], result[k]);
 				}
 			}
 		}
@@ -144,9 +144,11 @@ void PmergeMe<T>::parser(int argc, char **arg) {
 	for (int i = 1; i < argc; i++)
 	{
 		std::string str(arg[i]);
-		std::list<std::string> s_numbers = split(str, ' ');
-		std::list<std::string>::iterator it;
+		std::vector<std::string> s_numbers = split(str, ' ');
+		
+		std::vector<std::string>::iterator it;
 		for (it = s_numbers.begin(); it != s_numbers.end(); ++it) {
+
 			std::string &current = *it;
 			std::string::iterator nonDigit = std::find_if(current.begin(), current.end(), isNotDigit);
 			if (nonDigit != current.end()) {
@@ -164,7 +166,7 @@ void PmergeMe<T>::parser(int argc, char **arg) {
 
 template <typename T>
 T PmergeMe<T>::sort() {
-	//merge();
+	merge();
 	insertion();
 	return _src;
 }
