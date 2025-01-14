@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:56:02 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/14 17:39:17 by adherrer         ###   ########.fr       */
+/*   Updated: 2025/01/14 14:44:46 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void FloatConvert::convertFloat(std::string str) {
 	char* endptr = NULL;
 	const char* val = str.c_str();
 	float flt = std::strtof(val, &endptr);
-	if (str.length() < 2 && isdisplayablef(val[0]))
+	if (str.length() < 2 && !isdigit(static_cast<char>(val[0])) && isdisplayablef(val[0]))
 		flt = static_cast<float>(val[0]);
 
 	if (std::isnan(static_cast<float>(flt)))

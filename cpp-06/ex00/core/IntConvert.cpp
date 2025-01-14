@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:56:02 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/14 16:55:51 by adherrer         ###   ########.fr       */
+/*   Updated: 2025/01/14 14:54:48 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void IntConvert::convertInt(std::string str) {
 	const char* val = str.c_str();
 	double dbl = std::strtod(val, &endptr);
 	int it = atoi(val);
-	if (str.length() < 2 && isdisplayablei(static_cast<char>(val[0])))
+	if (str.length() < 2 && !isdigit(static_cast<char>(val[0])) && isdisplayablei(static_cast<char>(val[0])))
 		it = static_cast<int>(val[0]);
 	
 	if (dbl <= INT_MAX && dbl >= INT_MIN)

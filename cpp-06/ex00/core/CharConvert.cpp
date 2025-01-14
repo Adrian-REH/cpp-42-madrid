@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:56:02 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/14 17:14:06 by adherrer         ###   ########.fr       */
+/*   Updated: 2025/01/14 14:53:41 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ void CharConvert::convertChar(std::string str) {
 	char* endptr = NULL;
 	const char* val = str.c_str();
 	double it = std::strtod(val, &endptr);
-	if (str.length() < 2 && isdisplayablec(val[0]))
-		it = val[0];
+	if (str.length() < 2 && !isdigit(static_cast<char>(it)) && isdisplayablec(it))
+		it = static_cast<char>(val[0]);
 
-	if (isdisplayablec(static_cast<char>(it)))
+	if (isdisplayablec(it))
 		std::cout << "char:\t\'"<< static_cast<char>(it) <<"\'" << std::endl;
 	else if (str.length() > 1)
 		std::cout << "char:\t"<< "impossible" << std::endl;

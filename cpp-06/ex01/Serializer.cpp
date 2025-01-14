@@ -24,6 +24,7 @@ Data *Serializer::deserialize(uintptr_t raw) {
 }
 
 Serializer & Serializer::operator=(const Serializer &src) {
+	(void)src;
 	std::cout << "Assignament called" << std::endl;
 	return *this;
 }

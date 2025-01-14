@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:55:51 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/14 17:39:17 by adherrer         ###   ########.fr       */
+/*   Updated: 2025/01/14 14:53:58 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void DoubleConvert::convertDouble(std::string str) {
 	char* endptr = NULL;
 	const char* val = str.c_str();
 	double it = std::strtod(val, &endptr);
-	if (str.length() < 2 && isdisplayabled(val[0]))
+	if (str.length() < 2 && !isdigit(static_cast<char>(val[0])) && isdisplayabled(val[0]))
 		it = static_cast<double>(val[0]);
 
 	if (std::isnan(static_cast<double>(it)))

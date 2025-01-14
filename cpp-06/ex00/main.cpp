@@ -6,7 +6,7 @@
 /*   By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:22:54 by adherrer          #+#    #+#             */
-/*   Updated: 2024/12/07 21:31:42 by adherrer         ###   ########.fr       */
+/*   Updated: 2025/01/14 14:48:00 by adherrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int main(int argc, char **argv) {
 		return 0;
 	}
 
-    std::cout << "-------------------LIMITS--------------------"<< std::endl;
+/*     std::cout << "-------------------LIMITS--------------------"<< std::endl;
     std::cout << "type\t│ min()\t\t│ max()\n"
               << "char\t│ "
               << +std::numeric_limits<char>::min() << "\t\t│ "
@@ -49,6 +49,6 @@ int main(int argc, char **argv) {
               << "double\t│ "
               << std::numeric_limits<double>::min() << "\t│ "
               << std::numeric_limits<double>::max() << '\n';
-    std::cout << "---------------------------------------"<< std::endl;
+    std::cout << "---------------------------------------"<< std::endl; */
 	ScalarConverter::convert(arrToStr(argv[1]));
 }
