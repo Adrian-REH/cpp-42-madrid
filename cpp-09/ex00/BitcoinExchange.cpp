@@ -1,5 +1,6 @@
 #include "BitcoinExchange.hpp"
 #include <iomanip>
+#include <algorithm>
 
 BitcoinExchange::BitcoinExchange(): _isMigrate(false), _file_db("data.csv"), _file_src(NULL) {
 	std::cout << "[Build] BitcoinExchange class" << std::endl;
@@ -63,6 +64,21 @@ void BitcoinExchange::migrateDB() {
 	_isMigrate = _db.size() > 0;
 }
 
+std::string findNearestDate(std::string _date, std::map<std::string, float>  _db) {
+	std::map<std::string, float>::iterator it;
+	std::string ocurrenceGrate = ""; 
+	std::string result = ""; 
+
+	for (it = _db.begin(); it != _db.end(); it++) {
+		if ((*it).first.empty())
+			continue ;
+		else if (_date <= (*it).first) {
+			return (*it).first;
+		}
+	}
+	return (result);
+}
+
 void BitcoinExchange::evaluateSrc() {
 	std::deque<std::string>				content;
 	std::deque<std::string>::iterator	it;
@@ -84,18 +100,20 @@ void BitcoinExchange::evaluateSrc() {
 			std::cout << "Error: bad input => " << temp.front() << std::endl;
 			continue ;
 		}
+		str = findNearestDate(str, _db);
 		float val = atof(temp.back().c_str());
 		if (val > 1000 || val < 0)
 		{
 			std::cout << "Error: too large a number "<< temp.back() << std::endl;
 			continue;
 		}
+
 		std::cout << std::fixed	<< std::setprecision(2) << str
-					<< " => "
-					<< val
-					<< " = "
-					<< _db[str]
-					<< std::endl;
+				<< " => "
+				<< val
+				<< " = "
+				<< _db[str]
+				<< std::endl;
 	}
 }
 
@@ -126,6 +144,8 @@ bool isValidDate(const std::string& date) {
 	char* res = strptime(date.c_str(), "%Y-%m-%d", &tm);
 	return (res != NULL && *res == '\0');
 }
+
+
 
 std::deque<std::string> split(std::string &str, char delimiter) {
 	std::stringstream		sstr(str);
