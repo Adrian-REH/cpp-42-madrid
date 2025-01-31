@@ -6,7 +6,7 @@
 #    By: adherrer <adherrer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 04:06:52 by adherrer          #+#    #+#              #
-#    Updated: 2024/12/18 19:16:54 by adherrer         ###   ########.fr        #
+#    Updated: 2025/01/31 15:50:47 by adherrer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror #-g -fprofile-arcs -ftest-coverage
 SRCS = main.cpp BitcoinExchange.cpp 
 INCLUDE = BitcoinExchange.hpp
-TARGET ?= "input.txt"
+TARGET ?= input.csv
 
 OBJS = ${SRCS:.cpp=.o}
 
