@@ -47,7 +47,7 @@ int main(int argc, char **arg)
 	}
 	while ((arg[1][i++]));
 	if (sint.size() > 1)
-		return (std::cout << "Error: There are more numbers that operators" << std::endl, 1);
+		return (std::cout << "Error: There are more numbers than operators" << std::endl, 1);
 	std::cout << sint.top() << std::endl;
 
 }

@@ -41,21 +41,21 @@ void BitcoinExchange::migrateDB() {
 	std::deque<std::string>				temp;
 
 	content = readFile(_file_db);
-	for (it = content.begin(); it != content.end(); it++) {
+	for (it = (content.begin() + 1); it != content.end(); it++) {
 		std::string str = strtrim(*it);
 		temp = split(str, ',');
 		if (temp.size() > 2 || temp.size() == 0)
-			std::cout << "Invalid Arguments in csv" << std::endl;
+			std::cout << "Error: migrateDB: Invalid Arguments in csv" << std::endl;
 		str = strtrim(temp.front());
 		if (!isValidDate(temp.front()))
 		{
-			std::cout << "bad input => " << temp.front() << std::endl;
+			std::cout << "Error: migrateDB: bad input => " << temp.front() << std::endl;
 			continue;
 		}
 		float val = atof(temp.back().c_str());
 		if (val < 0)
 		{
-			std::cout << "Invalid value, the number should be more then 0 "<< std::endl;
+			std::cout << "IError: migrateDB: Invalid value, the number should be more then 0 "<< std::endl;
 			continue;
 		}
 
@@ -86,25 +86,28 @@ void BitcoinExchange::evaluateSrc() {
 	std::deque<std::string>				temp;
 	std::string str;
 	if (!_isMigrate)
-		throw std::invalid_argument("Error with data csv");
+		throw std::invalid_argument("Error: evaluateSrc: Error with data csv");
 	content = readFile(_file_src);
-	std::cout << content.size() <<  std::endl;
 	for (it = content.begin(); it != content.end(); ++it) {
 		str = strtrim(*it);
 		temp = split(str, '|');
 		if (temp.size() > 2 || temp.size() == 0)
-			std::cout << "Invalid Arguments in file: "<< _file_src << std::endl;
+			std::cout << "Error: evaluateSrc: Invalid Arguments in file => "<< _file_src << std::endl;
 		str = strtrim(temp.front());
 		if (!isValidDate(str))
 		{
-			std::cout << "Error: bad input => " << temp.front() << std::endl;
+			std::cout << "Error: evaluateSrc: Error: Invalid date => " << temp.front() << std::endl;
 			continue ;
 		}
 		str = findNearestDate(str, _db);
+		if (str.empty()) {
+			std::cout << "Error: evaluateSrc: Error: Invalid date: Not Found date => " << temp.front() << std::endl;
+			continue ;
+		}
 		float val = atof(temp.back().c_str());
 		if (val > 1000 || val < 0)
 		{
-			std::cout << "Error: too large a number "<< temp.back() << std::endl;
+			std::cout << "Error: evaluateSrc: The number should be between: [0, 1000] => "<< temp.back() << std::endl;
 			continue;
 		}
 
