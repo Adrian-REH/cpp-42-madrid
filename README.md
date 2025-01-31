@@ -20,3 +20,11 @@ There are 10 CPPs in 42 Madrid, where their development will be allocated
 
 ---
 
+### SETUP
+
+Install GCVOR in Ubuntu 42Madrid:
+```c
+pip install gcovr
+
+export PATH=$HOME/.local/bin:$PATH
+```

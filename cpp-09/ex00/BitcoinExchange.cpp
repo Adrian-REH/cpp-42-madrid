@@ -58,7 +58,6 @@ void BitcoinExchange::migrateDB() {
 			std::cout << "IError: migrateDB: Invalid value, the number should be more then 0 "<< std::endl;
 			continue;
 		}
-
 		_db.insert(std::make_pair(temp.front(), val));
 	}
 	_isMigrate = _db.size() > 0;

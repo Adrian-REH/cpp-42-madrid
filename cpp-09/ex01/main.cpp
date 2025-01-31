@@ -49,5 +49,4 @@ int main(int argc, char **arg)
 	if (sint.size() > 1)
 		return (std::cout << "Error: There are more numbers than operators" << std::endl, 1);
 	std::cout << sint.top() << std::endl;
-
 }
