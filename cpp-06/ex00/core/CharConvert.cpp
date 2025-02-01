@@ -32,7 +32,7 @@ CharConvert & CharConvert::operator=(CharConvert const &src) {
 	return *this;
 }
 
-int isdisplayablec(double it) {
+int isdisplayablec(char it) {
 	return (it >= 32 && it <= 126);
 }
 
@@ -40,12 +40,12 @@ void CharConvert::convertChar(std::string str) {
 	char* endptr = NULL;
 	const char* val = str.c_str();
 	double it = std::strtod(val, &endptr);
-	if (str.length() < 2 && !isdigit(static_cast<char>(it)) && isdisplayablec(it))
+	if (str.length() <= 3 && !isdigit(static_cast<char>(val[0])) && isdisplayablec(val[0]))
 		it = static_cast<char>(val[0]);
 
 	if (isdisplayablec(it))
 		std::cout << "char:\t\'"<< static_cast<char>(it) <<"\'" << std::endl;
-	else if (str.length() > 1)
+	else if (str.length() > 3)
 		std::cout << "char:\t"<< "impossible" << std::endl;
 	else
 		std::cout << "char:\t"<< "Non displayable" << std::endl;

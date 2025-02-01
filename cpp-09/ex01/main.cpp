@@ -23,7 +23,7 @@ int main(int argc, char **arg)
 		{ft_error, ft_error, resolve, resolve, NULL},		// OPERATOR
 		{NULL, NULL, NULL, NULL, NULL},					// SPACE
 		{NULL, NULL, NULL, NULL, NULL},					// END
-		{NULL, NULL, NULL, NULL, NULL}					// INVALID
+		{ft_error, ft_error, ft_error, ft_error, ft_error}					// INVALID
 	};
 	int				i = 0;
 	int				state[2] = {3, 3};
@@ -48,5 +48,6 @@ int main(int argc, char **arg)
 	while ((arg[1][i++]));
 	if (sint.size() > 1)
 		return (std::cout << "Error: There are more numbers than operators" << std::endl, 1);
-	std::cout << sint.top() << std::endl;
+	if (!sint.empty())
+		std::cout << sint.top() << std::endl;
 }
