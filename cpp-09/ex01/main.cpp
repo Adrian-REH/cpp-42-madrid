@@ -17,6 +17,7 @@ The calculation itself but also the result do not take into account this rule.
 int main(int argc, char **arg)
 {
 	std::stack<int>	sint;
+	try {
 	// NUMBER	OPERATOR	SPACE	END	INVALID
 	int (*f[5][5])(std::stack<int>&, char) = {
 		{ft_error, ft_error, ft_pushnbr, ft_pushnbr, NULL},	// NUMBER
@@ -50,4 +51,7 @@ int main(int argc, char **arg)
 		return (std::cout << "Error: There are more numbers than operators" << std::endl, 1);
 	if (!sint.empty())
 		std::cout << sint.top() << std::endl;
+	}catch (std::exception & e) {
+		std::cout << e.what() << std::endl;
+	}
 }
